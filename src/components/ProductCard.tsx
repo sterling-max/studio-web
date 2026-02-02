@@ -5,9 +5,10 @@ import { ArrowUpRight, Folder, Play, Video, Activity, Book } from 'lucide-react'
 interface ProductCardProps {
   product: Product;
   index: number;
+  onViewProduct?: (productId: string) => void;
 }
 
-export const ProductCard = ({ product, index }: ProductCardProps) => {
+export const ProductCard = ({ product, index, onViewProduct }: ProductCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -54,7 +55,8 @@ export const ProductCard = ({ product, index }: ProductCardProps) => {
       </div>
 
       <motion.button
-        className="mt-6 flex items-center gap-2 text-sm font-semibold text-sterling-blue group-hover:gap-3 transition-all"
+        onClick={() => onViewProduct?.(product.id)}
+        className="mt-6 flex items-center gap-2 text-sm font-semibold text-sterling-blue group-hover:gap-3 transition-all cursor-pointer"
       >
         View Product <ArrowUpRight size={16} />
       </motion.button>

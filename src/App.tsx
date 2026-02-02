@@ -5,6 +5,11 @@ import { ProductGrid } from './components/ProductGrid';
 import { VisualStyleGuide } from './components/VisualStyleGuide';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
+import { ZapStudio } from './components/products/ZapStudio';
+import { MaxCommander } from './components/products/MaxCommander';
+import { Dash } from './components/products/Dash';
+import { EasyMonitor } from './components/products/EasyMonitor';
+import { TalesUniverse } from './components/products/TalesUniverse';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -13,9 +18,14 @@ function App() {
   const whatsappNumber = "1234567890"; // Placeholder
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Studio,%20I'd%20like%20to%20discuss%20a%20project.`;
 
+  const handleViewProduct = (productId: string) => {
+    setActiveTab(`product-${productId}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-sterling-midnight text-sterling-mist selection:bg-sterling-blue selection:text-white">
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Navbar activeTab={activeTab.startsWith('product-') ? 'products' : activeTab} setActiveTab={setActiveTab} />
       
       <main>
         <AnimatePresence mode="wait">
@@ -28,7 +38,7 @@ function App() {
               transition={{ duration: 0.5 }}
             >
               <Hero onNavigate={setActiveTab} />
-              <ProductGrid />
+              <ProductGrid onViewProduct={handleViewProduct} />
               
               {/* Call to Action Section */}
               <section className="py-32 px-6 text-center">
@@ -72,7 +82,34 @@ function App() {
               transition={{ duration: 0.5 }}
               className="pt-20"
             >
-              <ProductGrid />
+              <ProductGrid onViewProduct={handleViewProduct} />
+            </motion.div>
+          )}
+
+          {/* Product Routes */}
+          {activeTab === 'product-zap-studio' && (
+            <motion.div key="p-zap" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+              <ZapStudio onBack={() => setActiveTab('products')} />
+            </motion.div>
+          )}
+          {activeTab === 'product-max-commander' && (
+            <motion.div key="p-mc" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+              <MaxCommander onBack={() => setActiveTab('products')} />
+            </motion.div>
+          )}
+          {activeTab === 'product-dash' && (
+            <motion.div key="p-dash" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+              <Dash onBack={() => setActiveTab('products')} />
+            </motion.div>
+          )}
+          {activeTab === 'product-easy-monitor' && (
+            <motion.div key="p-em" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+              <EasyMonitor onBack={() => setActiveTab('products')} />
+            </motion.div>
+          )}
+          {activeTab === 'product-tales-universe' && (
+            <motion.div key="p-tu" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+              <TalesUniverse onBack={() => setActiveTab('products')} />
             </motion.div>
           )}
 

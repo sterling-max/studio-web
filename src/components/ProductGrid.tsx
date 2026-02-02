@@ -1,7 +1,11 @@
 import { PRODUCTS } from '../constants/products';
 import { ProductCard } from './ProductCard';
 
-export const ProductGrid = () => {
+interface ProductGridProps {
+  onViewProduct?: (productId: string) => void;
+}
+
+export const ProductGrid = ({ onViewProduct }: ProductGridProps) => {
   return (
     <section id="products" className="py-24 px-6 md:px-12 bg-sterling-midnight">
       <div className="max-w-7xl mx-auto">
@@ -26,7 +30,12 @@ export const ProductGrid = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PRODUCTS.map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
+            <ProductCard 
+              key={product.id} 
+              product={product} 
+              index={index} 
+              onViewProduct={onViewProduct}
+            />
           ))}
         </div>
       </div>
