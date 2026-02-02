@@ -9,13 +9,13 @@ export const About = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-20"
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-6">The <span className="text-sterling-blue">Studio</span></h1>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6">The <span className="text-sterling-blue">Lab</span></h1>
         <div className="flex items-center justify-center gap-2 text-sterling-cyan/80 mb-8">
           <MapPin size={18} />
           <span className="uppercase tracking-[0.2em] text-sm">Marche, Italy</span>
         </div>
         <p className="max-w-3xl mx-auto text-xl text-sterling-mist/70 leading-relaxed">
-          Sterling Studio is a premier software atelier born in the heart of Italy. 
+          Sterling Lab is a premier software atelier born in the heart of Italy. 
           We blend the timeless principles of Italian design—elegance, proportion, and emotion—with 
           cutting-edge engineering to create digital products that feel inevitable.
         </p>

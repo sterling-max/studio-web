@@ -1,4 +1,4 @@
-# Sterling Studio - Pending Assets
+# Sterling Lab - Pending Assets
 
 To achieve the full "Sterling" aesthetic, the following placeholder elements should be replaced with high-quality custom assets:
 
@@ -12,7 +12,7 @@ In `src/components/ProductCard.tsx`, the colored icons are currently placeholder
 
 ## 2. Brand Identity
 - **Favicon**: Replace the default Vite SVG in `public/` with a Sterling "S" or "Shield" logo.
-- **Logo**: If a vector logo exists, replace the text "Sterling Studio" in `App.tsx` and `Navbar.tsx` with an SVG component.
+- **Logo**: If a vector logo exists, replace the text "Sterling Lab" in `App.tsx` and `Navbar.tsx` with an SVG component.
 
 ## 3. Background Textures
 - Currently, the site uses CSS gradients and blurs.

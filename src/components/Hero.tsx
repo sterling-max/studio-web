@@ -35,7 +35,7 @@ export const Hero = ({ onNavigate }: HeroProps) => {
         </motion.span>
         
         <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 pb-6 bg-clip-text text-transparent bg-gradient-to-b from-sterling-mist to-sterling-mist/50">
-          Sterling <span className="text-sterling-blue">Studio</span>
+          Sterling <span className="text-sterling-blue">Lab</span>
         </h1>
         
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-sterling-mist/70 leading-relaxed mb-10">
@@ -58,7 +58,7 @@ export const Hero = ({ onNavigate }: HeroProps) => {
             onClick={() => onNavigate('about')}
             className="px-8 py-4 bg-sterling-surface text-sterling-mist rounded-2xl font-semibold border border-sterling-mist/10 hover:bg-sterling-surface/80 transition-all cursor-pointer"
           >
-            The Studio
+            The Lab
           </motion.button>
         </div>
       </motion.div>

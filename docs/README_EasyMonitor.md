@@ -1,6 +1,6 @@
 # EasyMonitor - Blood Pressure & Heart Rate Tracking
 
-> **By Sterling Labs** - A responsive web application designed for elderly users to easily track blood pressure and heart rate readings, with sharing capabilities for family and healthcare providers.
+> **By Sterling Lab** - A responsive web application designed for elderly users to easily track blood pressure and heart rate readings, with sharing capabilities for family and healthcare providers.
 
 ![EasyMonitor](https://img.shields.io/badge/version-2.0-blue) ![React](https://img.shields.io/badge/React-18.2-blue) ![Vite](https://img.shields.io/badge/Vite-5.0-purple) ![Tailwind](https://img.shields.io/badge/Tailwind-3.3-cyan)
 
@@ -202,7 +202,7 @@ This is a personal health tracking project. While not accepting external contrib
 
 ## 📜 License
 
-Private project by Sterling Labs. All rights reserved.
+Private project by Sterling Lab. All rights reserved.
 
 ## 📞 Support
 
@@ -212,4 +212,4 @@ For issues or questions:
 
 ---
 
-**Made with ❤️ by Sterling Labs for better health monitoring**
+**Made with ❤️ by Sterling Lab for better health monitoring**

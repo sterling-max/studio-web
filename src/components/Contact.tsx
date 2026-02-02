@@ -3,7 +3,7 @@ import { MessageCircle, Mail, Globe } from 'lucide-react';
 
 export const Contact = () => {
   const whatsappNumber = "1234567890"; // Placeholder
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Studio,%20I'd%20like%20to%20discuss%20a%20project.`;
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-6">
@@ -38,11 +38,11 @@ export const Contact = () => {
         <div className="flex justify-center gap-8 text-sterling-mist/40 text-sm">
           <div className="flex items-center gap-2 hover:text-sterling-mist transition-colors cursor-pointer">
             <Mail size={16} />
-            <span>hello@sterling.studio</span>
+            <span>hello@sterling.lab</span>
           </div>
           <div className="flex items-center gap-2 hover:text-sterling-mist transition-colors cursor-pointer">
             <Globe size={16} />
-            <span>sterling.studio</span>
+            <span>sterling.lab</span>
           </div>
         </div>
       </motion.div>

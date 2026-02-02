@@ -44,7 +44,7 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
     { id: 'home', icon: <Home size={22} />, label: 'Home' },
     { id: 'products', icon: <Box size={22} />, label: 'Products' },
     { id: 'design', icon: <Palette size={22} />, label: 'Design' },
-    { id: 'about', icon: <Info size={22} />, label: 'Studio' },
+    { id: 'about', icon: <Info size={22} />, label: 'Lab' },
     { id: 'contact', icon: <MessageSquare size={22} />, label: 'Contact' },
   ];
 

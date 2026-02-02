@@ -16,7 +16,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('home');
 
   const whatsappNumber = "1234567890"; // Placeholder
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Studio,%20I'd%20like%20to%20discuss%20a%20project.`;
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
 
   const handleViewProduct = (productId: string) => {
     setActiveTab(`product-${productId}`);
@@ -144,7 +144,7 @@ function App() {
       <footer className="py-20 px-6 border-t border-sterling-mist/5 bg-sterling-deep">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
           <div>
-            <div className="text-2xl font-bold mb-4">Sterling <span className="text-sterling-blue">Studio</span></div>
+            <div className="text-2xl font-bold mb-4">Sterling <span className="text-sterling-blue">Lab</span></div>
             <p className="text-sterling-mist/40 text-sm max-w-xs leading-relaxed">
               Hand-crafted software solutions with a focus on precision, performance, and atmospheric design.
             </p>
@@ -169,7 +169,7 @@ function App() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-sterling-mist/5 flex flex-col md:flex-row justify-between text-[10px] text-sterling-mist/20 uppercase tracking-[0.2em]">
-          <span>© 2026 Sterling Studio. All rights reserved.</span>
+          <span>© 2026 Sterling Lab. All rights reserved.</span>
           <span>Designed with precision in Marche.</span>
         </div>
       </footer>
