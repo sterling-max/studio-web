@@ -16,7 +16,8 @@ export const ProductCard = ({ product, index, onViewProduct }: ProductCardProps)
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={{ y: -10 }}
-      className="group relative flex flex-col bg-sterling-deep border border-sterling-mist/5 rounded-[2rem] p-8 overflow-hidden transition-all hover:border-sterling-blue/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+      onClick={() => onViewProduct?.(product.id)}
+      className="group relative flex flex-col bg-sterling-deep border border-sterling-mist/5 rounded-[2rem] p-8 overflow-hidden transition-all hover:border-sterling-blue/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] cursor-pointer"
     >
       {/* Decorative Gradient Overlay */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-40 h-40 bg-sterling-blue/10 rounded-full blur-[60px] group-hover:bg-sterling-blue/20 transition-all" />
@@ -36,7 +37,7 @@ export const ProductCard = ({ product, index, onViewProduct }: ProductCardProps)
 
       <h3 className="text-2xl font-bold mb-2 text-sterling-mist group-hover:text-white transition-colors">{product.name}</h3>
       <p className="text-sm text-sterling-cyan font-medium mb-4 italic opacity-80">{product.tagline}</p>
-      
+
       <p className="text-sterling-mist/60 text-sm leading-relaxed mb-6 line-clamp-3">
         {product.description}
       </p>
@@ -54,12 +55,11 @@ export const ProductCard = ({ product, index, onViewProduct }: ProductCardProps)
         )}
       </div>
 
-      <motion.button
-        onClick={() => onViewProduct?.(product.id)}
-        className="mt-6 flex items-center gap-2 text-sm font-semibold text-sterling-blue group-hover:gap-3 transition-all cursor-pointer"
+      <motion.div
+        className="mt-6 flex items-center gap-2 text-sm font-semibold text-sterling-blue group-hover:gap-3 transition-all"
       >
         View Product <ArrowUpRight size={16} />
-      </motion.button>
+      </motion.div>
     </motion.div>
   );
 };
