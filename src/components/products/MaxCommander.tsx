@@ -1,6 +1,9 @@
-import { Folder, Search, Shield, Layout, Eye, GitBranch, Archive, Cloud, Puzzle, Clapperboard } from 'lucide-react';
+import { useState } from 'react';
+import { Folder, Search, Shield, Layout, Eye, GitBranch, Archive, Cloud, Puzzle, Clapperboard, History } from 'lucide-react';
 import { ProductLayout } from './ProductLayout';
 import { type PricingPlan } from './Pricing';
+import { ChangelogModal } from './ChangelogModal';
+import { changelogData } from '../../data/max-commander-changelog';
 
 interface MaxCommanderProps {
   onBack: () => void;
@@ -90,15 +93,49 @@ export const MaxCommander = ({ onBack }: MaxCommanderProps) => {
     }
   ];
 
+  const [showChangelog, setShowChangelog] = useState(false);
+  const latestVersion = changelogData[0];
+
+  const PromoSection = (
+    <div className="flex flex-col items-center gap-4 animate-fade-in-up">
+      <div className="flex items-center gap-3 bg-sterling-surface/50 border border-sterling-mist/10 rounded-full px-5 py-2 hover:bg-sterling-surface transition-colors cursor-default group">
+        <span className="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse" />
+        <span className="text-sm font-semibold text-sterling-mist group-hover:text-white transition-colors">
+          <span className="text-sterling-blue">v{latestVersion.version}</span> Available Now
+        </span>
+        <span className="w-px h-4 bg-sterling-mist/10 mx-1" />
+        <span className="text-xs text-sterling-mist/40 italic hidden sm:inline-block">
+          {latestVersion.description}
+        </span>
+      </div>
+
+      <button
+        onClick={() => setShowChangelog(true)}
+        className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2"
+      >
+        <History size={12} />
+        View Changelog
+      </button>
+    </div>
+  );
+
   return (
-    <ProductLayout
-      title="Max"
-      titleSuffix="Commander"
-      tagline="The productivity powerhouse. A modern, dual-pane file manager designed for speed, precision, and keyboard mastery."
-      icon={Folder}
-      steps={steps}
-      pricingPlans={plans}
-      onBack={onBack}
-    />
+    <>
+      <ProductLayout
+        title="Max"
+        titleSuffix="Commander"
+        tagline="The productivity powerhouse. A modern, dual-pane file manager designed for speed, precision, and keyboard mastery."
+        icon={Folder}
+        steps={steps}
+        pricingPlans={plans}
+        onBack={onBack}
+        extraHeroContent={PromoSection}
+      />
+      <ChangelogModal
+        isOpen={showChangelog}
+        onClose={() => setShowChangelog(false)}
+        data={changelogData}
+      />
+    </>
   );
 };

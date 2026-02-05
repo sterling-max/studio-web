@@ -22,18 +22,20 @@ interface ProductLayoutProps {
   pricingPlans?: PricingPlan[];
   onBack: () => void;
   isMobileFrame?: boolean; // For Tales Universe vertical screenshots
+  extraHeroContent?: React.ReactNode;
 }
 
-export const ProductLayout = ({ 
-  title, 
-  titleSuffix, 
-  tagline, 
+export const ProductLayout = ({
+  title,
+  titleSuffix,
+  tagline,
   rotatingPhrases,
-  icon: HeroIcon, 
-  steps, 
+  icon: HeroIcon,
+  steps,
   pricingPlans,
   onBack,
-  isMobileFrame = false
+  isMobileFrame = false,
+  extraHeroContent
 }: ProductLayoutProps) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -78,15 +80,15 @@ export const ProductLayout = ({
               )}
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
+              <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 p-3 bg-sterling-midnight/80 hover:bg-sterling-blue rounded-full text-white transition-all z-20 border border-sterling-mist/20"
               >
                 <X size={24} />
               </button>
-              <img 
-                src={selectedImage} 
-                alt="Full preview" 
+              <img
+                src={selectedImage}
+                alt="Full preview"
                 className="w-full h-full object-contain bg-sterling-deep cursor-pointer"
                 onClick={() => setSelectedImage(null)}
               />
@@ -96,12 +98,12 @@ export const ProductLayout = ({
       </AnimatePresence>
 
       {/* Header / Nav */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         className="mb-12"
       >
-        <button 
+        <button
           onClick={onBack}
           className="group flex items-center gap-2 text-sterling-mist/60 hover:text-sterling-blue transition-colors"
         >
@@ -111,7 +113,7 @@ export const ProductLayout = ({
       </motion.div>
 
       {/* Hero Title */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-24"
@@ -122,7 +124,7 @@ export const ProductLayout = ({
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
           {title} {titleSuffix && <span className="text-sterling-blue">{titleSuffix}</span>}
         </h1>
-        
+
         <div className="max-w-2xl mx-auto mb-8 min-h-[3.5rem]">
           {rotatingPhrases ? (
             <AnimatePresence mode="wait">
@@ -143,9 +145,14 @@ export const ProductLayout = ({
             </p>
           )}
         </div>
-        
+
+        {/* Extra Hero Content (e.g., Version Info) */}
+        {extraHeroContent && (
+          <div className="mb-8">{extraHeroContent}</div>
+        )}
+
         {pricingPlans && (
-          <button 
+          <button
             onClick={scrollToPricing}
             className="px-8 py-3 bg-sterling-blue text-white rounded-xl font-bold shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:scale-105 transition-transform"
           >
@@ -158,7 +165,7 @@ export const ProductLayout = ({
       <div className="relative mb-32">
         {/* Center Line (Desktop) */}
         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-sterling-blue/0 via-sterling-blue/50 to-sterling-blue/0 -translate-x-1/2" />
-        
+
         {/* Mobile Line */}
         <div className="md:hidden absolute left-[27px] top-4 bottom-12 w-px bg-gradient-to-b from-sterling-blue/0 via-sterling-blue/50 to-sterling-blue/0" />
 
@@ -168,7 +175,7 @@ export const ProductLayout = ({
             const Icon = step.icon;
 
             return (
-              <motion.div 
+              <motion.div
                 key={step.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -181,14 +188,14 @@ export const ProductLayout = ({
               >
                 {/* Center Node (Desktop) */}
                 <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 bg-sterling-midnight border-4 border-sterling-blue rounded-full z-10 items-center justify-center shadow-[0_0_20px_rgba(0,122,255,0.4)]">
-                   <div className="w-3 h-3 bg-sterling-cyan rounded-full animate-pulse" />
+                  <div className="w-3 h-3 bg-sterling-cyan rounded-full animate-pulse" />
                 </div>
 
                 {/* Mobile Node */}
                 <div className="md:hidden absolute left-0 top-0 w-14 h-14 flex items-center justify-center z-10">
-                   <div className="w-10 h-10 bg-sterling-midnight border-2 border-sterling-blue rounded-full flex items-center justify-center text-sterling-blue font-bold">
-                     {step.id}
-                   </div>
+                  <div className="w-10 h-10 bg-sterling-midnight border-2 border-sterling-blue rounded-full flex items-center justify-center text-sterling-blue font-bold">
+                    {step.id}
+                  </div>
                 </div>
 
                 {/* Content Card */}
@@ -221,31 +228,31 @@ export const ProductLayout = ({
                     )}
                     style={{
                       transformStyle: 'preserve-3d',
-                      transform: isEven 
-                        ? 'rotateY(-11deg) rotateX(2deg) rotate(2deg)' 
+                      transform: isEven
+                        ? 'rotateY(-11deg) rotateX(2deg) rotate(2deg)'
                         : 'rotateY(11deg) rotateX(2deg) rotate(-2deg)'
                     }}
-                    whileHover={{ 
+                    whileHover={{
                       transform: 'scale(1.02) rotateY(0deg) rotateX(0deg) rotate(0deg)',
                       zIndex: 50
                     }}
                     transition={{ duration: 0.5 }}
                     onClick={() => setSelectedImage(step.image)}
                   >
-                     <div className="absolute inset-0 bg-gradient-to-tr from-sterling-blue/10 to-transparent pointer-events-none z-10" />
-                     
-                     {/* The Eye Icon Overlay */}
-                     <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300">
-                        <div className="w-16 h-16 bg-sterling-midnight/80 backdrop-blur-sm rounded-full flex items-center justify-center border border-sterling-blue/50 shadow-[0_0_30px_rgba(0,122,255,0.5)]">
-                          <Eye size={32} className="text-sterling-cyan" />
-                        </div>
-                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-sterling-blue/10 to-transparent pointer-events-none z-10" />
 
-                     <img 
-                       src={step.image} 
-                       alt={step.title}
-                       className="w-full h-auto rounded-xl"
-                     />
+                    {/* The Eye Icon Overlay */}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300">
+                      <div className="w-16 h-16 bg-sterling-midnight/80 backdrop-blur-sm rounded-full flex items-center justify-center border border-sterling-blue/50 shadow-[0_0_30px_rgba(0,122,255,0.5)]">
+                        <Eye size={32} className="text-sterling-cyan" />
+                      </div>
+                    </div>
+
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className="w-full h-auto rounded-xl"
+                    />
                   </motion.div>
                 </div>
               </motion.div>
