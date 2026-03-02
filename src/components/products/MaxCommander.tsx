@@ -7,9 +7,10 @@ import { changelogData } from '../../data/max-commander-changelog';
 
 interface MaxCommanderProps {
   onBack: () => void;
+  onViewPrivacy: () => void;
 }
 
-export const MaxCommander = ({ onBack }: MaxCommanderProps) => {
+export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
   const steps = [
     {
       id: 1,
@@ -109,13 +110,22 @@ export const MaxCommander = ({ onBack }: MaxCommanderProps) => {
         </span>
       </div>
 
-      <button
-        onClick={() => setShowChangelog(true)}
-        className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2"
-      >
-        <History size={12} />
-        View Changelog
-      </button>
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => setShowChangelog(true)}
+          className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2"
+        >
+          <History size={12} />
+          View Changelog
+        </button>
+        <button
+          onClick={onViewPrivacy}
+          className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2"
+        >
+          <Shield size={12} />
+          Privacy Policy
+        </button>
+      </div>
     </div>
   );
 

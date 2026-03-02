@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ProductGrid } from './components/ProductGrid';
@@ -7,13 +7,27 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { ZapStudio } from './components/products/ZapStudio';
 import { MaxCommander } from './components/products/MaxCommander';
+import { MaxCommanderPrivacyPolicy } from './components/products/MaxCommanderPrivacyPolicy';
 import { Dash } from './components/products/Dash';
 import { EasyMonitor } from './components/products/EasyMonitor';
 import { TalesUniverse } from './components/products/TalesUniverse';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('tab') || 'home';
+  });
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (activeTab === 'home') {
+      url.searchParams.delete('tab');
+    } else {
+      url.searchParams.set('tab', activeTab);
+    }
+    window.history.replaceState({}, '', url);
+  }, [activeTab]);
 
   const whatsappNumber = "1234567890"; // Placeholder
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
@@ -26,7 +40,7 @@ function App() {
   return (
     <div className="min-h-screen bg-sterling-midnight text-sterling-mist selection:bg-sterling-blue selection:text-white">
       <Navbar activeTab={activeTab.startsWith('product-') ? 'products' : activeTab} setActiveTab={setActiveTab} />
-      
+
       <main>
         <AnimatePresence mode="wait">
           {activeTab === 'home' && (
@@ -39,7 +53,7 @@ function App() {
             >
               <Hero onNavigate={setActiveTab} />
               <ProductGrid onViewProduct={handleViewProduct} />
-              
+
               {/* Call to Action Section */}
               <section className="py-32 px-6 text-center">
                 <div className="max-w-3xl mx-auto p-12 rounded-[3rem] bg-gradient-to-b from-sterling-deep to-sterling-midnight border border-sterling-blue/20 relative overflow-hidden">
@@ -48,9 +62,9 @@ function App() {
                   <p className="text-sterling-mist/60 mb-10 text-lg">
                     Whether it's a productivity powerhouse or a creative experiment, we'd love to help you build it.
                   </p>
-                  <a 
+                  <a
                     href={whatsappLink}
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block px-10 py-4 bg-white text-sterling-midnight rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                   >
@@ -88,27 +102,32 @@ function App() {
 
           {/* Product Routes */}
           {activeTab === 'product-zap-studio' && (
-            <motion.div key="p-zap" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+            <motion.div key="p-zap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <ZapStudio onBack={() => setActiveTab('products')} />
             </motion.div>
           )}
           {activeTab === 'product-max-commander' && (
-            <motion.div key="p-mc" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
-              <MaxCommander onBack={() => setActiveTab('products')} />
+            <motion.div key="p-mc" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <MaxCommander onBack={() => setActiveTab('products')} onViewPrivacy={() => setActiveTab('product-max-commander-privacy')} />
+            </motion.div>
+          )}
+          {activeTab === 'product-max-commander-privacy' && (
+            <motion.div key="p-mc-priv" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <MaxCommanderPrivacyPolicy onBack={() => setActiveTab('product-max-commander')} />
             </motion.div>
           )}
           {activeTab === 'product-dash' && (
-            <motion.div key="p-dash" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+            <motion.div key="p-dash" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <Dash onBack={() => setActiveTab('products')} />
             </motion.div>
           )}
           {activeTab === 'product-easy-monitor' && (
-            <motion.div key="p-em" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+            <motion.div key="p-em" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <EasyMonitor onBack={() => setActiveTab('products')} />
             </motion.div>
           )}
           {activeTab === 'product-tales-universe' && (
-            <motion.div key="p-tu" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+            <motion.div key="p-tu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <TalesUniverse onBack={() => setActiveTab('products')} />
             </motion.div>
           )}
