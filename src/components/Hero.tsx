@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Logo } from './Logo';
 
 interface HeroProps {
   onNavigate: (tab: string) => void;
@@ -13,7 +14,7 @@ export const Hero = ({ onNavigate }: HeroProps) => {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-sterling">
+    <div className="relative min-h-screen flex flex-col items-center justify-start lg:justify-center pt-32 lg:pt-0 overflow-hidden bg-gradient-sterling">
       {/* Background Animated Orbs */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-sterling-blue/20 rounded-full blur-[100px] animate-pulse" />
       <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-sterling-cyan/15 rounded-full blur-[120px] animate-glow" />
@@ -23,20 +24,29 @@ export const Hero = ({ onNavigate }: HeroProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 text-center px-4"
+        className="relative z-10 text-center px-4 flex flex-col items-center mt-12 md:mt-0"
       >
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mb-8"
+        >
+          <Logo className="w-32 h-32 drop-shadow-[0_0_20px_rgba(0,122,255,0.4)]" />
+        </motion.div>
+
+        <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 pb-4 bg-clip-text text-transparent bg-gradient-to-b from-sterling-mist to-sterling-mist/50">
+          Sterling <span className="text-sterling-blue">Lab</span>
+        </h1>
+        
         <motion.span 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="inline-block px-4 py-1.5 mb-6 text-xs font-medium tracking-[0.2em] uppercase border border-sterling-blue/30 rounded-full bg-sterling-blue/5 text-sterling-cyan"
+          className="inline-block px-4 py-1.5 mt-6 mb-12 text-xs font-medium tracking-[0.2em] uppercase border border-sterling-blue/30 rounded-full bg-sterling-blue/5 text-sterling-cyan"
         >
           Crafting Everyday Excellence
         </motion.span>
-        
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 pb-6 bg-clip-text text-transparent bg-gradient-to-b from-sterling-mist to-sterling-mist/50">
-          Sterling <span className="text-sterling-blue">Lab</span>
-        </h1>
         
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-sterling-mist/70 leading-relaxed mb-10">
           We build productivity tools, educational platforms, and creative software with 
