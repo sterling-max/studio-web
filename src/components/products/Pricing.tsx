@@ -73,7 +73,7 @@ export const Pricing = ({ plans }: PricingProps) => {
                 ? "bg-sterling-blue text-white hover:shadow-[0_0_30px_rgba(0,122,255,0.4)] hover:scale-[1.02]" 
                 : "bg-sterling-mist/5 text-sterling-mist hover:bg-sterling-mist/10"
             )}>
-              Get Started
+              Available Soon
             </button>
           </motion.div>
         ))}

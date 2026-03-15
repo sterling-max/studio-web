@@ -37,18 +37,18 @@ export const ProductCard = ({ product, index, onViewProduct, className }: Produc
       </div>
 
       <div className="relative z-10 mb-auto">
-        <h3 className="text-2xl font-bold text-sterling-mist group-hover:text-white transition-colors mb-2">{product.name}</h3>
+        <div className="flex items-center gap-3 mb-2">
+          <h3 className="text-2xl font-bold text-sterling-mist group-hover:text-sterling-blue transition-colors">{product.name}</h3>
+          <span className="px-2 py-0.5 text-[9px] font-bold tracking-widest text-sterling-midnight bg-sterling-cyan rounded-full uppercase">
+            Soon
+          </span>
+          <ArrowUpRight className="ml-auto text-sterling-mist/20 group-hover:text-sterling-blue group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" size={24} />
+        </div>
         <p className="text-sm text-sterling-cyan font-medium italic opacity-80 mb-4">{product.tagline}</p>
         
         <p className="text-sterling-mist/60 text-sm leading-relaxed line-clamp-3 mb-6">
           {product.description}
         </p>
-      </div>
-
-      <div className="relative z-10 mt-auto pt-6 border-t border-sterling-mist/5">
-        <motion.div className="flex items-center gap-2 text-sm font-semibold text-sterling-blue group-hover:gap-3 transition-all">
-          View Product <ArrowUpRight size={16} />
-        </motion.div>
       </div>
     </motion.div>
   );

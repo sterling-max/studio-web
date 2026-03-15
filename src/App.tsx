@@ -38,6 +38,11 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleBackToProducts = () => {
+    window.location.hash = 'products';
+    setActiveTab('home');
+  };
+
   return (
     <div className="min-h-screen bg-sterling-midnight text-sterling-mist selection:bg-sterling-blue selection:text-white">
       <Navbar activeTab={activeTab.startsWith('product-') ? 'products' : activeTab} setActiveTab={setActiveTab} />
@@ -91,12 +96,12 @@ function App() {
           {/* Product Routes */}
           {activeTab === 'product-zap-studio' && (
             <motion.div key="p-zap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <ZapStudio onBack={() => setActiveTab('products')} />
+              <ZapStudio onBack={handleBackToProducts} />
             </motion.div>
           )}
           {activeTab === 'product-max-commander' && (
             <motion.div key="p-mc" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <MaxCommander onBack={() => setActiveTab('products')} onViewPrivacy={() => setActiveTab('product-max-commander-privacy')} />
+              <MaxCommander onBack={handleBackToProducts} onViewPrivacy={() => setActiveTab('product-max-commander-privacy')} />
             </motion.div>
           )}
           {activeTab === 'product-max-commander-privacy' && (
@@ -106,17 +111,17 @@ function App() {
           )}
           {activeTab === 'product-dash' && (
             <motion.div key="p-dash" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <Dash onBack={() => setActiveTab('products')} />
+              <Dash onBack={handleBackToProducts} />
             </motion.div>
           )}
           {activeTab === 'product-easy-monitor' && (
             <motion.div key="p-em" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <EasyMonitor onBack={() => setActiveTab('products')} />
+              <EasyMonitor onBack={handleBackToProducts} />
             </motion.div>
           )}
           {activeTab === 'product-tales-universe' && (
             <motion.div key="p-tu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <TalesUniverse onBack={() => setActiveTab('products')} />
+              <TalesUniverse onBack={handleBackToProducts} />
             </motion.div>
           )}
 
@@ -171,9 +176,9 @@ function App() {
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Products</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li onClick={() => setActiveTab('products')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Max Commander</li>
-                <li onClick={() => setActiveTab('products')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Dash</li>
-                <li onClick={() => setActiveTab('products')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Zap Studio</li>
+                <li onClick={handleBackToProducts} className="hover:text-sterling-cyan cursor-pointer transition-colors">Max Commander</li>
+                <li onClick={handleBackToProducts} className="hover:text-sterling-cyan cursor-pointer transition-colors">Dash</li>
+                <li onClick={handleBackToProducts} className="hover:text-sterling-cyan cursor-pointer transition-colors">Zap Studio</li>
               </ul>
             </div>
           </div>

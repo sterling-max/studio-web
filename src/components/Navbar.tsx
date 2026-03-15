@@ -72,15 +72,10 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
   const handleNavClick = (id: string) => {
     setIsOpen(false);
     if (id === 'products') {
+      window.location.hash = 'products';
       setActiveTab('home');
-      setTimeout(() => {
-        const element = document.getElementById('products');
-        if (element) {
-          const y = element.getBoundingClientRect().top + window.scrollY - 100;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 50);
     } else {
+      window.location.hash = '';
       setActiveTab(id);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }

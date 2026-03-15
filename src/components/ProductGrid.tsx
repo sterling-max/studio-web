@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { PRODUCTS } from '../constants/products';
 import { ProductCard } from './ProductCard';
 
@@ -6,6 +7,18 @@ interface ProductGridProps {
 }
 
 export const ProductGrid = ({ onViewProduct }: ProductGridProps) => {
+  useEffect(() => {
+    if (window.location.hash === '#products') {
+      const element = document.getElementById('products');
+      if (element) {
+        setTimeout(() => {
+          const y = element.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <section id="products" className="py-24 px-6 md:px-12 bg-sterling-midnight">
       <div className="max-w-7xl mx-auto">
