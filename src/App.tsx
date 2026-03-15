@@ -12,6 +12,7 @@ import { Dash } from './components/products/Dash';
 import { EasyMonitor } from './components/products/EasyMonitor';
 import { TalesUniverse } from './components/products/TalesUniverse';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Logo } from './components/Logo';
 
 function App() {
   const [activeTab, setActiveTab] = useState(() => {
@@ -66,7 +67,7 @@ function App() {
                     href={whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-10 py-4 bg-white text-sterling-midnight rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                    className="inline-block px-10 py-4 bg-white text-sterling-deep rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                   >
                     Let's Talk
                   </a>
@@ -84,19 +85,6 @@ function App() {
               transition={{ duration: 0.5 }}
             >
               <VisualStyleGuide />
-            </motion.div>
-          )}
-
-          {activeTab === 'products' && (
-            <motion.div
-              key="products"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="pt-20"
-            >
-              <ProductGrid onViewProduct={handleViewProduct} />
             </motion.div>
           )}
 
@@ -163,7 +151,10 @@ function App() {
       <footer className="py-20 px-6 border-t border-sterling-mist/5 bg-sterling-deep">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
           <div>
-            <div className="text-2xl font-bold mb-4">Sterling <span className="text-sterling-blue">Lab</span></div>
+            <div className="flex items-center gap-3 mb-4">
+              <Logo className="w-8 h-8" />
+              <div className="text-2xl font-bold">Sterling <span className="text-sterling-blue">Lab</span></div>
+            </div>
             <p className="text-sterling-mist/40 text-sm max-w-xs leading-relaxed">
               Hand-crafted software solutions with a focus on precision, performance, and atmospheric design.
             </p>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { MonitorSmartphone, Sparkles, Layout, Code2, ArrowRight } from 'lucide-react';
 
 export const VisualStyleGuide = () => {
   return (
@@ -7,123 +8,159 @@ export const VisualStyleGuide = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-5xl font-bold mb-2">Visual Identity System</h1>
-        <p className="text-sterling-mist/60 text-xl mb-12">
-          The Sterling Design Language adapts fluidly between two atmospheric modes: 
-          <span className="text-sterling-blue font-semibold"> Midnight (Dark)</span> and 
-          <span className="text-sterling-cyan font-semibold"> Porcelain (Light)</span>.
-        </p>
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-block px-4 py-1.5 mb-6 text-xs font-medium tracking-[0.2em] uppercase border border-sterling-cyan/30 rounded-full bg-sterling-cyan/5 text-sterling-cyan"
+          >
+            Sterling Web Studio
+          </motion.span>
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sterling-mist to-sterling-mist/50">
+            Elevate Your <br /> Digital Presence
+          </h1>
+          <p className="text-sterling-mist/60 text-xl leading-relaxed">
+            We don't just build websites; we craft immersive digital environments. 
+            Whether you are launching a new brand, upgrading a legacy interface, or releasing a SaaS product, 
+            our design engineering transforms your vision into a pixel-perfect reality.
+          </p>
+        </div>
 
-        {/* Color System */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 border-b border-sterling-mist/10 pb-4">Adaptive Color Palette</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ColorCard 
-              name="Midnight / Porcelain" 
-              variable="--color-sterling-midnight" 
-              usage="Main Background"
+        {/* Services Grid */}
+        <section className="mb-32">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <FeatureCard 
+              icon={<Layout size={28} />}
+              title="UX/UI Design"
+              desc="Intuitive, emotion-driven interfaces designed with typography and hierarchy that guide users seamlessly."
+              delay={0.1}
             />
-            <ColorCard 
-              name="Deep / Surface" 
-              variable="--color-sterling-deep" 
-              usage="Card Backgrounds"
+            <FeatureCard 
+              icon={<MonitorSmartphone size={28} />}
+              title="Responsive Web Apps"
+              desc="Fluid layouts that adapt flawlessly across all devices, ensuring a premium experience everywhere."
+              delay={0.2}
             />
-            <ColorCard 
-              name="Mist / Ink" 
-              variable="--color-sterling-mist" 
-              usage="Primary Text"
+            <FeatureCard 
+              icon={<Sparkles size={28} />}
+              title="Visual Identity"
+              desc="Bespoke logos, strict color systems, and cohesive branding that make your product instantly recognizable."
+              delay={0.3}
             />
-            <ColorCard 
-              name="Surface / Cloud" 
-              variable="--color-sterling-surface" 
-              usage="Secondary Elements"
-            />
-            <ColorCard 
-              name="Electric Blue" 
-              variable="--color-sterling-blue" 
-              usage="Primary Accent"
-            />
-            <ColorCard 
-              name="Sky Cyan" 
-              variable="--color-sterling-cyan" 
-              usage="Secondary Accent"
+            <FeatureCard 
+              icon={<Code2 size={28} />}
+              title="Frontend Engineering"
+              desc="Clean, performant React and Tailwind logic married to Framer Motion for buttery-smooth micro-interactions."
+              delay={0.4}
             />
           </div>
         </section>
 
-        {/* Typography */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 border-b border-sterling-mist/10 pb-4">Typography & Hierarchy</h2>
-          <div className="space-y-8 bg-sterling-deep p-10 rounded-[2rem] border border-sterling-mist/5">
-            <div>
-              <h1 className="text-6xl font-bold mb-2">Display Heading</h1>
-              <span className="text-xs font-mono text-sterling-mist/40">Inter Bold / 64px / Tracking Tight</span>
-            </div>
-            <div>
-              <h2 className="text-4xl font-bold mb-2">Section Title</h2>
-              <span className="text-xs font-mono text-sterling-mist/40">Inter Bold / 36px</span>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-2">Component Label</h3>
-              <span className="text-xs font-mono text-sterling-mist/40">Inter SemiBold / 24px</span>
-            </div>
-            <div className="max-w-2xl">
-              <p className="text-lg leading-relaxed text-sterling-mist/80">
-                Body Copy — The quick brown fox jumps over the lazy dog. Sterling's typography is designed for 
-                high readability and technical precision. We use slightly relaxed line-heights to create an 
-                open, airy feel in both light and dark modes.
-              </p>
-              <span className="text-xs font-mono text-sterling-mist/40 mt-2 block">Inter Regular / 18px / Relaxed</span>
-            </div>
-          </div>
-        </section>
-
-        {/* UI Components */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 border-b border-sterling-mist/10 pb-4">Component Library</h2>
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="space-y-6">
-              <h3 className="text-lg font-semibold text-sterling-mist/50 uppercase tracking-widest">Buttons</h3>
+        {/* Process Showcase / Graphical Presentation */}
+        <section className="mb-32">
+          <h2 className="text-3xl font-bold mb-12 text-center">The Sterling Standard</h2>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
               <div className="flex gap-4">
-                <button className="px-8 py-3 bg-sterling-blue text-white rounded-2xl font-semibold shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:scale-105 transition-transform">
-                  Primary Action
-                </button>
-                <button className="px-8 py-3 bg-sterling-surface text-sterling-mist rounded-2xl font-semibold border border-sterling-mist/10 hover:bg-sterling-surface/80 transition-all">
-                  Secondary
-                </button>
+                <div className="w-12 h-12 rounded-2xl bg-sterling-blue/10 flex items-center justify-center shrink-0 text-sterling-blue">
+                  01
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2 text-sterling-mist">Atmospheric Depth</h3>
+                  <p className="text-sterling-mist/60 leading-relaxed">We leverage glassmorphism, dynamic glowing orbs, and multi-layered backgrounds to break away from flat, lifeless web pages.</p>
+                </div>
               </div>
-            </div>
-
-            <div className="space-y-6">
-              <h3 className="text-lg font-semibold text-sterling-mist/50 uppercase tracking-widest">Interactive States</h3>
               <div className="flex gap-4">
-                 <span className="inline-block px-4 py-1.5 text-xs font-medium tracking-[0.2em] uppercase border border-sterling-blue/30 rounded-full bg-sterling-blue/5 text-sterling-cyan">
-                  Badge
-                </span>
-                <span className="inline-block px-4 py-1.5 text-xs font-medium tracking-[0.2em] uppercase border border-sterling-mist/10 rounded-full bg-sterling-surface text-sterling-mist/60">
-                  Tag
-                </span>
+                <div className="w-12 h-12 rounded-2xl bg-sterling-cyan/10 flex items-center justify-center shrink-0 text-sterling-cyan">
+                  02
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2 text-sterling-mist">Mathematical Precision</h3>
+                  <p className="text-sterling-mist/60 leading-relaxed">Every margin, padding, and font-size adheres to a strict spacing system ensuring perfect rhythm and balance across the viewport.</p>
+                </div>
               </div>
-            </div>
+              <div className="flex gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-sterling-mist/10 flex items-center justify-center shrink-0 text-sterling-mist">
+                  03
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2 text-sterling-mist">Motion Design</h3>
+                  <p className="text-sterling-mist/60 leading-relaxed">We don't use animation for the sake of it. We implement physics-based transitions that provide spatial awareness and satisfying tactile feedback.</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative aspect-square md:aspect-video lg:aspect-square bg-sterling-midnight rounded-[3rem] border border-sterling-mist/5 overflow-hidden flex items-center justify-center p-8 shadow-2xl"
+            >
+               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sterling-blue/10 rounded-full blur-[100px] animate-pulse" />
+               <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-sterling-cyan/5 rounded-full blur-[100px] animate-glow" />
+               
+               {/* Abstract Mockup UI */}
+               <div className="relative z-10 w-full h-full bg-sterling-surface/50 backdrop-blur-md border border-sterling-mist/10 rounded-2xl p-6 flex flex-col gap-4 shadow-xl">
+                 <div className="flex items-center gap-2 border-b border-sterling-mist/10 pb-4">
+                   <div className="flex gap-1.5"><div className="w-3 h-3 rounded-full bg-red-400/50"/><div className="w-3 h-3 rounded-full bg-yellow-400/50"/><div className="w-3 h-3 rounded-full bg-green-400/50"/></div>
+                   <div className="mx-auto w-32 h-4 bg-sterling-mist/5 rounded-full" />
+                 </div>
+                 <div className="flex gap-4 h-full">
+                    <div className="w-1/3 bg-sterling-mist/5 rounded-xl h-full animate-pulse" />
+                    <div className="w-2/3 flex flex-col gap-4">
+                      <div className="h-24 bg-gradient-to-r from-sterling-blue/20 to-sterling-cyan/10 rounded-xl" />
+                      <div className="flex-1 flex gap-4">
+                        <div className="w-1/2 bg-sterling-mist/5 rounded-xl" />
+                        <div className="w-1/2 bg-sterling-mist/5 rounded-xl" />
+                      </div>
+                    </div>
+                 </div>
+               </div>
+            </motion.div>
+
           </div>
         </section>
+
+        {/* CTA */}
+        <div className="text-center bg-sterling-deep p-12 md:p-20 rounded-[3rem] border border-sterling-blue/20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-sterling-blue/5 to-transparent pointer-events-none" />
+          <h2 className="text-4xl font-bold mb-6 relative z-10">Ready to build something extraordinary?</h2>
+          <p className="text-sterling-mist/60 mb-10 max-w-xl mx-auto relative z-10 text-lg">
+            Let's collaborate to give your product the digital presence it deserves. Professional, performant, and unforgettable.
+          </p>
+          <a
+            href="https://wa.me/1234567890?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20web%20design%20project."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-sterling-deep rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)] relative z-10"
+          >
+            Start a Project <ArrowRight size={20} />
+          </a>
+        </div>
       </motion.div>
     </div>
   );
 };
 
-const ColorCard = ({ name, variable, usage }: { name: string, variable: string, usage: string }) => (
-  <div className="bg-sterling-deep p-6 rounded-2xl border border-sterling-mist/5 flex flex-col gap-4">
-    <div 
-      className="h-24 rounded-xl shadow-inner border border-sterling-mist/5 transition-colors duration-500" 
-      style={{ backgroundColor: `var(${variable})` }}
-    />
-    <div>
-      <h4 className="font-bold text-lg">{name}</h4>
-      <p className="text-sm text-sterling-mist/50 mb-2">{usage}</p>
-      <code className="text-xs bg-sterling-midnight px-2 py-1 rounded text-sterling-blue font-mono">
-        {variable}
-      </code>
+const FeatureCard = ({ icon, title, desc, delay }: { icon: React.ReactNode, title: string, desc: string, delay: number }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay }}
+    className="bg-sterling-deep p-8 rounded-3xl border border-sterling-mist/5 hover:border-sterling-blue/30 transition-all hover:-translate-y-1 shadow-sm hover:shadow-xl group"
+  >
+    <div className="w-14 h-14 bg-sterling-surface rounded-2xl flex items-center justify-center text-sterling-mist mb-6 group-hover:bg-sterling-blue group-hover:text-white transition-colors duration-300">
+      {icon}
     </div>
-  </div>
+    <h3 className="font-bold text-xl mb-3 text-sterling-mist group-hover:text-sterling-blue transition-colors">{title}</h3>
+    <p className="text-sterling-mist/60 leading-relaxed text-sm">{desc}</p>
+  </motion.div>
 );

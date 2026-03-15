@@ -1,0 +1,14 @@
+export const Logo = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" className={className}>
+    <defs>
+      <linearGradient id="sterlingGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#5AC8FA" />
+        <stop offset="100%" stopColor="#007AFF" />
+      </linearGradient>
+    </defs>
+    {/* Top */}
+    <polygon points="480,112 228,112 172,168 256,252 284,224 368,224" fill="url(#sterlingGlow)" />
+    {/* Bottom */}
+    <polygon points="256,260 228,288 144,288 32,400 284,400 340,344" fill="url(#sterlingGlow)" />
+  </svg>
+);

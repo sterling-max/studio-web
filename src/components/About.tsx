@@ -47,15 +47,16 @@ export const About = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="relative rounded-[3rem] overflow-hidden bg-sterling-surface h-96 flex items-center justify-center border border-sterling-mist/5"
+        className="relative rounded-[3rem] overflow-hidden bg-sterling-midnight h-96 flex items-center justify-center border border-sterling-mist/5"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-sterling-midnight to-transparent z-10 opacity-90" />
-        {/* Placeholder for an office or landscape shot */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-overlay" />
+        {/* Animated Orbs Replacement */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sterling-blue/10 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-sterling-cyan/10 rounded-full blur-[100px] animate-glow" />
         
         <div className="relative z-20 text-center p-8 px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Rooted in Tradition, Built for the Future</h2>
-          <p className="text-white/70 max-w-xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sterling-mist">Rooted in Tradition, Built for the Future</h2>
+          <p className="text-sterling-mist/70 max-w-xl mx-auto">
             From our headquarters in Italy, we serve a global clientele who demand nothing less than the best.
           </p>
         </div>

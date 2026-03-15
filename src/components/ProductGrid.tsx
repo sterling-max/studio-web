@@ -16,16 +16,6 @@ export const ProductGrid = ({ onViewProduct }: ProductGridProps) => {
               Our portfolio spans from hyper-optimized system tools to imaginative creative engines.
             </p>
           </div>
-          <div className="flex gap-4 overflow-x-auto pb-4 md:pb-0 no-scrollbar">
-            {['All', 'Productivity', 'Multimedia', 'Creative', 'Health'].map((filter) => (
-              <button 
-                key={filter}
-                className="px-6 py-2 rounded-full border border-sterling-mist/10 text-sm whitespace-nowrap hover:bg-sterling-blue hover:border-sterling-blue transition-all"
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
