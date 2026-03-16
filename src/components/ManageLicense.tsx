@@ -42,12 +42,18 @@ export const ManageLicense = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }) 
       });
+      
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(errorText);
+      }
+      
       const data = await res.json();
       // For developer testing, we log the link to the console if it's returned
       if (data.link) console.log('DEBUG: Magic Link:', data.link);
       setStatus('sent');
     } catch (err: any) {
-      setError('Failed to send link. Please try again.');
+      setError(err.message || 'Failed to send link. Please try again.');
       setStatus('idle');
     }
   };
