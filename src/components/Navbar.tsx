@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Box, Palette, Info, MessageSquare, Sun, Moon, Menu, X } from 'lucide-react';
+import { Home, Box, Palette, Info, MessageSquare, Sun, Moon, Menu, X, Key } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { Logo } from './Logo';
 
@@ -67,6 +67,7 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
     { id: 'design', icon: <Palette size={22} />, label: 'Design' },
     { id: 'about', icon: <Info size={22} />, label: 'Lab' },
     { id: 'contact', icon: <MessageSquare size={22} />, label: 'Contact' },
+    { id: 'manage', icon: <Key size={22} />, label: 'Manage License' },
   ];
 
   const handleNavClick = (id: string) => {
@@ -84,7 +85,7 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
   const isGlass = hasScrolled || activeTab !== 'home' || isOpen;
 
   return (
-    <div 
+    <div
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-500",
         isGlass ? "bg-sterling-midnight/70 backdrop-blur-2xl border-b border-sterling-mist/10 py-4 shadow-xl" : "bg-transparent py-6"
@@ -92,7 +93,7 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center relative w-full">
         {/* Left: Logo */}
-        <div 
+        <div
           className={cn(
             "flex items-center gap-3 cursor-pointer group transition-opacity duration-300",
             activeTab === 'home' && !hasScrolled ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"
@@ -115,7 +116,7 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
             />
           ))}
           <div className="w-px h-6 bg-sterling-mist/10 mx-2" />
-          <DesktopNavItem 
+          <DesktopNavItem
             icon={isDark ? <Moon size={20} /> : <Sun size={20} />}
             label={isDark ? "Dark" : "Light"}
             onClick={() => setIsDark(!isDark)}
@@ -124,7 +125,7 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
 
         {/* Right: Mobile Hamburger */}
         <div className="flex md:hidden items-center gap-2 ml-auto">
-          <button 
+          <button
             onClick={() => setIsOpen(!isOpen)}
             className="p-3 bg-sterling-surface rounded-xl border border-sterling-mist/10 text-sterling-mist hover:border-sterling-blue transition-all"
             aria-label="Toggle Menu"
@@ -154,10 +155,10 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
                   onClick={() => handleNavClick(item.id)}
                 />
               ))}
-              
+
               <div className="h-px w-full bg-sterling-mist/10 my-2" />
-              
-              <NavItem 
+
+              <NavItem
                 icon={isDark ? <Moon size={22} /> : <Sun size={22} />}
                 label={isDark ? "Light Theme" : "Dark Theme"}
                 onClick={() => setIsDark(!isDark)}

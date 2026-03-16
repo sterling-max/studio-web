@@ -11,6 +11,7 @@ import { MaxCommanderPrivacyPolicy } from './components/products/MaxCommanderPri
 import { Dash } from './components/products/Dash';
 import { EasyMonitor } from './components/products/EasyMonitor';
 import { TalesUniverse } from './components/products/TalesUniverse';
+import { ManageLicense } from './components/ManageLicense';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from './components/Logo';
 
@@ -147,6 +148,18 @@ function App() {
               className="pt-20"
             >
               <Contact />
+            </motion.div>
+          )}
+
+          {activeTab === 'manage' && (
+            <motion.div
+              key="manage"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.5 }}
+            >
+              <ManageLicense />
             </motion.div>
           )}
         </AnimatePresence>

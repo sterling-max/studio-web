@@ -9,6 +9,8 @@ This project is the "Sterling Lab" main portfolio website (`main-site-max`). It 
 - **Animations:** Framer Motion (`AnimatePresence`, `motion.div`)
 - **Icons:** Lucide React
 - **Routing:** Custom state-based routing (`activeTab` mapped to URL parameters like `?tab=product-dash`) instead of React Router to enable smooth page transitions.
+- **Backend (Cloudflare):** Integrated Cloudflare Pages Functions (`/functions/api`) as a serverless licensing backend.
+- **Database (Cloudflare):** D1 SQL database for license and machine activation tracking.
 
 ## UI/UX Rules & Aesthetics
 - **Theme:** Dark, premium "Sterling" aesthetic heavily utilizing glassmorphism, subtle gradients, and glow effects.
@@ -30,6 +32,7 @@ This project is the "Sterling Lab" main portfolio website (`main-site-max`). It 
 - Ensure pending assets and enhancements (as outlined in `PendingAssets.md`) are tracked and completed.
 - The user handles running backend/frontend dev servers; do not try to run them via tools.
 - Never commit changes unless explicitly instructed by the user.
+- **Licensing Logic:** Master private key signing resides 100% in Cloudflare Functions. Do not expose private keys in the frontend repository.
 
 ## Pending Tasks
 * [ ] **Assets:** Replace placeholder product mockup icons in `ProductCard.tsx` with high-resolution mockups.
@@ -37,3 +40,5 @@ This project is the "Sterling Lab" main portfolio website (`main-site-max`). It 
 * [ ] **Backgrounds:** Add subtle noise textures or high-resolution "mist" overlays to `src/index.css`.
 * [ ] **Typography:** Integrate a premium font like Geist or Manrope to replace system fonts.
 * [ ] **Case Studies:** Implement functional "View Case Study" pages with descriptions and imagery for each product.
+* [ ] **Licensing Backend:** Complete Cloudflare DNS and D1 binding for `/api/activate` and `/api/paddle-webhook`.
+* [ ] **Licensing UI:** Finalize the `/manage` portal with machine deactivation logic.
