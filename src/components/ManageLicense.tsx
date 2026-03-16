@@ -91,7 +91,9 @@ export const ManageLicense = () => {
                       <Key size={24} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">{license.product_name}</h3>
+                    <h3 className="text-xl font-bold text-white">
+                      {license.product_id === 'mc_pro' ? 'Max Commander Pro' : license.product_id}
+                    </h3>
                     <code className="text-xs text-sterling-blue">{license.key}</code>
                   </div>
                 </div>

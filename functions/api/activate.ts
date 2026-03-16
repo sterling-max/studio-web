@@ -8,7 +8,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const encoder = new TextEncoder();
   
   try {
-    const { key, machine_id, product_id } = await request.json() as any;
+    const { key, machine_id, machine_name, product_id } = await request.json() as any;
 
     if (!key || !machine_id || !product_id) {
       return new Response(JSON.stringify({ success: false, message: 'Missing parameters' }), { status: 400 });
@@ -40,8 +40,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
       // 3. Record new activation
       await env.DB.prepare(
-        'INSERT INTO activations (id, license_key, machine_id, activated_at) VALUES (?, ?, ?, ?)'
-      ).bind(crypto.randomUUID(), key, machine_id, Date.now()).run();
+        'INSERT INTO activations (id, license_key, machine_id, machine_name, activated_at) VALUES (?, ?, ?, ?, ?)'
+      ).bind(crypto.randomUUID(), key, machine_id, machine_name || 'Windows Device', Date.now()).run();
     }
 
     // 4. Sign a machine-bound license
