@@ -38,6 +38,9 @@ This project is the "Sterling Lab" main portfolio website (`main-site-max`). It 
 - The user handles running backend/frontend dev servers; do not try to run them via tools.
 - Never commit changes unless explicitly instructed by the user.
 - **Licensing Logic:** Master private key signing resides 100% in Cloudflare Functions. Do not expose private keys in the frontend repository.
+- **Machine Identification:** Activations now include `machine_name` (Computer Name) for improved UX in the management portal.
+- **Deactivation Flow:** Users can deactivate machines both via the Sterling Portal and locally within the Max Commander app.
+
 
 ## Pending Tasks
 * [ ] **Assets:** Replace placeholder product mockup icons in `ProductCard.tsx` with high-resolution mockups.
@@ -45,5 +48,8 @@ This project is the "Sterling Lab" main portfolio website (`main-site-max`). It 
 * [ ] **Backgrounds:** Add subtle noise textures or high-resolution "mist" overlays to `src/index.css`.
 * [ ] **Typography:** Integrate a premium font like Geist or Manrope to replace system fonts.
 * [ ] **Case Studies:** Implement functional "View Case Study" pages with descriptions and imagery for each product.
-* [ ] **Licensing Backend:** Complete Cloudflare DNS and D1 binding for `/api/activate` and `/api/paddle-webhook`.
-* [ ] **Licensing UI:** Finalize the `/manage` portal with machine deactivation logic.
+* [x] **Licensing Backend:** Complete Cloudflare DNS and D1 binding for `/api/activate`, `/api/manage`, and `/api/send-magic-link`.
+* [x] **Licensing UI:** Finalize the `/manage` portal with machine deactivation logic and computer name display.
+* [ ] **Paddle Webhook Verification:** Implement signature verification for Paddle webhooks in the Cloudflare function.
+* [ ] **Email Delivery:** Integrate an email provider (e.g., Resend) for real magic link delivery.
+
