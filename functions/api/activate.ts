@@ -5,6 +5,7 @@ export interface Env {
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
+  const encoder = new TextEncoder();
   
   try {
     const { key, machine_id, product_id } = await request.json() as any;
@@ -55,9 +56,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const payloadStr = JSON.stringify(boundPayload);
     const signature = await signPayload(payloadStr, env.MASTER_PRIVATE_KEY);
 
+    const licenseJson = JSON.stringify({
+      payload: btoa(String.fromCharCode(...encoder.encode(payloadStr))),
+      signature: signature
+    });
+
     return new Response(JSON.stringify({
       success: true,
-      license: `payload=${btoa(payloadStr)};signature_hex=${signature}`
+      license: licenseJson
     }));
 
   } catch (err: any) {
@@ -65,9 +71,37 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 };
 
-async function signPayload(payload: string, privateKeyBase64: string): Promise<string> {
-  // In a real implementation, we'd use crypto.subtle.importKey and sign
-  // Cloudflare supports Ed25519. We'll implement the actual signing logic here.
-  // This is a placeholder for the actual subtle crypto calls.
-  return "SIGNATURE_PLACEHOLDER"; 
+async function signPayload(payload: string, privateKeyHex: string): Promise<string> {
+  const data = new TextEncoder().encode(payload);
+  
+  // Convert hex seed to Uint8Array
+  const seed = new Uint8Array(privateKeyHex.match(/.{1,2}/g)!.map(byte => parseInt(byte, 16)));
+  
+  // Ed25519 PKCS#8 header for a 32-byte private key
+  // This is a minimal DER-encoded PKCS#8 for Ed25519
+  const pkcs8Header = new Uint8Array([
+    0x30, 0x2e, 0x02, 0x01, 0x00, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x70, 0x04, 0x22, 0x04, 0x20
+  ]);
+  const pkcs8 = new Uint8Array(pkcs8Header.length + seed.length);
+  pkcs8.set(pkcs8Header);
+  pkcs8.set(seed, pkcs8Header.length);
+
+  const key = await crypto.subtle.importKey(
+    "pkcs8",
+    pkcs8,
+    { name: "Ed25519", namedCurve: "Ed25519" },
+    false,
+    ["sign"]
+  );
+
+  const signature = await crypto.subtle.sign(
+    { name: "Ed25519" },
+    key,
+    data
+  );
+
+  // Convert signature to hex
+  return Array.from(new Uint8Array(signature))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
 }

@@ -1,0 +1,7 @@
+name = "sterling-lab"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sterling-db"
+database_id = "8b2bacb0-66d7-4926-824c-02cba07fd23a"

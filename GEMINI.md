@@ -11,6 +11,11 @@ This project is the "Sterling Lab" main portfolio website (`main-site-max`). It 
 - **Routing:** Custom state-based routing (`activeTab` mapped to URL parameters like `?tab=product-dash`) instead of React Router to enable smooth page transitions.
 - **Backend (Cloudflare):** Integrated Cloudflare Pages Functions (`/functions/api`) as a serverless licensing backend.
 - **Database (Cloudflare):** D1 SQL database for license and machine activation tracking.
+    - **Database ID:** `8b2bacb0-66d7-4926-824c-02cba07fd23a`
+    - **Database Name:** `sterling-db`
+    - **Binding:** `DB`
+    - **Master Public Key:** `1831041f28a8e16d9620d1c89cfce74083d60bd2f790d7ab540d23db1d4599da`
+    - **Master Private Key:** `4395f3369c7578f095d51faa4c349c9cbc23a22ff7737fc507618274b5201df2` (CRITICAL: Upload to Cloudflare as secret)
 
 ## UI/UX Rules & Aesthetics
 - **Theme:** Dark, premium "Sterling" aesthetic heavily utilizing glassmorphism, subtle gradients, and glow effects.
