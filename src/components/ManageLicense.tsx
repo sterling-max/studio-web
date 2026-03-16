@@ -20,26 +20,15 @@ export const ManageLicense = () => {
   const verifyAndLoad = async (token: string) => {
     setStatus('linking');
     try {
-      if (token === 'test') {
-        setLicenses([
-          {
-            key: 'MC-PRO-8822-1199',
-            product_name: 'Max Commander Pro',
-            activations: [
-              { id: '1', machine_name: 'DESKTOP-MAIN', activated_at: Date.now() - 3 * 86400000 },
-              { id: '2', machine_name: 'WORK-LAPTOP', activated_at: Date.now() - 60 * 86400000 },
-            ]
-          }
-        ]);
-        setEmail('max@sterling.ltd');
-      }
-      // In reality, this calls our Cloudflare Function
-      // const res = await fetch(`/api/manage?token=${token}`);
-      // const data = await res.json();
-      // setLicenses(data.licenses);
+      const res = await fetch(`/api/manage?token=${token}`);
+      if (!res.ok) throw new Error('Failed to load licenses');
+      
+      const data = await res.json();
+      setLicenses(data.licenses);
+      setEmail(data.email);
       setStatus('dashboard');
-    } catch (err) {
-      setError('Invalid or expired login link.');
+    } catch (err: any) {
+      setError(err.message || 'Invalid or expired login link.');
       setStatus('idle');
     }
   };
@@ -47,8 +36,20 @@ export const ManageLicense = () => {
   const handleSendLink = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('linking');
-    // await fetch('/api/send-magic-link', { method: 'POST', body: JSON.stringify({ email }) });
-    setStatus('sent');
+    try {
+      const res = await fetch('/api/send-magic-link', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }) 
+      });
+      const data = await res.json();
+      // For developer testing, we log the link to the console if it's returned
+      if (data.link) console.log('DEBUG: Magic Link:', data.link);
+      setStatus('sent');
+    } catch (err: any) {
+      setError('Failed to send link. Please try again.');
+      setStatus('idle');
+    }
   };
 
   if (status === 'sent') {
@@ -115,7 +116,21 @@ export const ManageLicense = () => {
                          </div>
                        </div>
                      </div>
-                     <button className="text-xs font-bold text-sterling-mist/40 hover:text-red-400 transition-colors">Deactivate</button>
+                     <button 
+                       className="text-xs font-bold text-sterling-mist/40 hover:text-red-400 transition-colors disabled:opacity-50"
+                       onClick={async () => {
+                         const token = new URLSearchParams(window.location.search).get('token');
+                         if (!confirm('Deactivate this device?')) return;
+                         
+                         const res = await fetch(`/api/manage?token=${token}&id=${activation.id}`, { method: 'DELETE' });
+                         if (res.ok) {
+                            // Refresh data
+                            verifyAndLoad(token!);
+                         }
+                       }}
+                     >
+                       Deactivate
+                     </button>
                    </div>
                  ))}
               </div>

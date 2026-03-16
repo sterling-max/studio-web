@@ -42,7 +42,37 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 };
 
 export const onRequestDelete: PagesFunction<Env> = async (context) => {
-    // Logic for deactivating a machine
-    // ... verification of token and ownership ...
-    return new Response(JSON.stringify({ success: true }));
+  const { request, env } = context;
+  const url = new URL(request.url);
+  const token = url.searchParams.get('token');
+  const activationId = url.searchParams.get('id');
+
+  if (!token || !activationId) {
+    return new Response('Token and ID required', { status: 400 });
+  }
+
+  // 1. Verify token and find email
+  const recovery = await env.DB.prepare(
+    'SELECT email FROM recovery_tokens WHERE token = ? AND expires_at > ?'
+  ).bind(token, Date.now()).first<{ email: string }>();
+
+  if (!recovery) {
+    return new Response('Invalid or expired token', { status: 401 });
+  }
+
+  // 2. Verify that this activation belongs to a license owned by this email
+  const ownership = await env.DB.prepare(
+    `SELECT a.id FROM activations a 
+     JOIN licenses l ON a.license_key = l.key 
+     WHERE a.id = ? AND l.email = ?`
+  ).bind(activationId, recovery.email).first();
+
+  if (!ownership) {
+    return new Response('Activation not found or unauthorized', { status: 403 });
+  }
+
+  // 3. Delete the activation
+  await env.DB.prepare('DELETE FROM activations WHERE id = ?').bind(activationId).run();
+
+  return new Response(JSON.stringify({ success: true }));
 };
