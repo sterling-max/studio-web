@@ -211,7 +211,10 @@ function App() {
               key="pricing"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              onViewportEnter={scrollToProducts}
+              onViewportEnter={() => {
+                setActiveTab('product-max-commander');
+                // We'll handle the scroll inside MaxCommander component
+              }}
             />
           )}
         </AnimatePresence>

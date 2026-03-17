@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, X, Eye, type LucideIcon } from 'lucide-react';
 import { cn } from '../../utils/cn';
@@ -57,6 +57,16 @@ export const ProductLayout = ({
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Auto-scroll to pricing if requested via URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('tab') === 'pricing') {
+      // Small delay to ensure component and sub-components are fully rendered
+      const timer = setTimeout(scrollToPricing, 500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <div className="pt-24 pb-20 px-4 md:px-6 max-w-7xl mx-auto min-h-screen relative">
