@@ -100,9 +100,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 async function verifyPaddleSignature(signatureHeader: string, body: string, secret: string): Promise<boolean> {
   const parts = signatureHeader.split(';');
   const tsPart = parts.find(p => p.startsWith('ts='));
-  const hPart = parts.find(p => p.startsWith('h='));
+  const hPart = parts.find(p => p.startsWith('h1=') || p.startsWith('h='));
 
-  if (!tsPart || !hPart) return false;
+  if (!tsPart || !hPart) {
+    console.error('Webhook signature parts missing:', signatureHeader);
+    return false;
+  }
 
   const timestamp = tsPart.split('=')[1];
   const receivedHash = hPart.split('=')[1];
@@ -121,12 +124,21 @@ async function verifyPaddleSignature(signatureHeader: string, body: string, secr
     receivedHash.match(/.{1,2}/g)!.map(byte => parseInt(byte, 16))
   );
 
-  return await crypto.subtle.verify(
+  const isValid = await crypto.subtle.verify(
     'HMAC',
     key,
     signatureBytes,
     encoder.encode(signedPayload)
   );
+
+  if (!isValid) {
+    console.error('Signature Mismatch Debug:');
+    console.error('- Timestamp:', timestamp);
+    console.error('- Secret (first 10):', secret.substring(0, 10) + '...');
+    console.error('- Payload Length:', body.length);
+  }
+
+  return isValid;
 }
 
 function renderEmailTemplate(key: string, email: string, isFounder: boolean) {
