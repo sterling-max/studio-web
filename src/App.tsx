@@ -23,16 +23,33 @@ import { Instagram, Twitter } from 'lucide-react';
 function App() {
   const [activeTab, setActiveTab] = useState(() => {
     const params = new URLSearchParams(window.location.search);
+    const path = window.location.pathname.replace(/^\/|\/$/g, '');
+    
+    if (path === 'pricing') return 'pricing';
+    if (path === 'refund') return 'refund';
+    if (path === 'privacy') return 'privacy';
+    if (path === 'terms') return 'terms';
+    if (path === 'legal') return 'legal';
+    if (path === 'manage') return 'manage';
+
     return params.get('tab') || 'home';
   });
 
   useEffect(() => {
     const url = new URL(window.location.href);
-    if (activeTab === 'home') {
+    const compliancePaths = ['pricing', 'refund', 'privacy', 'terms', 'legal', 'manage'];
+    
+    if (compliancePaths.includes(activeTab)) {
+      url.pathname = `/${activeTab}`;
+      url.searchParams.delete('tab');
+    } else if (activeTab === 'home') {
+      url.pathname = '/';
       url.searchParams.delete('tab');
     } else {
+      url.pathname = '/';
       url.searchParams.set('tab', activeTab);
     }
+    
     window.history.replaceState({}, '', url);
 
     if (activeTab === 'pricing') {
