@@ -17,6 +17,7 @@ import { Logo } from './components/Logo';
 import { PrivacyPolicy } from './pages/legal/PrivacyPolicy';
 import { TermsOfService } from './pages/legal/TermsOfService';
 import { LegalNotice } from './pages/legal/LegalNotice';
+import { RefundPolicy } from './pages/legal/RefundPolicy';
 import { Instagram, Twitter } from 'lucide-react';
 
 function App() {
@@ -41,6 +42,16 @@ function App() {
   const handleViewProduct = (productId: string) => {
     setActiveTab(`product-${productId}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToProducts = () => {
+    setActiveTab('home');
+    setTimeout(() => {
+      const element = document.getElementById('products');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   const handleBackToProducts = () => {
@@ -184,6 +195,21 @@ function App() {
               <LegalNotice onBack={() => setActiveTab('home')} />
             </motion.div>
           )}
+
+          {activeTab === 'refund' && (
+            <motion.div key="refund" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <RefundPolicy onBack={() => setActiveTab('home')} />
+            </motion.div>
+          )}
+
+          {activeTab === 'pricing' && (
+            <motion.div
+              key="pricing"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              onViewportEnter={scrollToProducts}
+            />
+          )}
         </AnimatePresence>
       </main>
 
@@ -232,6 +258,7 @@ function App() {
                 <li onClick={() => setActiveTab('legal')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Legal Notice</li>
                 <li onClick={() => setActiveTab('privacy')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Privacy Policy</li>
                 <li onClick={() => setActiveTab('terms')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Terms of Service</li>
+                <li onClick={() => setActiveTab('refund')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Refund Policy</li>
               </ul>
             </div>
           </div>
