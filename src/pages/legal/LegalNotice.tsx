@@ -26,14 +26,16 @@ export const LegalNotice = ({ onBack }: LegalPageProps) => {
             <h2 className="text-xl font-bold text-white mb-4">Information according to § 5 TMG</h2>
             <p>
               Sterling Lab<br />
-              Maximiliano Villarreal
+              Maximiliano Villarreal<br />
+              Via XX Settembre 37, 63063 Carassai (AP), Italy
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold text-white mb-4">Contact</h2>
             <p>
-              Email: max@sterling.ltd<br />
+              Email: support@sterling.ltd<br />
+              Phone: +39 347 539 3181<br />
               Website: www.sterling.ltd
             </p>
           </section>
@@ -54,7 +56,7 @@ export const LegalNotice = ({ onBack }: LegalPageProps) => {
 
           <section className="text-sm opacity-40">
             <p>
-              Note: As an independent lab focused on tool development, physical address details are provided upon legitimate legal request to protect the privacy of the developer.
+              Sterling Lab is an independent software development studio operated by Maximiliano Villarreal.
             </p>
           </section>
 

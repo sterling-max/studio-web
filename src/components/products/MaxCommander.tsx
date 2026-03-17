@@ -3,6 +3,7 @@ import { Search, Shield, Layout, Eye, GitBranch, Archive, Cloud, Puzzle, Clapper
 import { ProductLayout } from './ProductLayout';
 import { type PricingPlan } from './Pricing';
 import { ChangelogModal } from './ChangelogModal';
+import { SmartScreenGuide } from './SmartScreenGuide';
 import { changelogData } from '../../data/max-commander-changelog';
 
 interface MaxCommanderProps {
@@ -79,18 +80,28 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
 
   const plans: PricingPlan[] = [
     {
+      price: "Free",
+      type: "Evaluation",
+      features: ["Standard File Operations", "Recursive Branch View", "Built-in Text/Hex Viewer", "Community Support"],
+      badge: "Free Forever",
+      highlight: false,
+      isFree: true
+    },
+    {
       price: "$15",
       type: "Founder's Edition",
-      features: ["Early Access", "Lifetime Updates", "Priority Feature Request", "Special 'Founder' Badge"],
+      features: ["Everything in Free", "Advanced Space Analyzer", "Lifetime Updates", "Priority Feature Requests", "Special 'Founder' Badge"],
       badge: "Limited Time",
-      highlight: true
+      highlight: true,
+      priceId: 'pri_01kkwsmfah4angn53cs289xe24'
     },
     {
       price: "$25",
       type: "Standard License",
-      features: ["Full Commercial License", "1 Year of Updates", "Standard Support", "Pre-order Discount"],
-      badge: "Introductory Price",
-      highlight: false
+      features: ["Full Commercial License", "1 Year of Updates", "Standard Support", "All Pro Modules"],
+      badge: "Standard Price",
+      highlight: false,
+      priceId: 'pri_01kkwsp14hg0vxgckn12v53m7x'
     }
   ];
 
@@ -141,6 +152,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
         onBack={onBack}
         extraHeroContent={PromoSection}
       />
+      <SmartScreenGuide />
       <ChangelogModal
         isOpen={showChangelog}
         onClose={() => setShowChangelog(false)}

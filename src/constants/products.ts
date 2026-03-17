@@ -6,6 +6,7 @@ export interface Product {
   features: string[];
   techStack: string[];
   category: 'productivity' | 'multimedia' | 'health' | 'creative';
+  status: 'available' | 'soon';
 }
 
 export const PRODUCTS: Product[] = [
@@ -16,7 +17,8 @@ export const PRODUCTS: Product[] = [
     description: 'A modern, dual-pane orthodox file manager designed for speed and precision on Windows 11. Reimagining the legendary Total Commander workflow for the modern era.',
     features: ['Dual-pane navigation', 'Native Windows 11 Acrylic effects', 'Hyper-fast drive loading', 'Recursive branch view', 'Integrated Terminal & FTP'],
     techStack: ['Rust (Tauri)', 'React', 'TypeScript', 'Zustand'],
-    category: 'productivity'
+    category: 'productivity',
+    status: 'available'
   },
   {
     id: 'dash',
@@ -25,7 +27,8 @@ export const PRODUCTS: Product[] = [
     description: 'A premium, Windows 11-inspired Jellyfin client. Focuses on high-performance visuals and a flawlessly continuous music and video experience.',
     features: ['Infinite Glide Lyrics', 'Glassmorphic UI', 'Theme-aware backdrops', '60fps scrolling engine'],
     techStack: ['Tauri', 'React', 'TypeScript', 'Zustand', 'Framer Motion'],
-    category: 'multimedia'
+    category: 'multimedia',
+    status: 'soon'
   },
   {
     id: 'zap-studio',
@@ -34,7 +37,8 @@ export const PRODUCTS: Product[] = [
     description: 'A local-first studio for generating children\'s story videos with AI. Combines story generation, voiceovers, and illustrations into a seamless pipeline.',
     features: ['AI Story Generation', 'Voice Narration (ElevenLabs)', 'AI Illustrations (DALL-E 3)', 'Automated Video Assembly'],
     techStack: ['Next.js', 'Claude AI', 'FFmpeg', 'SQLite'],
-    category: 'creative'
+    category: 'creative',
+    status: 'soon'
   },
   {
     id: 'easy-monitor',
@@ -43,7 +47,8 @@ export const PRODUCTS: Product[] = [
     description: 'An elderly-friendly blood pressure and heart rate tracking application. Designed with accessibility and clarity at its core.',
     features: ['OMRON-style reading input', 'Interactive trend charts', 'Professional PDF reports', 'Trilingual support'],
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Supabase'],
-    category: 'health'
+    category: 'health',
+    status: 'soon'
   },
   {
     id: 'tales-universe',
@@ -52,6 +57,7 @@ export const PRODUCTS: Product[] = [
     description: 'A children-safe mobile library of interactive stories. Features AI-generated alternative endings and a vibrant fairy-tale aesthetic.',
     features: ['AI Alternative Endings', 'Curated story library', 'Interactive virtual coin system', 'Safe, engaging design'],
     techStack: ['Flutter', 'AI Integration', 'Local Storage'],
-    category: 'creative'
+    category: 'creative',
+    status: 'soon'
   }
 ];

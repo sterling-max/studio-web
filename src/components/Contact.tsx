@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle, Mail } from 'lucide-react';
 
 export const Contact = () => {
-  const whatsappNumber = "1234567890"; // Placeholder
+  const whatsappNumber = "393475393181";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
 
   return (
@@ -37,11 +37,11 @@ export const Contact = () => {
 
         <div className="flex justify-center gap-8 text-sterling-mist/40 text-sm">
           <a 
-            href="mailto:hello@sterling.ltd" 
+            href="mailto:support@sterling.ltd" 
             className="flex items-center gap-2 hover:text-sterling-mist transition-colors cursor-pointer"
           >
             <Mail size={16} />
-            <span>hello@sterling.ltd</span>
+            <span>support@sterling.ltd</span>
           </a>
         </div>
       </motion.div>

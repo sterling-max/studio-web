@@ -5,3 +5,7 @@ pages_build_output_dir = "dist"
 binding = "DB"
 database_name = "sterling-db"
 database_id = "8b2bacb0-66d7-4926-824c-02cba07fd23a"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "sterling-artifacts"

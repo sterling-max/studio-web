@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     const url = new URL(window.location.href);
-    const compliancePaths = ['pricing', 'refund', 'privacy', 'terms', 'legal', 'manage'];
+    const compliancePaths = ['pricing', 'refund', 'privacy', 'terms', 'legal', 'manage', 'download'];
     
     if (compliancePaths.includes(activeTab)) {
       url.pathname = `/${activeTab}`;
@@ -55,9 +55,18 @@ function App() {
     if (activeTab === 'pricing') {
       scrollToProducts();
     }
+    
+    if (activeTab === 'download') {
+      setActiveTab('product-max-commander');
+      // Adding a slight delay to ensure the component is rendered before scrolling to pricing
+      setTimeout(() => {
+        const element = document.getElementById('pricing');
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    }
   }, [activeTab]);
 
-  const whatsappNumber = "1234567890"; // Placeholder
+  const whatsappNumber = "393475393181";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
 
   const handleViewProduct = (productId: string) => {

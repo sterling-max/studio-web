@@ -22,6 +22,13 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
         <h1 className="text-4xl font-bold mb-12">Terms of <span className="text-sterling-blue">Service</span></h1>
         
         <div className="prose prose-invert max-w-none space-y-8 text-sterling-mist/70">
+          <section className="p-6 bg-sterling-blue/5 border border-sterling-blue/20 rounded-2xl">
+            <h2 className="text-xl font-bold text-white mb-4">Merchant of Record</h2>
+            <p className="text-sterling-mist italic">
+              Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
+            </p>
+          </section>
+
           <section>
             <h2 className="text-xl font-bold text-white mb-4">1. Scope</h2>
             <p>

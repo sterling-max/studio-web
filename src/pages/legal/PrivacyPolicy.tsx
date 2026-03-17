@@ -51,7 +51,7 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
               To provide our services, we use the following third-party processors:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Paddle:</strong> Our merchant of record for processing payments and managing tax compliance.</li>
+              <li><strong>Paddle:</strong> Our merchant of record for processing payments and managing tax compliance. As the Merchant of Record, Paddle acts as the legal seller of the software and handles the processing of your payment data in accordance with their own privacy policy.</li>
               <li><strong>Resend:</strong> Used for sending transactional emails and license keys.</li>
               <li><strong>Cloudflare:</strong> Provides our global hosting, DNS, and secure Worker infrastructure.</li>
             </ul>
@@ -74,7 +74,7 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
           <section>
             <h2 className="text-xl font-bold text-white mb-4">6. Your Rights</h2>
             <p>
-              Under the GDPR, you have the right to access, rectify, or delete your personal data. You can contact the controller directly at max@sterling.ltd for any privacy-related inquiries.
+              Under the GDPR, you have the right to access, rectify, or delete your personal data. You can contact the controller directly at support@sterling.ltd for any privacy-related inquiries.
             </p>
           </section>
 

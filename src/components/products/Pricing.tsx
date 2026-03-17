@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Download } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export interface PricingPlan {
@@ -8,13 +9,63 @@ export interface PricingPlan {
   features: string[];
   badge: string;
   highlight: boolean;
+  priceId?: string; // Paddle Price ID
+  isFree?: boolean;
 }
 
 interface PricingProps {
   plans: PricingPlan[];
 }
 
+// Replace with your actual Paddle Client Token from Dashboard
+const PADDLE_CLIENT_TOKEN = 'plt_01kkwtgs11cy5p532ngg8x8wtd'; 
+
 export const Pricing = ({ plans }: PricingProps) => {
+  useEffect(() => {
+    // Initialize Paddle
+    if ((window as any).Paddle) {
+      (window as any).Paddle.Initialize({ 
+        token: PADDLE_CLIENT_TOKEN
+      });
+    }
+  }, []);
+
+  const handleCheckout = (plan: PricingPlan) => {
+    if (plan.isFree) {
+      // Trigger download using a hidden anchor with the download attribute
+      const link = document.createElement('a');
+      // Use the production URL but ensure it's treated as a download target
+      link.href = 'https://sterling.ltd/download/mc-latest.exe'; 
+      link.target = '_blank'; // Open in new tab/background to prevent local navigation
+      link.download = 'MaxCommanderSetup.exe';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Immediate scroll to SmartScreen guide
+      document.getElementById('smartscreen-guide')?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    if (plan.priceId && (window as any).Paddle) {
+      (window as any).Paddle.Checkout.open({
+        items: [
+          {
+            priceId: plan.priceId,
+            quantity: 1
+          }
+        ],
+        settings: {
+          displayMode: 'overlay',
+          theme: 'dark',
+          locale: 'en'
+        }
+      });
+    } else {
+      console.warn('Paddle Price ID missing or Paddle not initialized');
+    }
+  };
+
   return (
     <section id="pricing" className="py-24 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
@@ -22,7 +73,7 @@ export const Pricing = ({ plans }: PricingProps) => {
         <p className="text-sterling-mist/60 text-lg">One-time payment. No subscriptions. Complete ownership.</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {plans.map((plan, i) => (
           <motion.div
             key={i}
@@ -67,16 +118,32 @@ export const Pricing = ({ plans }: PricingProps) => {
               ))}
             </ul>
 
-            <button className={cn(
-              "w-full py-4 rounded-xl font-bold transition-all mt-auto",
-              plan.highlight 
-                ? "bg-sterling-blue text-white hover:shadow-[0_0_30px_rgba(0,122,255,0.4)] hover:scale-[1.02]" 
-                : "bg-sterling-mist/5 text-sterling-mist hover:bg-sterling-mist/10"
-            )}>
-              Available Soon
+            <button 
+              onClick={() => handleCheckout(plan)}
+              className={cn(
+                "w-full py-4 rounded-xl font-bold transition-all mt-auto flex items-center justify-center gap-2",
+                plan.highlight 
+                  ? "bg-sterling-blue text-white hover:shadow-[0_0_30px_rgba(0,122,255,0.4)] hover:scale-[1.02]" 
+                  : "bg-sterling-mist/5 text-sterling-mist hover:bg-sterling-mist/10"
+              )}
+            >
+              {plan.isFree ? (
+                <>
+                  <Download size={18} />
+                  Download Free
+                </>
+              ) : (
+                'Buy Now'
+              )}
             </button>
           </motion.div>
         ))}
+      </div>
+      <div className="mt-16 text-center">
+        <p className="text-sterling-mist/30 text-xs max-w-2xl mx-auto leading-relaxed">
+          By completing a purchase, you agree to Sterling Lab's <button onClick={() => window.location.href='/terms'} className="text-sterling-blue hover:underline">Terms of Service</button> and <button onClick={() => window.location.href='/refund'} className="text-sterling-blue hover:underline">Refund Policy</button>.<br />
+          Payments are securely processed by <strong>Paddle</strong>, our Merchant of Record.
+        </p>
       </div>
     </section>
   );
