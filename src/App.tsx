@@ -14,6 +14,10 @@ import { TalesUniverse } from './components/products/TalesUniverse';
 import { ManageLicense } from './components/ManageLicense';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from './components/Logo';
+import { PrivacyPolicy } from './pages/legal/PrivacyPolicy';
+import { TermsOfService } from './pages/legal/TermsOfService';
+import { LegalNotice } from './pages/legal/LegalNotice';
+import { Instagram, Twitter } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState(() => {
@@ -162,6 +166,24 @@ function App() {
               <ManageLicense />
             </motion.div>
           )}
+
+          {activeTab === 'privacy' && (
+            <motion.div key="privacy" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <PrivacyPolicy onBack={() => setActiveTab('home')} />
+            </motion.div>
+          )}
+
+          {activeTab === 'terms' && (
+            <motion.div key="terms" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <TermsOfService onBack={() => setActiveTab('home')} />
+            </motion.div>
+          )}
+
+          {activeTab === 'legal' && (
+            <motion.div key="legal" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <LegalNotice onBack={() => setActiveTab('home')} />
+            </motion.div>
+          )}
         </AnimatePresence>
       </main>
 
@@ -174,31 +196,61 @@ function App() {
               <div className="text-2xl font-bold">Sterling <span className="text-sterling-blue">Lab</span></div>
             </div>
             <p className="text-sterling-mist/40 text-sm max-w-xs leading-relaxed">
-              Hand-crafted software solutions with a focus on precision, performance, and atmospheric design.
+              A dedicated Lab for Tool Development with a focus on precision, performance, and atmospheric design.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Connect</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li onClick={() => setActiveTab('contact')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Contact</li>
-                <li className="hover:text-sterling-cyan cursor-pointer transition-colors">GitHub</li>
-                <li className="hover:text-sterling-cyan cursor-pointer transition-colors">Dribbble</li>
+                <li onClick={() => setActiveTab('contact')} className="hover:text-sterling-cyan cursor-pointer transition-colors flex items-center gap-2">
+                   Contact
+                </li>
+                <li>
+                  <a href="https://instagram.com/sterlinglab" target="_blank" rel="noopener noreferrer" className="hover:text-sterling-cyan transition-colors flex items-center gap-2">
+                    <Instagram size={14} /> Instagram
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/sterlinglab" target="_blank" rel="noopener noreferrer" className="hover:text-sterling-cyan transition-colors flex items-center gap-2">
+                    <Twitter size={14} /> X (Twitter)
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Products</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li onClick={handleBackToProducts} className="hover:text-sterling-cyan cursor-pointer transition-colors">Max Commander</li>
-                <li onClick={handleBackToProducts} className="hover:text-sterling-cyan cursor-pointer transition-colors">Dash</li>
-                <li onClick={handleBackToProducts} className="hover:text-sterling-cyan cursor-pointer transition-colors">Zap Studio</li>
+                <li onClick={() => handleViewProduct('max-commander')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Max Commander</li>
+                <li onClick={() => handleViewProduct('dash')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Dash</li>
+                <li onClick={() => handleViewProduct('zap-studio')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Zap Studio</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Legal</h4>
+              <ul className="text-sterling-mist/50 text-sm space-y-2">
+                <li onClick={() => setActiveTab('legal')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Legal Notice</li>
+                <li onClick={() => setActiveTab('privacy')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Privacy Policy</li>
+                <li onClick={() => setActiveTab('terms')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Terms of Service</li>
               </ul>
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-sterling-mist/5 flex flex-col md:flex-row justify-between text-[10px] text-sterling-mist/20 uppercase tracking-[0.2em]">
-          <span>© 2026 Sterling Lab. All rights reserved.</span>
-          <span>Designed with precision in Marche.</span>
+        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-sterling-mist/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] text-sterling-mist/20 uppercase tracking-[0.2em]">© 2026 Sterling Lab. All rights reserved.</span>
+            <span className="text-[10px] text-sterling-mist/30 font-medium italic">Crafted with precision in the heart of Europe.</span>
+          </div>
+          
+          <div className="flex gap-4">
+             {/* European Compliance Badges / Indicators could go here */}
+             <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/30">
+               EU Data Protection
+             </div>
+             <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/30">
+               Secure Licensing
+             </div>
+          </div>
         </div>
       </footer>
     </div>

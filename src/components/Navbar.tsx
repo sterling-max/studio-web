@@ -67,7 +67,7 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
     { id: 'design', icon: <Palette size={22} />, label: 'Design' },
     { id: 'about', icon: <Info size={22} />, label: 'Lab' },
     { id: 'contact', icon: <MessageSquare size={22} />, label: 'Contact' },
-    { id: 'manage', icon: <Key size={22} />, label: 'Manage License' },
+    { id: 'manage', icon: <Key size={22} />, label: 'Log In' },
   ];
 
   const handleNavClick = (id: string) => {

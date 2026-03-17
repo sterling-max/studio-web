@@ -80,7 +80,7 @@ export const ManageLicense = () => {
       <div className="max-w-4xl mx-auto py-32 px-6">
         <div className="flex justify-between items-center mb-12">
           <div>
-            <h2 className="text-4xl font-bold mb-2">License Portal</h2>
+            <h2 className="text-4xl font-bold mb-2">Manage your Licenses</h2>
             <p className="text-sterling-mist/60 text-lg">Manage your devices and products.</p>
           </div>
           <button className="flex items-center gap-2 text-sterling-mist/40 hover:text-white transition-colors">
@@ -164,7 +164,7 @@ export const ManageLicense = () => {
         <div className="w-20 h-20 bg-sterling-blue/20 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-inner shadow-sterling-blue/30">
           <Key className="text-sterling-blue text-4xl" />
         </div>
-        <h2 className="text-4xl font-bold mb-4">Manage Licenses</h2>
+        <h2 className="text-4xl font-bold mb-4">Manage your Licenses</h2>
         <p className="text-sterling-mist/60 mb-10">
           Enter the email you used for purchase to receive a magic login link.
         </p>

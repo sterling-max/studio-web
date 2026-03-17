@@ -18,8 +18,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       const productId = body.data.items[0]?.product?.id || 'mc_pro';
       const orderId = body.data.id;
 
-      // Generate a unique license key
-      const key = `MC-PRO-${crypto.randomUUID().split('-')[0].toUpperCase()}-${crypto.randomUUID().split('-')[1].toUpperCase()}`;
+      // Generate a unique license key: MC-PRO-XXXX-XXXX-XXXX-XXXX (16 hex chars = 1.8e19 combinations)
+      const uuid = crypto.randomUUID().replace(/-/g, '').toUpperCase();
+      const key = `MC-PRO-${uuid.substring(0, 4)}-${uuid.substring(4, 8)}-${uuid.substring(8, 12)}-${uuid.substring(12, 16)}`;
 
       // Store in D1
       await env.DB.prepare(

@@ -36,14 +36,13 @@ export const Contact = () => {
         </motion.a>
 
         <div className="flex justify-center gap-8 text-sterling-mist/40 text-sm">
-          <div className="flex items-center gap-2 hover:text-sterling-mist transition-colors cursor-pointer">
+          <a 
+            href="mailto:hello@sterling.ltd" 
+            className="flex items-center gap-2 hover:text-sterling-mist transition-colors cursor-pointer"
+          >
             <Mail size={16} />
-            <span>hello@sterling.lab</span>
-          </div>
-          <div className="flex items-center gap-2 hover:text-sterling-mist transition-colors cursor-pointer">
-            <Globe size={16} />
-            <span>sterling.lab</span>
-          </div>
+            <span>hello@sterling.ltd</span>
+          </a>
         </div>
       </motion.div>
     </div>
