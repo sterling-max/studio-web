@@ -34,6 +34,10 @@ function App() {
       url.searchParams.set('tab', activeTab);
     }
     window.history.replaceState({}, '', url);
+
+    if (activeTab === 'pricing') {
+      scrollToProducts();
+    }
   }, [activeTab]);
 
   const whatsappNumber = "1234567890"; // Placeholder

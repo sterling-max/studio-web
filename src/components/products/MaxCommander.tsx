@@ -79,17 +79,17 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
 
   const plans: PricingPlan[] = [
     {
-      price: "$19",
+      price: "$15",
       type: "Founder's Edition",
       features: ["Early Access", "Lifetime Updates", "Priority Feature Request", "Special 'Founder' Badge"],
       badge: "Limited Time",
       highlight: true
     },
     {
-      price: "$39",
+      price: "$25",
       type: "Standard License",
-      features: ["Full Commercial License", "1 Year of Updates", "Standard Support", "Available in 3 Months"],
-      badge: "Future Price",
+      features: ["Full Commercial License", "1 Year of Updates", "Standard Support", "Pre-order Discount"],
+      badge: "Introductory Price",
       highlight: false
     }
   ];
