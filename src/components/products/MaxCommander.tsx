@@ -135,7 +135,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
         title="Max"
         titleSuffix="Commander"
         tagline="The productivity powerhouse. A modern, dual-pane file manager designed for speed, precision, and keyboard mastery."
-        icon={Folder}
+        icon="/assets/mc-logo.png"
         steps={steps}
         pricingPlans={plans}
         onBack={onBack}
