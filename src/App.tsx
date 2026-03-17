@@ -18,7 +18,6 @@ import { PrivacyPolicy } from './pages/legal/PrivacyPolicy';
 import { TermsOfService } from './pages/legal/TermsOfService';
 import { LegalNotice } from './pages/legal/LegalNotice';
 import { RefundPolicy } from './pages/legal/RefundPolicy';
-import { Instagram, Twitter } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState(() => {
@@ -262,18 +261,8 @@ function App() {
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Connect</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li onClick={() => setActiveTab('contact')} className="hover:text-sterling-cyan cursor-pointer transition-colors flex items-center gap-2">
+                <li onClick={() => { setActiveTab('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors flex items-center gap-2">
                    Contact
-                </li>
-                <li>
-                  <a href="https://instagram.com/sterlinglab" target="_blank" rel="noopener noreferrer" className="hover:text-sterling-cyan transition-colors flex items-center gap-2">
-                    <Instagram size={14} /> Instagram
-                  </a>
-                </li>
-                <li>
-                  <a href="https://x.com/sterlinglab" target="_blank" rel="noopener noreferrer" className="hover:text-sterling-cyan transition-colors flex items-center gap-2">
-                    <Twitter size={14} /> X (Twitter)
-                  </a>
                 </li>
               </ul>
             </div>
@@ -288,10 +277,10 @@ function App() {
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Legal</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li onClick={() => setActiveTab('legal')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Legal Notice</li>
-                <li onClick={() => setActiveTab('privacy')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Privacy Policy</li>
-                <li onClick={() => setActiveTab('terms')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Terms of Service</li>
-                <li onClick={() => setActiveTab('refund')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Refund Policy</li>
+                <li onClick={() => { setActiveTab('legal'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors">Legal Notice</li>
+                <li onClick={() => { setActiveTab('privacy'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors">Privacy Policy</li>
+                <li onClick={() => { setActiveTab('terms'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors">Terms of Service</li>
+                <li onClick={() => { setActiveTab('refund'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors">Refund Policy</li>
               </ul>
             </div>
           </div>
