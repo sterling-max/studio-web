@@ -15,6 +15,7 @@ export interface TimelineStep {
 interface ProductLayoutProps {
   title: string;
   titleSuffix?: string;
+  tagline: string;
   rotatingPhrases?: string[];
   icon: LucideIcon | string;
   steps: TimelineStep[];
@@ -127,9 +128,12 @@ export const ProductLayout = ({
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-24"
       >
-        <div className="inline-flex items-center justify-center p-4 bg-sterling-blue/10 rounded-3xl mb-6">
+        <div className={cn(
+          "inline-flex items-center justify-center mb-6",
+          typeof HeroIcon !== 'string' && "p-4 bg-sterling-blue/10 rounded-3xl"
+        )}>
           {typeof HeroIcon === 'string' ? (
-            <img src={HeroIcon} alt={title} className="w-12 h-12 object-contain" />
+            <img src={HeroIcon} alt={title} className="w-24 h-24 md:w-32 md:h-32 object-contain" />
           ) : (
             <HeroIcon size={48} className="text-sterling-blue" />
           )}

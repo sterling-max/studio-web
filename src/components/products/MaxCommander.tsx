@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Folder, Search, Shield, Layout, Eye, GitBranch, Archive, Cloud, Puzzle, Clapperboard, History } from 'lucide-react';
+import { Search, Shield, Layout, Eye, GitBranch, Archive, Cloud, Puzzle, Clapperboard, History } from 'lucide-react';
 import { ProductLayout } from './ProductLayout';
 import { type PricingPlan } from './Pricing';
 import { ChangelogModal } from './ChangelogModal';

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MessageCircle, Mail, Globe } from 'lucide-react';
+import { MessageCircle, Mail } from 'lucide-react';
 
 export const Contact = () => {
   const whatsappNumber = "1234567890"; // Placeholder
