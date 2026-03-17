@@ -7,6 +7,99 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.7.0",
+        date: "Mar 16, 2026",
+        description: "Max Commander Pro & Offline Licensing.",
+        changes: [
+            "Pro License Ecosystem: Introduced the 'Max Commander Pro' license tier. Users can now unlock advanced commercial features with a one-time purchase.",
+            "Cryptographic Verification: Implemented military-grade ed25519 digital signatures for 100% offline license verification. No phone-home required for daily usage.",
+            "Hardware Binding: Integrated intelligent Machine ID heuristics that bind licenses to up to 3 specific devices, preventing unauthorized key sharing while staying flexible for power users.",
+            "Simplified Activation: Added a dedicated 'License & Pro' tab in the Settings (F9) for instant key application and hardware diagnostic read-outs.",
+            "Device Management Portal: Launched a companion management portal on sterling.ltd for users to remotely deactivate old machines and recover lost keys via magic links.",
+            "Onboarding Auto-Bypass: Streamlined the first-launch experience by auto-completing onboarding for existing users."
+        ]
+    },
+    {
+        version: "0.6.4",
+        date: "Mar 14, 2026",
+        description: "Terminal, Command Palette & Script Library Polish.",
+        changes: [
+            "Terminal & Palette Activation: Resolved triggering issues for international keyboard layouts. Ctrl+` and Ctrl+P now reliably open the Terminal and Command Palette.",
+            "Panel-Aware Tools: The Tools menu is now context-aware, correctly opening the terminal or script library in the directory of the focused panel.",
+            "Visual Consistency: Overhauled the Script Library and Command Palette overlays with premium backdrop-blur effects and unified styling to match the system design.",
+            "Global Script Folders: Added a dedicated setting in the Tools panel (F9) to configure custom scan paths for the Script Library, enabling central management of user scripts.",
+            "Robust Interface Logic: Cleaned up internal event handling and fixed syntax errors that caused occasional UI instability in the Tools menu."
+        ]
+    },
+    {
+        version: "0.6.3",
+        date: "Mar 10, 2026",
+        description: "Title Bar Consolidation & Smart Error Handling.",
+        changes: [
+            "Simplified Title Bar: Moved the Theme Toggle and Settings buttons cleanly into the Profile drop-down menu for a more streamlined, distraction-free header.",
+            "Smart Operation Badge: The background operations pill now exclusively appears for minimized background transfers, avoiding redundant indicators when the main progress dialog is open.",
+            "Graceful Cancellations: Canceling file operations natively suppresses dense technical tracebacks, resolving directly to a clean blue 'Cancelled' confirmation.",
+            "Copyable Error Diagnostics: Re-designed error Toasts with intelligent message truncating and a one-click Copy button to seamlessly paste file-system blockages.",
+            "Vibrant Theme Icons: Brightened the Light, Dark, and System theme selectors with distinctive flat colors inside the drop-down menu.",
+            "Drive System Resilience: Fixed a critical path-watcher leak where navigating to virtual drives caused OS-level filesystem hooks to overload, preserving drive stability.",
+            "Orthodox Selection Physics: Fully separated the Focus Caret from the Explicit Selection state mimicking classic Orthodox File Managers. Using the `Space` and `Insert` keys now flawlessly marks files while auto-moving rows downwards for rapid-fire selection without breaking logic."
+        ]
+    },
+    {
+        version: "0.6.2",
+        date: "Mar 02, 2026",
+        description: "Onboarding Polish & First Impressions.",
+        changes: [
+            "Impactful First Run: Completely redesigned the Onboarding flow with a high-impact 'Hero' aesthetic, making the initial experience modern and memorable.",
+            "Global Localization: Translated the entire onboarding flow authentically into Spanish, French, German, Italian, and Russian with a proper developer-oriented tone.",
+            "Live Language Switching: The language selector on the welcome screen now updates all slide translations instantly and renders localized content flawlessly.",
+            "Modal Refinements: The onboarding dialog is now vertically scrollable to comfortably fit all text and international translations on lower-resolution screens.",
+            "Help Page Visuals: Restored the sidebar navigation styles in the Help & About page to elegantly match the new Settings interface design."
+        ]
+    },
+    {
+        version: "0.6.1",
+        date: "Mar 01, 2026",
+        description: "Operation Dialog Telemetry & UX Overhaul.",
+        changes: [
+            "Precision Speed Histogram: Rebuilt the file operation histogram to map exactly to the completion percentage (0% to 100%) rather than a scrolling time window, offering a true spatial visualization of the transfer.",
+            "Visual Stability: Fixed 'ghost bars' appearing during instantaneous delete operations and prevented valid speed buckets from being overwritten by momentary delays between files.",
+            "Modern Speed Bubble: Replaced the floating text speed label with a polished, dynamic comic-bubble UI that matches the operation color and perfectly tracks the leading edge of the histogram.",
+            "Robust Interface Controls: Eliminated dropped clicks on the Pause/Cancel buttons by decoupling their event handlers from high-frequency React render cycles.",
+            "Responsive Data Feed: The progress telemetry now recalculates remaining time and transfer totals more accurately, preventing 'NaN/Infinity' flashes during extremely fast SSD maneuvers."
+        ]
+    },
+    {
+        version: "0.6.0",
+        date: "Feb 21, 2026",
+        description: "Advanced Archive Operations & LAN Browsing.",
+        changes: [
+            "Seamless Archive Integration: Treat ZIP files truly like folders. Copy, move, and delete files directly within archives without manual extraction.",
+            "Cross-Archive Operations: Transparently copy or move files between different ZIP archives.",
+            "Archive Folder Creation: Create new folders directly inside existing ZIP files.",
+            "Robust Conflict Handling: Bypasses standard file conflict checks safely when writing into archives, ensuring fast transparent modifications.",
+            "Nested Archive Packing: Pack selected files directly into a new ZIP archive located inside an existing ZIP archive.",
+            "Targeted Unpacking: Select and extract individual files directly from within an archive to a destination.",
+            "Archive UI Polish: Fixed path duplication rendering bugs when navigating deep into nested archive folders.",
+            "LAN Browsing: Browse your local network and discover servers directly from the Drive Bar or the Alt+F1/F2 Drive Menu. Navigate through network shares just like local folders.",
+            "Smart Network Navigation: Pressing Backspace or '..' from a network server automatically returns you to the Network overview, and from there back to your local drives.",
+            "Network Path UI Fix: Resolved an issue causing double server names in the PathBar when drilling down into network shares."
+        ]
+    },
+    {
+        version: "0.5.5",
+        date: "Feb 17, 2026",
+        description: "Store Submission Preparation & Hardening.",
+        changes: [
+            "Store Compatibility: Optimizing build for NSIS redistribution on the Microsoft Store.",
+            "Protocol Integrity: Verified asset loading and secure shell execution for Win32-packaged environments.",
+            "Hardware Detection: Refined drive monitoring and removable storage detection for better reliability.",
+            "Network Stability: Finalized background operations for SFTP and Jellyfin streaming in production builds.",
+            "Archive High-Fidelity Preview: Seamlessly view high-res images and documents inside ZIP and 7z archives with hybrid memory management.",
+            "Vite 7 Migration: Internal build tools updated to latest standards for faster startup performance."
+        ]
+    },
+    {
         version: "0.5.4",
         date: "Feb 04, 2026",
         description: "Hardening & Resilience Update.",
