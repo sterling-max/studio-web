@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Key, Mail, Smartphone, LogOut, AlertCircle } from 'lucide-react';
+import { Key, Mail, Smartphone, LogOut, AlertCircle, Download } from 'lucide-react';
 
 export const ManageLicense = () => {
   const [email, setEmail] = useState('');
@@ -106,6 +106,15 @@ export const ManageLicense = () => {
                 <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/20">
                   ACTIVE
                 </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <a 
+                  href="/download/mc-latest.exe"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-sterling-blue text-white rounded-xl font-bold hover:shadow-[0_0_20px_rgba(0,122,255,0.3)] transition-all"
+                >
+                  <Download size={18} /> Download Max Commander
+                </a>
               </div>
 
               <div className="space-y-4">

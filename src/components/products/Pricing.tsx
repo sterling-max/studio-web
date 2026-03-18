@@ -34,19 +34,12 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
 
   const handleCheckout = (plan: PricingPlan) => {
     if (plan.isFree) {
-      // Trigger download using a hidden anchor with the download attribute
-      const link = document.createElement('a');
-      // Use the production URL but ensure it's treated as a download target
-      link.href = 'https://sterling.ltd/download/mc-latest.exe'; 
-      link.target = '_blank'; // Open in new tab/background to prevent local navigation
-      link.download = 'MaxCommanderSetup.exe';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      // Immediate scroll to SmartScreen guide
-      document.getElementById('smartscreen-guide')?.scrollIntoView({ behavior: 'smooth' });
-      return;
+        // Trigger download via worker alias
+        window.location.href = '/download/mc-setup.exe';
+        
+        // Immediate scroll to SmartScreen guide
+        document.getElementById('smartscreen-guide')?.scrollIntoView({ behavior: 'smooth' });
+        return;
     }
 
     if (plan.priceId && (window as any).Paddle) {
