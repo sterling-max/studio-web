@@ -1,7 +1,7 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Box, Palette, Info, MessageSquare, Sun, Moon, Menu, X, Key } from 'lucide-react';
+import { Home, Box, Palette, MessageSquare, Sun, Moon, Menu, X, Key, DollarSign } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { Logo } from './Logo';
 
@@ -65,10 +65,10 @@ export const Navbar = () => {
   const items = [
     { path: '/',        icon: <Home size={22} />,        label: 'Home' },
     { path: '/#products', icon: <Box size={22} />,       label: 'Products' },
-    { path: '/design',  icon: <Palette size={22} />,     label: 'Design' },
-    { path: '/about',   icon: <Info size={22} />,        label: 'Lab' },
-    { path: '/contact', icon: <MessageSquare size={22} />, label: 'Contact' },
-    { path: '/manage',  icon: <Key size={22} />,         label: 'Log In' },
+    { path: '/pricing',   icon: <DollarSign size={22} />, label: 'Pricing' },
+    { path: '/design',    icon: <Palette size={22} />,     label: 'Design' },
+    { path: '/contact',   icon: <MessageSquare size={22} />, label: 'Contact' },
+    { path: '/manage',    icon: <Key size={22} />,         label: 'Log In' },
   ];
 
   const isActive = (itemPath: string) => {

@@ -50,6 +50,7 @@ function HomePage() {
     <Page>
       <Hero />
       <ProductGrid />
+      <About />
       <section className="py-32 px-6 text-center">
         <div className="max-w-3xl mx-auto p-12 rounded-[3rem] bg-gradient-to-b from-sterling-deep to-sterling-midnight border border-sterling-blue/20 relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-sterling-blue/20 blur-[80px] rounded-full" />
@@ -84,7 +85,6 @@ function App() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<Page><About /></Page>} />
             <Route path="/contact" element={<Page><div className="pt-20"><Contact /></div></Page>} />
             <Route path="/design" element={<Page><VisualStyleGuide /></Page>} />
             <Route path="/manage" element={<Page><ManageLicense /></Page>} />

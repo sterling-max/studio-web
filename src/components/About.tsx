@@ -3,7 +3,7 @@ import { MapPin, Award, Users, Code } from 'lucide-react';
 
 export const About = () => {
   return (
-    <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+    <section id="lab" className="py-24 px-6 max-w-7xl mx-auto">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -61,6 +61,6 @@ export const About = () => {
           </p>
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 };
