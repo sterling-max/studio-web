@@ -30,6 +30,31 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
           </section>
 
           <section>
+            <h2 className="text-xl font-bold text-white mb-4">Vendor Information</h2>
+            <p>
+              These Terms of Service are issued by:<br />
+              <strong className="text-white">Maximiliano Villarreal</strong>, operating as <strong className="text-white">Sterling Lab</strong><br />
+              Via XX Settembre 37, 63063 Carassai (AP), Italy<br />
+              Email: <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline">support@sterling.ltd</a><br />
+              Phone: +39 347 539 3181
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-white mb-4">License Types</h2>
+            <p className="mb-4">
+              Max Commander is available under two license tiers:
+            </p>
+            <ul className="space-y-2 list-disc pl-6">
+              <li><strong className="text-white">Free License:</strong> For personal, non-commercial use only. No redistribution.</li>
+              <li><strong className="text-white">Pro License:</strong> For personal or commercial use by a single named individual. Not transferable.</li>
+            </ul>
+            <p className="mt-4">
+              You may not transfer, assign, rent, lease, lend, sell, redistribute, or sub-license the software or your license key under any circumstances.
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-xl font-bold text-white mb-4">1. Scope</h2>
             <p>
               These terms apply to all tools and services provided by Sterling Lab. By using our website or software, you agree to these terms.
@@ -54,6 +79,15 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
             <h2 className="text-xl font-bold text-white mb-4">4. Governing Law</h2>
             <p>
               These terms and any disputes arising from the use of our services shall be governed by and construed in accordance with the laws of Italy, without regard to its conflict of law principles.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-white mb-4">5. Contact &amp; Support</h2>
+            <p>
+              For any questions regarding these Terms, or to request support, please contact us at:<br />
+              Email: <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline">support@sterling.ltd</a><br />
+              Phone: +39 347 539 3181 (also WhatsApp)
             </p>
           </section>
 
