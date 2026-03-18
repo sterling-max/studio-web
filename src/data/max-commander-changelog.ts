@@ -7,6 +7,17 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.7.2",
+        date: "Mar 18, 2026",
+        description: "Distribution & Deployment Infrastructure Polish.",
+        changes: [
+            "Resilient Distribution Pipeline: Migrated to high-performance cloud delivery for installers and updates on Windows.",
+            "GitHub Release Security: Hardened deployment permissions to ensure stable artifact distribution for new versions.",
+            "Direct Licensing Integration: Finalized secure communication between the app and sterling.ltd for machine seat management.",
+            "Platform Reliability: Optimized MSI and NSIS installer logic for more resilient installations across various Windows configurations."
+        ]
+    },
+    {
         version: "0.7.0",
         date: "Mar 16, 2026",
         description: "Max Commander Pro & Offline Licensing.",

@@ -13,6 +13,7 @@ import { Dash } from './components/products/Dash';
 import { EasyMonitor } from './components/products/EasyMonitor';
 import { TalesUniverse } from './components/products/TalesUniverse';
 import { ManageLicense } from './components/ManageLicense';
+import { PricingPage } from './components/products/PricingPage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from './components/Logo';
 import { PrivacyPolicy } from './pages/legal/PrivacyPolicy';
@@ -102,8 +103,8 @@ function App() {
             <Route path="/legal" element={<Page><LegalNotice onBack={() => navigate('/')} /></Page>} />
             <Route path="/refund" element={<Page><RefundPolicy onBack={() => navigate('/')} /></Page>} />
 
-            {/* Redirect legacy / convenience routes */}
-            <Route path="/pricing" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
+            {/* Dedicated Pricing Page */}
+            <Route path="/pricing" element={<Page><PricingPage /></Page>} />
             <Route path="/download" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
           </Routes>
         </AnimatePresence>
