@@ -46,8 +46,8 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
               Max Commander is available under two license tiers:
             </p>
             <ul className="space-y-2 list-disc pl-6">
-              <li><strong className="text-white">Free License:</strong> For personal, non-commercial use only. No redistribution.</li>
-              <li><strong className="text-white">Pro License:</strong> For personal or commercial use by a single named individual. Not transferable.</li>
+              <li><strong className="text-white">Free License:</strong> For personal, non-commercial use. Includes the full dual-pane file manager, configurable keybindings, archive support, multi-rename, native context menu, LAN browsing, and Quick Viewer.</li>
+              <li><strong className="text-white">Pro License:</strong> For personal or professional use. Adds FTP/SFTP remote connections, Space Analyzer, Profiles &amp; Workspaces, and the Plugin System (Jellyfin and more). Perpetual license with lifetime updates. Not transferable.</li>
             </ul>
             <p className="mt-4">
               You may not transfer, assign, rent, lease, lend, sell, redistribute, or sub-license the software or your license key under any circumstances.
