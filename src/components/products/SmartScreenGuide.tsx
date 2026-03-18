@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Shield, ShieldAlert, CheckCircle2, Info } from 'lucide-react';
 
 export const SmartScreenGuide = () => {
