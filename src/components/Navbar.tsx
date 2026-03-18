@@ -48,7 +48,7 @@ const DesktopNavItem = ({ icon, label, isActive, onClick }: NavItemProps) => (
 export const Navbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -92,16 +92,19 @@ export const Navbar = () => {
       }
     } else {
       navigate(itemPath);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  const isGlass = hasScrolled || pathname !== '/' || isOpen;
+  const isGlass = hasScrolled || isOpen;
 
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-500",
-        isGlass ? "bg-sterling-midnight/70 backdrop-blur-2xl border-b border-sterling-mist/10 py-4 shadow-xl" : "bg-transparent py-6"
+        "fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b",
+        isGlass
+          ? "bg-sterling-midnight/70 backdrop-blur-2xl border-sterling-mist/10 py-4 shadow-xl"
+          : "bg-transparent border-transparent py-6"
       )}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center relative w-full">

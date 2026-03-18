@@ -60,7 +60,7 @@ function HomePage() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-white text-sterling-deep rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+            className="inline-block px-10 py-4 bg-sterling-blue text-white rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(0,122,255,0.3)]"
           >
             Let's Talk
           </a>

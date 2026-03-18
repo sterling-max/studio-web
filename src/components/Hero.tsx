@@ -33,7 +33,7 @@ export const Hero = () => {
           <Logo className="w-32 h-32 drop-shadow-[0_0_20px_rgba(0,122,255,0.4)]" />
         </motion.div>
 
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-2 pb-1 bg-clip-text text-transparent bg-gradient-to-b from-sterling-mist to-sterling-mist/50">
+        <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-0 pb-4 bg-clip-text text-transparent bg-gradient-to-b from-sterling-mist to-sterling-mist/50">
           Sterling <span className="text-sterling-blue">Lab</span>
         </h1>
         
@@ -41,7 +41,7 @@ export const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="inline-block px-4 py-1.5 mt-0 mb-6 text-xs font-medium tracking-[0.2em] uppercase border border-sterling-blue/30 rounded-full bg-sterling-blue/5 text-sterling-cyan"
+          className="inline-block px-4 py-1.5 mt-4 mb-6 text-xs font-medium tracking-[0.2em] uppercase border border-sterling-blue/30 rounded-full bg-sterling-blue/5 text-sterling-cyan"
         >
           Crafting Everyday Excellence
         </motion.span>

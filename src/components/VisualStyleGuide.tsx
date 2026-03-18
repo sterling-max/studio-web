@@ -17,7 +17,7 @@ export const VisualStyleGuide = () => {
           >
             Sterling Web Studio
           </motion.span>
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sterling-mist to-sterling-mist/50">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 pb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sterling-mist to-sterling-mist/50">
             Elevate Your <br /> Digital Presence
           </h1>
           <p className="text-sterling-mist/60 text-xl leading-relaxed">
@@ -136,10 +136,10 @@ export const VisualStyleGuide = () => {
             Let's collaborate to give your product the digital presence it deserves. Professional, performant, and unforgettable.
           </p>
           <a
-            href="https://wa.me/1234567890?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20web%20design%20project."
+            href="https://wa.me/393475393181?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20web%20design%20project."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-sterling-deep rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)] relative z-10"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-sterling-blue text-white rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(0,122,255,0.3)] relative z-10"
           >
             Start a Project <ArrowRight size={20} />
           </a>
