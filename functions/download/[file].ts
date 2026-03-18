@@ -15,9 +15,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       };
       
       const listed = await env.BUCKET.list(options);
+      const commonPrefixes = listed.commonPrefixes || [];
       
       // Get the latest folder (vX.Y.Z)
-      const versions = listed.commonPrefixes
+      const versions = commonPrefixes
         .map(p => {
           const parts = p.split('/').filter(Boolean);
           return parts[parts.length - 1];
@@ -30,17 +31,19 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       if (!latestVersion) {
          // Fallback: list all objects if commonPrefixes is empty (S3 quirk)
          const allObjects = await env.BUCKET.list({ prefix: 'mc/releases/' });
-         if (allObjects.objects.length === 0) {
-           return new Response(`Error: No versions found in R2 path: mc/releases/ (Bucket: ${env.BUCKET})`, { status: 404 });
+         const objects = allObjects.objects || [];
+
+         if (objects.length === 0) {
+           return new Response(`Error: No versions found in R2 path: mc/releases/ (Bucket found, but empty)`, { status: 404 });
          }
          // Try to extract version from full paths
-         const fallbackVersions = Array.from(new Set(allObjects.objects.map(o => {
+         const fallbackVersions = Array.from(new Set(objects.map(o => {
             const match = o.key.match(/mc\/releases\/([^/]+)\//);
             return match ? match[1] : null;
          }))).filter(Boolean) as string[];
          
          if (fallbackVersions.length === 0) {
-            return new Response(`Error: Could not parse versions from objects in mc/releases/`, { status: 404 });
+            return new Response(`Error: Could not parse versions from objects in mc/releases/. Keys: ${objects.slice(0, 3).map(o => o.key).join(', ')}`, { status: 404 });
          }
          fallbackVersions.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
          return serveVersion(fallbackVersions[0], env, fileName);
@@ -48,7 +51,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
       return serveVersion(latestVersion, env, fileName);
     } catch (e: any) {
-      return new Response(`Internal Worker Error: ${e.message}`, { status: 500 });
+      return new Response(`Internal Worker Error: ${e.message} at ${e.stack}`, { status: 500 });
     }
   }
 
@@ -58,17 +61,18 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 async function serveVersion(version: string, env: Env, fileName: string) {
   const versionDir = `mc/releases/${version}/`;
   const versionFiles = await env.BUCKET.list({ prefix: versionDir });
+  const objects = versionFiles.objects || [];
   
-  if (versionFiles.objects.length === 0) {
+  if (objects.length === 0) {
     return new Response(`Error: No files found in version directory ${versionDir}`, { status: 404 });
   }
 
-  const installer = versionFiles.objects.find(obj => 
+  const installer = objects.find(obj => 
     obj.key.toLowerCase().endsWith('.exe') && !obj.key.toLowerCase().includes('pdb') && obj.size > 0
   );
 
   if (!installer) {
-    return new Response(`Error: Installer (.exe) not found in ${versionDir}. Found: ${versionFiles.objects.map(o => o.key).join(', ')}`, { status: 404 });
+    return new Response(`Error: Installer (.exe) not found in ${versionDir}. Files listed: ${objects.map(o => o.key).join(', ')}`, { status: 404 });
   }
 
   const object = await env.BUCKET.get(installer.key);
