@@ -1,11 +1,9 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
 
-interface HeroProps {
-  onNavigate: (tab: string) => void;
-}
-
-export const Hero = ({ onNavigate }: HeroProps) => {
+export const Hero = () => {
+  const navigate = useNavigate();
   const scrollToProducts = () => {
     const element = document.getElementById('products');
     if (element) {
@@ -65,7 +63,7 @@ export const Hero = ({ onNavigate }: HeroProps) => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => onNavigate('about')}
+            onClick={() => navigate('/about')}
             className="px-8 py-4 bg-sterling-surface text-sterling-mist rounded-2xl font-semibold border border-sterling-mist/10 hover:bg-sterling-surface/80 transition-all cursor-pointer"
           >
             The Lab

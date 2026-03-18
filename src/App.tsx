@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ProductGrid } from './components/ProductGrid';
@@ -19,229 +20,92 @@ import { TermsOfService } from './pages/legal/TermsOfService';
 import { LegalNotice } from './pages/legal/LegalNotice';
 import { RefundPolicy } from './pages/legal/RefundPolicy';
 
-function App() {
-  const [activeTab, setActiveTab] = useState(() => {
-    const params = new URLSearchParams(window.location.search);
-    const path = window.location.pathname.replace(/^\/|\/$/g, '');
-    
-    if (path === 'pricing') return 'pricing';
-    if (path === 'refund') return 'refund';
-    if (path === 'privacy') return 'privacy';
-    if (path === 'terms') return 'terms';
-    if (path === 'legal') return 'legal';
-    if (path === 'manage') return 'manage';
+const whatsappNumber = "393475393181";
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
 
-    return params.get('tab') || 'home';
-  });
-
+// Scroll to top on every route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
   useEffect(() => {
-    const url = new URL(window.location.href);
-    const compliancePaths = ['pricing', 'refund', 'privacy', 'terms', 'legal', 'manage', 'download'];
-    
-    if (compliancePaths.includes(activeTab)) {
-      url.pathname = `/${activeTab}`;
-      url.searchParams.delete('tab');
-    } else if (activeTab === 'home') {
-      url.pathname = '/';
-      url.searchParams.delete('tab');
-    } else {
-      url.pathname = '/';
-      url.searchParams.set('tab', activeTab);
-    }
-    
-    window.history.replaceState({}, '', url);
-
-    if (activeTab === 'pricing') {
-      scrollToProducts();
-    }
-    
-    if (activeTab === 'download') {
-      setActiveTab('product-max-commander');
-      // Adding a slight delay to ensure the component is rendered before scrolling to pricing
-      setTimeout(() => {
-        const element = document.getElementById('pricing');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }, 500);
-    }
-  }, [activeTab]);
-
-  const whatsappNumber = "393475393181";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
-
-  const handleViewProduct = (productId: string) => {
-    setActiveTab(`product-${productId}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, [pathname]);
+  return null;
+}
 
-  const scrollToProducts = () => {
-    setActiveTab('home');
-    setTimeout(() => {
-      const element = document.getElementById('products');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
-  };
+// Fade wrapper for page transitions
+const Page = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.35 }}
+  >
+    {children}
+  </motion.div>
+);
 
-  const handleBackToProducts = () => {
-    window.location.hash = 'products';
-    setActiveTab('home');
-  };
+function HomePage() {
+  return (
+    <Page>
+      <Hero />
+      <ProductGrid />
+      <section className="py-32 px-6 text-center">
+        <div className="max-w-3xl mx-auto p-12 rounded-[3rem] bg-gradient-to-b from-sterling-deep to-sterling-midnight border border-sterling-blue/20 relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-sterling-blue/20 blur-[80px] rounded-full" />
+          <h2 className="text-4xl font-bold mb-6">Have a project in mind?</h2>
+          <p className="text-sterling-mist/60 mb-10 text-lg">
+            Whether it's a productivity powerhouse or a creative experiment, we'd love to help you build it.
+          </p>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-10 py-4 bg-white text-sterling-deep rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+          >
+            Let's Talk
+          </a>
+        </div>
+      </section>
+    </Page>
+  );
+}
+
+function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="min-h-screen bg-sterling-midnight text-sterling-mist selection:bg-sterling-blue selection:text-white">
-      <Navbar activeTab={activeTab.startsWith('product-') ? 'products' : activeTab} setActiveTab={setActiveTab} />
+      <ScrollToTop />
+      <Navbar />
 
       <main>
         <AnimatePresence mode="wait">
-          {activeTab === 'home' && (
-            <motion.div
-              key="home"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Hero onNavigate={setActiveTab} />
-              <ProductGrid onViewProduct={handleViewProduct} />
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<Page><About /></Page>} />
+            <Route path="/contact" element={<Page><div className="pt-20"><Contact /></div></Page>} />
+            <Route path="/design" element={<Page><VisualStyleGuide /></Page>} />
+            <Route path="/manage" element={<Page><ManageLicense /></Page>} />
 
-              {/* Call to Action Section */}
-              <section className="py-32 px-6 text-center">
-                <div className="max-w-3xl mx-auto p-12 rounded-[3rem] bg-gradient-to-b from-sterling-deep to-sterling-midnight border border-sterling-blue/20 relative overflow-hidden">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-sterling-blue/20 blur-[80px] rounded-full" />
-                  <h2 className="text-4xl font-bold mb-6">Have a project in mind?</h2>
-                  <p className="text-sterling-mist/60 mb-10 text-lg">
-                    Whether it's a productivity powerhouse or a creative experiment, we'd love to help you build it.
-                  </p>
-                  <a
-                    href={whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block px-10 py-4 bg-white text-sterling-deep rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]"
-                  >
-                    Let's Talk
-                  </a>
-                </div>
-              </section>
-            </motion.div>
-          )}
+            {/* Product Routes */}
+            <Route path="/products/max-commander" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
+            <Route path="/products/max-commander/privacy" element={<Page><MaxCommanderPrivacyPolicy onBack={() => navigate('/products/max-commander')} /></Page>} />
+            <Route path="/products/dash" element={<Page><Dash onBack={() => navigate('/')} /></Page>} />
+            <Route path="/products/zap-studio" element={<Page><ZapStudio onBack={() => navigate('/')} /></Page>} />
+            <Route path="/products/easy-monitor" element={<Page><EasyMonitor onBack={() => navigate('/')} /></Page>} />
+            <Route path="/products/tales-universe" element={<Page><TalesUniverse onBack={() => navigate('/')} /></Page>} />
 
-          {activeTab === 'design' && (
-            <motion.div
-              key="design"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <VisualStyleGuide />
-            </motion.div>
-          )}
+            {/* Legal Routes */}
+            <Route path="/privacy" element={<Page><PrivacyPolicy onBack={() => navigate('/')} /></Page>} />
+            <Route path="/terms" element={<Page><TermsOfService onBack={() => navigate('/')} /></Page>} />
+            <Route path="/legal" element={<Page><LegalNotice onBack={() => navigate('/')} /></Page>} />
+            <Route path="/refund" element={<Page><RefundPolicy onBack={() => navigate('/')} /></Page>} />
 
-          {/* Product Routes */}
-          {activeTab === 'product-zap-studio' && (
-            <motion.div key="p-zap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <ZapStudio onBack={handleBackToProducts} />
-            </motion.div>
-          )}
-          {activeTab === 'product-max-commander' && (
-            <motion.div key="p-mc" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <MaxCommander onBack={handleBackToProducts} onViewPrivacy={() => setActiveTab('product-max-commander-privacy')} />
-            </motion.div>
-          )}
-          {activeTab === 'product-max-commander-privacy' && (
-            <motion.div key="p-mc-priv" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <MaxCommanderPrivacyPolicy onBack={() => setActiveTab('product-max-commander')} />
-            </motion.div>
-          )}
-          {activeTab === 'product-dash' && (
-            <motion.div key="p-dash" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <Dash onBack={handleBackToProducts} />
-            </motion.div>
-          )}
-          {activeTab === 'product-easy-monitor' && (
-            <motion.div key="p-em" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <EasyMonitor onBack={handleBackToProducts} />
-            </motion.div>
-          )}
-          {activeTab === 'product-tales-universe' && (
-            <motion.div key="p-tu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <TalesUniverse onBack={handleBackToProducts} />
-            </motion.div>
-          )}
-
-          {activeTab === 'about' && (
-            <motion.div
-              key="about"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ duration: 0.5 }}
-            >
-              <About />
-            </motion.div>
-          )}
-
-          {activeTab === 'contact' && (
-            <motion.div
-              key="contact"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="pt-20"
-            >
-              <Contact />
-            </motion.div>
-          )}
-
-          {activeTab === 'manage' && (
-            <motion.div
-              key="manage"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ duration: 0.5 }}
-            >
-              <ManageLicense />
-            </motion.div>
-          )}
-
-          {activeTab === 'privacy' && (
-            <motion.div key="privacy" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <PrivacyPolicy onBack={() => setActiveTab('home')} />
-            </motion.div>
-          )}
-
-          {activeTab === 'terms' && (
-            <motion.div key="terms" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <TermsOfService onBack={() => setActiveTab('home')} />
-            </motion.div>
-          )}
-
-          {activeTab === 'legal' && (
-            <motion.div key="legal" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <LegalNotice onBack={() => setActiveTab('home')} />
-            </motion.div>
-          )}
-
-          {activeTab === 'refund' && (
-            <motion.div key="refund" initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <RefundPolicy onBack={() => setActiveTab('home')} />
-            </motion.div>
-          )}
-
-          {activeTab === 'pricing' && (
-            <motion.div
-              key="pricing"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              onViewportEnter={() => {
-                setActiveTab('product-max-commander');
-                // We'll handle the scroll inside MaxCommander component
-              }}
-            />
-          )}
+            {/* Redirect legacy / convenience routes */}
+            <Route path="/pricing" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
+            <Route path="/download" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
+          </Routes>
         </AnimatePresence>
       </main>
 
@@ -261,26 +125,28 @@ function App() {
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Connect</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li onClick={() => { setActiveTab('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors flex items-center gap-2">
-                   Contact
+                <li>
+                  <a href="/contact" className="hover:text-sterling-cyan cursor-pointer transition-colors flex items-center gap-2">
+                    Contact
+                  </a>
                 </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Products</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li onClick={() => handleViewProduct('max-commander')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Max Commander</li>
-                <li onClick={() => handleViewProduct('dash')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Dash</li>
-                <li onClick={() => handleViewProduct('zap-studio')} className="hover:text-sterling-cyan cursor-pointer transition-colors">Zap Studio</li>
+                <li><a href="/products/max-commander" className="hover:text-sterling-cyan transition-colors">Max Commander</a></li>
+                <li><a href="/products/dash" className="hover:text-sterling-cyan transition-colors">Dash</a></li>
+                <li><a href="/products/zap-studio" className="hover:text-sterling-cyan transition-colors">Zap Studio</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Legal</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li onClick={() => { setActiveTab('legal'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors">Legal Notice</li>
-                <li onClick={() => { setActiveTab('privacy'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors">Privacy Policy</li>
-                <li onClick={() => { setActiveTab('terms'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors">Terms of Service</li>
-                <li onClick={() => { setActiveTab('refund'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-sterling-cyan cursor-pointer transition-colors">Refund Policy</li>
+                <li><a href="/legal" className="hover:text-sterling-cyan transition-colors">Legal Notice</a></li>
+                <li><a href="/privacy" className="hover:text-sterling-cyan transition-colors">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-sterling-cyan transition-colors">Terms of Service</a></li>
+                <li><a href="/refund" className="hover:text-sterling-cyan transition-colors">Refund Policy</a></li>
               </ul>
             </div>
           </div>
@@ -290,15 +156,13 @@ function App() {
             <span className="text-[10px] text-sterling-mist/20 uppercase tracking-[0.2em]">© 2026 Sterling Lab. All rights reserved.</span>
             <span className="text-[10px] text-sterling-mist/30 font-medium italic">Crafted with precision in the heart of Europe.</span>
           </div>
-          
           <div className="flex gap-4">
-             {/* European Compliance Badges / Indicators could go here */}
-             <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/30">
-               EU Data Protection
-             </div>
-             <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/30">
-               Secure Licensing
-             </div>
+            <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/30">
+              EU Data Protection
+            </div>
+            <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/30">
+              Secure Licensing
+            </div>
           </div>
         </div>
       </footer>

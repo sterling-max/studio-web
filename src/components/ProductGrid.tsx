@@ -2,11 +2,7 @@ import { useEffect } from 'react';
 import { PRODUCTS } from '../constants/products';
 import { ProductCard } from './ProductCard';
 
-interface ProductGridProps {
-  onViewProduct?: (productId: string) => void;
-}
-
-export const ProductGrid = ({ onViewProduct }: ProductGridProps) => {
+export const ProductGrid = () => {
   useEffect(() => {
     if (window.location.hash === '#products') {
       const element = document.getElementById('products');
@@ -33,11 +29,10 @@ export const ProductGrid = ({ onViewProduct }: ProductGridProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PRODUCTS.map((product, index) => (
-            <ProductCard 
-              key={product.id} 
-              product={product} 
-              index={index} 
-              onViewProduct={onViewProduct}
+            <ProductCard
+              key={product.id}
+              product={product}
+              index={index}
             />
           ))}
         </div>

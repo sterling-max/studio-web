@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { type Product } from '../constants/products';
 import { ArrowUpRight, Folder, Play, Video, Activity, Book } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
   index: number;
-  onViewProduct?: (productId: string) => void;
   className?: string;
 }
 
-export const ProductCard = ({ product, index, onViewProduct, className }: ProductCardProps) => {
+export const ProductCard = ({ product, index, className }: ProductCardProps) => {
+  const navigate = useNavigate();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -17,7 +18,7 @@ export const ProductCard = ({ product, index, onViewProduct, className }: Produc
       viewport={{ once: true }}
       transition={{ delay: index * 0.05, duration: 0.4 }}
       whileHover={{ scale: 1.02, y: -5 }}
-      onClick={() => onViewProduct?.(product.id)}
+      onClick={() => navigate(`/products/${product.id}`)}
       className={`group relative flex flex-col bg-sterling-deep border border-sterling-mist/5 rounded-3xl p-8 overflow-hidden transition-all hover:border-sterling-blue/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] cursor-pointer ${className || ''}`}
     >
       {/* Decorative Gradient Overlay */}

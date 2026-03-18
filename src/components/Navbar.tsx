@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Box, Palette, Info, MessageSquare, Sun, Moon, Menu, X, Key } from 'lucide-react';
 import { cn } from '../utils/cn';
@@ -44,15 +45,15 @@ const DesktopNavItem = ({ icon, label, isActive, onClick }: NavItemProps) => (
   </motion.button>
 );
 
-export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActiveTab: (tab: string) => void }) => {
+export const Navbar = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [isDark, setIsDark] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setHasScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -62,27 +63,39 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
   }, [isDark]);
 
   const items = [
-    { id: 'home', icon: <Home size={22} />, label: 'Home' },
-    { id: 'products', icon: <Box size={22} />, label: 'Products' },
-    { id: 'design', icon: <Palette size={22} />, label: 'Design' },
-    { id: 'about', icon: <Info size={22} />, label: 'Lab' },
-    { id: 'contact', icon: <MessageSquare size={22} />, label: 'Contact' },
-    { id: 'manage', icon: <Key size={22} />, label: 'Log In' },
+    { path: '/',        icon: <Home size={22} />,        label: 'Home' },
+    { path: '/#products', icon: <Box size={22} />,       label: 'Products' },
+    { path: '/design',  icon: <Palette size={22} />,     label: 'Design' },
+    { path: '/about',   icon: <Info size={22} />,        label: 'Lab' },
+    { path: '/contact', icon: <MessageSquare size={22} />, label: 'Contact' },
+    { path: '/manage',  icon: <Key size={22} />,         label: 'Log In' },
   ];
 
-  const handleNavClick = (id: string) => {
+  const isActive = (itemPath: string) => {
+    if (itemPath === '/') return pathname === '/';
+    if (itemPath === '/#products') return pathname.startsWith('/products');
+    return pathname === itemPath;
+  };
+
+  const handleNavClick = (itemPath: string) => {
     setIsOpen(false);
-    if (id === 'products') {
-      window.location.hash = 'products';
-      setActiveTab('home');
+    if (itemPath === '/#products') {
+      if (pathname === '/') {
+        const el = document.getElementById('products');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        navigate('/');
+        setTimeout(() => {
+          const el = document.getElementById('products');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+      }
     } else {
-      window.location.hash = '';
-      setActiveTab(id);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      navigate(itemPath);
     }
   };
 
-  const isGlass = hasScrolled || activeTab !== 'home' || isOpen;
+  const isGlass = hasScrolled || pathname !== '/' || isOpen;
 
   return (
     <div
@@ -96,9 +109,9 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
         <div
           className={cn(
             "flex items-center gap-3 cursor-pointer group transition-opacity duration-300",
-            activeTab === 'home' && !hasScrolled ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"
+            pathname === '/' && !hasScrolled ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"
           )}
-          onClick={() => { setActiveTab('home'); setIsOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsOpen(false); }}
         >
           <Logo className="w-8 h-8 drop-shadow-[0_0_10px_rgba(0,122,255,0.4)] transition-transform group-hover:scale-110" />
           <div className="text-xl font-bold tracking-wide text-sterling-mist">Sterling <span className="text-sterling-blue">Lab</span></div>
@@ -108,11 +121,11 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
         <div className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
           {items.map((item) => (
             <DesktopNavItem
-              key={item.id}
+              key={item.path}
               icon={item.icon}
               label={item.label}
-              isActive={activeTab === item.id || (item.id === 'home' && activeTab === 'products')}
-              onClick={() => handleNavClick(item.id)}
+              isActive={isActive(item.path)}
+              onClick={() => handleNavClick(item.path)}
             />
           ))}
           <div className="w-px h-6 bg-sterling-mist/10 mx-2" />
@@ -148,11 +161,11 @@ export const Navbar = ({ activeTab, setActiveTab }: { activeTab: string; setActi
             <div className="flex flex-col gap-1">
               {items.map((item) => (
                 <NavItem
-                  key={item.id}
+                  key={item.path}
                   icon={item.icon}
                   label={item.label}
-                  isActive={activeTab === item.id || (item.id === 'home' && activeTab === 'products')}
-                  onClick={() => handleNavClick(item.id)}
+                  isActive={isActive(item.path)}
+                  onClick={() => handleNavClick(item.path)}
                 />
               ))}
 
