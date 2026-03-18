@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, Award, Users, Code } from 'lucide-react';
+import { Award, Users, Code } from 'lucide-react';
 
 export const About = () => {
   return (
