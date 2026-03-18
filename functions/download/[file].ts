@@ -16,35 +16,42 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     const listed = await env.BUCKET.list(options);
     
     // Get the latest folder (vX.Y.Z)
-    // R2 list returns folders in commonPrefixes if delimiter is used
     const versions = listed.commonPrefixes
-      .map(p => p.replace('mc/releases/', '').replace('/', ''))
+      .map(p => {
+        const parts = p.split('/').filter(Boolean);
+        return parts[parts.length - 1];
+      })
       .filter(v => v.startsWith('v'))
       .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
 
     const latestVersion = versions[0];
     
     if (!latestVersion) {
-       return new Response('No versions found in R2', { status: 404 });
+       return new Response('No versions found in R2 path: mc/releases/', { status: 404 });
     }
 
     // 2. Find the actual installer file inside that version folder
     const versionDir = `mc/releases/${latestVersion}/`;
     const versionFiles = await env.BUCKET.list({ prefix: versionDir });
     
+    // Safety check: ensure we actually have files
+    if (versionFiles.objects.length === 0) {
+      return new Response(`No files found in ${versionDir}`, { status: 404 });
+    }
+
     const installer = versionFiles.objects.find(obj => 
-      obj.key.endsWith('.exe') && !obj.key.includes('pdb')
+      obj.key.endsWith('.exe') && !obj.key.includes('pdb') && obj.size > 0
     );
 
     if (!installer) {
-      return new Response(`Installer not found in ${versionDir}`, { status: 404 });
+      return new Response(`Installer (.exe) not found in ${versionDir}. Files found: ${versionFiles.objects.map(o => o.key).join(', ')}`, { status: 404 });
     }
 
     // 3. Serve the file
     const object = await env.BUCKET.get(installer.key);
 
     if (!object) {
-      return new Response('Object not found', { status: 404 });
+      return new Response(`Unable to fetch object from R2: ${installer.key}`, { status: 404 });
     }
 
     const headers = new Headers();
@@ -52,7 +59,6 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     headers.set('etag', object.httpEtag);
     
     // Set a clean filename for the user
-    // We name it _Free to distinguish it from the pro installers
     const finalName = fileName.includes('free') ? 'MaxCommander_Free.exe' : 'MaxCommanderSetup.exe';
     headers.set('Content-Disposition', `attachment; filename="${finalName}"`);
 
