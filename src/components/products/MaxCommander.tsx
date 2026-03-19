@@ -85,10 +85,11 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       features: [
         "Full Dual-Pane File Manager",
         "TC-Style Keybindings (Configurable)",
+        "FTP / SFTP Remote Connections",
         "Archive Support (ZIP, 7z, JAR)",
         "Multi-Rename (Shift+F6)",
-        "Native Context Menu",
-        "LAN Browsing",
+        "Git Status & Branch Pills",
+        "Cloud Hybrid & Sterling Blitz",
         "Quick Viewer (F3)",
         "Community Support"
       ],
@@ -101,10 +102,10 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       type: "Founder's Edition",
       features: [
         "Everything in Free",
-        "FTP / SFTP Remote Connections",
         "Space Analyzer (Treemap)",
-        "Profiles & Workspaces",
+        "Profiles & Workspaces (Path Firewall)",
         "Plugin System (Jellyfin & more)",
+        "Git history & diff details",
         "Lifetime Updates",
         "Priority Feature Requests",
         "Special 'Founder' Badge"
@@ -118,10 +119,10 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       type: "Standard License",
       features: [
         "Everything in Free",
-        "FTP / SFTP Remote Connections",
         "Space Analyzer (Treemap)",
-        "Profiles & Workspaces",
+        "Profiles & Workspaces (Path Firewall)",
         "Plugin System (Jellyfin & more)",
+        "Git history & diff details",
         "Lifetime Updates",
         "Standard Support"
       ],

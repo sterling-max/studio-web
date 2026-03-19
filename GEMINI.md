@@ -25,6 +25,8 @@ This project is the "Sterling Lab" main portfolio website (`main-site-max`). It 
 
 ## Product Portfolio
 1. **Max Commander:** Dual-pane file manager with an acrylic interface.
+    - **FREE:** Dual-Pane, TC Keybindings, Archive Support, Multi-Rename, Native Context Menu, LAN Browsing, Quick Viewer, FTP/SFTP, Cloud Hybrid, Sterling Blitz, Git Status.
+    - **PRO:** Space Analyzer (Treemap), Profiles & Workspaces (Path Firewall), Plugin System, Git History & Detail Views.
 2. **Dash:** Audio/Music player with "Infinite Glide Lyrics" and glassmorphic UI.
 3. **Zap Studio:** AI-generated children's story video creator.
 4. **EasyMonitor:** System monitoring tool with interactive trend charts.
