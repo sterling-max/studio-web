@@ -6,6 +6,14 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.2",
+    date: "2026-03-19",
+    changes: [
+      "Disabled caching for download binary to ensure latest version is always fetched",
+      "Fixed small layout inconsistencies in the footer version tag"
+    ]
+  },
+  {
     version: "1.0.1",
     date: "2026-03-19",
     changes: [
