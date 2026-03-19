@@ -20,6 +20,7 @@ import { PrivacyPolicy } from './pages/legal/PrivacyPolicy';
 import { TermsOfService } from './pages/legal/TermsOfService';
 import { LegalNotice } from './pages/legal/LegalNotice';
 import { RefundPolicy } from './pages/legal/RefundPolicy';
+import { LATEST_WEBSITE_VERSION } from './data/website-changelog';
 
 const whatsappNumber = "393475393181";
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
@@ -153,8 +154,13 @@ function App() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-sterling-mist/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-col gap-1">
-            <span className="text-[10px] text-sterling-mist/20 uppercase tracking-[0.2em]">© 2026 Sterling Lab. All rights reserved.</span>
+          <div className="flex flex-col gap-1 items-start md:items-start">
+            <div className="flex items-center gap-3">
+              <span className="text-[10px] text-sterling-mist/20 uppercase tracking-[0.2em]">© 2026 Sterling Lab. All rights reserved.</span>
+              <span className="px-2 py-0.5 bg-sterling-blue/5 border border-sterling-blue/10 rounded-md text-[9px] font-mono text-sterling-blue/50 tracking-tighter">
+                v{LATEST_WEBSITE_VERSION}
+              </span>
+            </div>
             <span className="text-[10px] text-sterling-mist/30 font-medium italic">Crafted with precision in the heart of Europe.</span>
           </div>
           <div className="flex gap-4">
