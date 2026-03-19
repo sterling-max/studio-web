@@ -83,7 +83,10 @@ async function serveVersion(version: string, env: Env, fileName: string) {
   const headers = new Headers();
   object.writeHttpMetadata(headers);
   headers.set('etag', object.httpEtag);
-  headers.set('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
+  // Disable caching to ensure users always get the freshest version
+  headers.set('Cache-Control', 'no-cache, no-store, must-revalidate'); 
+  headers.set('Pragma', 'no-cache');
+  headers.set('Expires', '0');
   
   const finalName = fileName.includes('free') ? 'MaxCommander_Free.exe' : 'MaxCommanderSetup.exe';
   headers.set('Content-Disposition', `attachment; filename="${finalName}"`);
