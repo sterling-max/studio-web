@@ -35,7 +35,9 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
   const handleCheckout = (plan: PricingPlan) => {
     if (plan.isFree) {
         // Trigger download via worker alias
-        window.location.href = '/download/mc-setup.exe';
+        // Add a cache buster (timestamp) to ensure the Worker is always triggered
+        const cacheBuster = Date.now();
+        window.location.href = `/download/mc-setup.exe?t=${cacheBuster}`;
         
         // Immediate scroll to SmartScreen guide
         document.getElementById('smartscreen-guide')?.scrollIntoView({ behavior: 'smooth' });

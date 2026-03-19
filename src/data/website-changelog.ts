@@ -6,6 +6,14 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.5",
+    date: "2026-03-19",
+    changes: [
+      "Added client-side cache buster to download URL for instant updates",
+      "Fixed redundant scroll logic on free plan checkout"
+    ]
+  },
+  {
     version: "1.0.4",
     date: "2026-03-19",
     changes: [

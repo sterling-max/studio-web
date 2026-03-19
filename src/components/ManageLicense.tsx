@@ -109,12 +109,15 @@ export const ManageLicense = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <a 
-                  href="/download/mc-latest.exe"
+                <button 
+                  onClick={() => {
+                    const cacheBuster = Date.now();
+                    window.location.href = `/download/mc-setup.exe?t=${cacheBuster}`;
+                  }}
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-sterling-blue text-white rounded-xl font-bold hover:shadow-[0_0_20px_rgba(0,122,255,0.3)] transition-all"
                 >
                   <Download size={18} /> Download Max Commander
-                </a>
+                </button>
               </div>
 
               <div className="space-y-4">
