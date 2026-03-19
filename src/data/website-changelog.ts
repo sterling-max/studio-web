@@ -6,6 +6,14 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.4",
+    date: "2026-03-19",
+    changes: [
+      "Added timestamped version verification to diagnostics",
+      "Confirmed sorting logic for v-prefixed release folders"
+    ]
+  },
+  {
     version: "1.0.3",
     date: "2026-03-19",
     changes: [

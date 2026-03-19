@@ -83,8 +83,8 @@ async function serveVersion(version: string, env: Env, fileName: string) {
   const headers = new Headers();
   object.writeHttpMetadata(headers);
   headers.set('etag', object.httpEtag);
-  // Debug header to see what version we are serving
-  headers.set('x-version', version);
+  // Debug header with timestamp to verify real-time execution
+  headers.set('x-version', `${version} (at ${new Date().toISOString()})`);
   // Disable caching to ensure users always get the freshest version
   headers.set('Cache-Control', 'no-cache, no-store, must-revalidate'); 
   headers.set('Pragma', 'no-cache');
