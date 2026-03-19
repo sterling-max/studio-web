@@ -6,6 +6,14 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.3",
+    date: "2026-03-19",
+    changes: [
+      "Added x-version debug header to download worker for troubleshooting",
+      "Reinforced no-cache policy for binary downloads"
+    ]
+  },
+  {
     version: "1.0.2",
     date: "2026-03-19",
     changes: [
