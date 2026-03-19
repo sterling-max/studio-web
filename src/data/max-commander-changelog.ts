@@ -7,7 +7,7 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
-        version: "0.7.2",
+        version: "0.7.3",
         date: "Mar 18, 2026",
         description: "Distribution & Deployment Infrastructure Polish.",
         changes: [
