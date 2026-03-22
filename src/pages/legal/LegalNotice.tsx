@@ -21,9 +21,9 @@ export const LegalNotice = ({ onBack }: LegalPageProps) => {
 
         <h1 className="text-4xl font-bold mb-12">Legal <span className="text-sterling-blue">Notice</span></h1>
         
-        <div className="prose prose-invert max-w-none space-y-8 text-sterling-mist/70">
+        <div className="prose max-w-none space-y-8 text-sterling-mist/70">
           <section>
-            <h2 className="text-xl font-bold text-white mb-4">Information according to § 5 TMG</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">Information according to § 5 TMG</h2>
             <p>
               Sterling Lab<br />
               Maximiliano Villarreal<br />
@@ -32,7 +32,7 @@ export const LegalNotice = ({ onBack }: LegalPageProps) => {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-white mb-4">Contact</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">Contact</h2>
             <p>
               Email: support@sterling.ltd<br />
               Phone: +39 347 539 3181<br />
@@ -41,7 +41,7 @@ export const LegalNotice = ({ onBack }: LegalPageProps) => {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-white mb-4">Dispute Resolution</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">Dispute Resolution</h2>
             <p>
               The European Commission provides a platform for online dispute resolution (OS): 
               <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-sterling-blue hover:underline ml-1">

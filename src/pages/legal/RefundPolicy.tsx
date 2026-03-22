@@ -31,25 +31,25 @@ export const RefundPolicy = ({ onBack }: RefundPolicyProps) => {
           <p className="text-xl text-sterling-mist/50">Our commitment to your satisfaction and fairness.</p>
         </header>
 
-        <div className="prose prose-invert max-w-none space-y-8 text-sterling-mist/70">
+        <div className="prose max-w-none space-y-8 text-sterling-mist/70">
           <section>
-            <h2 className="text-xl font-bold text-white mb-4">Try Before You Buy</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">Try Before You Buy</h2>
             <p>
               At Sterling Lab, we believe in the quality of our tools. Most of our software, including Max Commander, offers a free version or a trial period. We strongly encourage you to evaluate the software thoroughly before making a purchase to ensure it meets your needs and runs correctly on your system.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-white mb-4">14-Day Money-Back Guarantee</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">14-Day Money-Back Guarantee</h2>
             <p>
               If you are not satisfied with your purchase, you are entitled to a full refund within **14 days** of the original purchase date. No questions asked.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-white mb-4">How to Request a Refund</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">How to Request a Refund</h2>
             <p>
-              To request a refund, please contact us at <span className="text-white font-medium">support@sterling.ltd</span> with the following information:
+              To request a refund, please contact us at <span className="text-sterling-mist font-medium">support@sterling.ltd</span> with the following information:
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-4">
               <li>Your order number (provided by Paddle)</li>
@@ -59,7 +59,7 @@ export const RefundPolicy = ({ onBack }: RefundPolicyProps) => {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-white mb-4">Exceptions</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">Exceptions</h2>
             <p>
               Refunds requested after the 14-day window will be evaluated on a case-by-case basis (e.g., technical issues that prevent the software from functioning as advertised).
             </p>
@@ -68,12 +68,12 @@ export const RefundPolicy = ({ onBack }: RefundPolicyProps) => {
           <div className="grid md:grid-cols-2 gap-6 pt-12">
             <div className="bg-sterling-surface/50 p-6 rounded-2xl border border-sterling-mist/5">
               <ShieldCheck className="text-sterling-blue mb-4" size={24} />
-              <h3 className="font-bold text-white mb-2">Secure Payments</h3>
+              <h3 className="font-bold text-sterling-mist mb-2">Secure Payments</h3>
               <p className="text-sm">Processed via Paddle, our merchant of record, ensuring global compliance and safety.</p>
             </div>
             <div className="bg-sterling-surface/50 p-6 rounded-2xl border border-sterling-mist/5">
               <Mail className="text-sterling-blue mb-4" size={24} />
-              <h3 className="font-bold text-white mb-2">Direct Support</h3>
+              <h3 className="font-bold text-sterling-mist mb-2">Direct Support</h3>
               <p className="text-sm">Fast, human response to all refund requests within 48 hours.</p>
             </div>
           </div>
