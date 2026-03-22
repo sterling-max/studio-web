@@ -30,7 +30,7 @@ export const ChangelogModal = ({ isOpen, onClose, data }: ChangelogModalProps) =
                     {/* Header */}
                     <div className="flex items-center justify-between p-6 border-b border-sterling-mist/10 bg-sterling-deep/50 backdrop-blur-md z-10">
                         <div>
-                            <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                            <h2 className="text-2xl font-bold text-sterling-mist flex items-center gap-3">
                                 Change Log
                                 <span className="text-xs font-mono bg-sterling-blue/10 text-sterling-blue px-2 py-1 rounded-full border border-sterling-blue/20">
                                     Live Updates
@@ -42,7 +42,7 @@ export const ChangelogModal = ({ isOpen, onClose, data }: ChangelogModalProps) =
                         </div>
                         <button
                             onClick={onClose}
-                            className="p-2 hover:bg-white/5 rounded-full text-sterling-mist hover:text-white transition-colors"
+                            className="p-2 hover:bg-white/5 rounded-full text-sterling-mist hover:text-sterling-blue transition-colors"
                         >
                             <X size={24} />
                         </button>
@@ -60,7 +60,7 @@ export const ChangelogModal = ({ isOpen, onClose, data }: ChangelogModalProps) =
 
                                 {/* Content */}
                                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-3">
-                                    <h3 className="text-xl font-bold text-white font-mono tracking-tight">
+                                    <h3 className="text-xl font-bold text-sterling-mist font-mono tracking-tight">
                                         v{entry.version}
                                     </h3>
                                     <span className="text-sterling-blue font-medium text-sm flex items-center gap-1">

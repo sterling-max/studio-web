@@ -7,6 +7,18 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.7.5",
+        date: "Mar 22, 2026",
+        description: "Refining Pause & Background Behavior plus Quick Navigation.",
+        changes: [
+            "Visual Pause Feedback: Operations in the background (Pills) now turn orange and show a Pause icon when halted, with a one-click Resume button for instant recovery.",
+            "Pause Acknowledgment Handshake: Implemented clear 'Asking Windows to Pause...' feedback in the progress dialog, ensuring the user knows precisely when the OS has frozen the operation thread.",
+            "Robust Archive Pausing: Re-engineered ZIP and 7z extraction loops to natively support the pause state, preventing progress leaks and data corruption during halts.",
+            "Quick Navigation Buttons: Added optional '..' (Go Up) and '/' (Go to Root) buttons to the toolbar, toggleable via a new setting in the Interface panel (F9).",
+            "Smart Root Resolution: The new '/' button intelligently understands the current environment, resolving correctly to local drive roots, UNC network shares, or the 'Network Neighbourhood' virtual root."
+        ]
+    },
+    {
         version: "0.7.3",
         date: "Mar 18, 2026",
         description: "Distribution & Deployment Infrastructure Polish.",
