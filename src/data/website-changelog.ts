@@ -6,6 +6,14 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.7",
+    date: "2026-03-23",
+    changes: [
+      "Synced Max Commander product changelog and version to 0.7.7",
+      "Optimized plugin management documentation for Sterling Lab members"
+    ]
+  },
+  {
     version: "1.0.6",
     date: "2026-03-22",
     changes: [

@@ -3,6 +3,10 @@
 ## Project Summary
 This project is the "Sterling Lab" main portfolio website (`main-site-max`). It showcases a suite of premium software products including Max Commander, Dash, Zap Studio, EasyMonitor, and Tales Universe. The application is built with standard React 19, Vite, TypeScript, and utilizes Framer Motion for animations and Tailwind CSS v4 for styling.
 
+## Dev Key
+
+DEV-KEY-$T3RL1NG-PRO
+
 ## Architecture & Tech Stack
 - **Framework:** React 19 + TypeScript + Vite
 - **Styling:** Tailwind CSS v4 + PostCSS

@@ -7,6 +7,29 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.7.7",
+        date: "Mar 23, 2026",
+        description: "Plugin Export Workflow and Manifest Recovery.",
+        changes: [
+            "Export to .mcx: Introduced a one-click export feature in the Plugin Editor to package custom scripts into valid .mcx archives automatically.",
+            "Jellyfin Manifest Recovery: Resolved the 'plugin.json not found' error by restoring the missing manifest for the Jellyfin plugin.",
+            "Mount-time Plugin Sync: The Plugins section now automatically re-scans the local directory on mount, ensuring the UI is always in sync with your disk.",
+            "Backend Resilience: Hardened the archive packing logic in Rust to resolve type ambiguity and improve reliability during plugin exports."
+        ]
+    },
+    {
+        version: "0.7.6",
+        date: "Mar 22, 2026",
+        description: "Reliable Drive Management and Unified PRO Experience.",
+        changes: [
+            "Reliable Drive Loading: Fixed a critical bug where the Drive Bar could appear empty after app restarts or internal refreshes by implementing a module-level lock and atomic state updates.",
+            "Unified PRO Flow: Re-engineered the 'PRO Feature' dialog into a global system, ensuring a consistent premium experience across the app.",
+            "Profile Polish: Added a clear 'PRO' pill to the 'Work' profile in the switcher, providing instant feedback for gated feature discovery.",
+            "Store Stability: Implemented robust state migration logic for all application stores (Settings, Typography, etc.) to eliminate console warnings and ensure smooth updates.",
+            "Backend Cleanup: Resolved several internal Rust and TypeScript warnings to improve build stability and overall code quality."
+        ]
+    },
+    {
         version: "0.7.5",
         date: "Mar 22, 2026",
         description: "Refining Pause & Background Behavior plus Quick Navigation.",
