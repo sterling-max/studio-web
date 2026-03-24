@@ -7,6 +7,17 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.7.8",
+        date: "Mar 24, 2026",
+        description: "Sample Plugins and Critical Stability Hotfix.",
+        changes: [
+            "Sample Plugins: High-fidelity Tool and FileSystem samples demonstrating UI blocks and custom VFS columns.",
+            "UI Stability Fix: Resolved a recursive loading loop in the plugin system.",
+            "Window Titles: Restored branding to the Windows taskbar.",
+            "Permission Hardening: Granular window controls enabled in the security schema."
+        ]
+    },
+    {
         version: "0.7.7",
         date: "Mar 23, 2026",
         description: "Plugin Export Workflow and Manifest Recovery.",
