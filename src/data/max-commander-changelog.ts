@@ -7,6 +7,43 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.8.1",
+        date: "Apr 07, 2026",
+        description: "PathBar Editor & Smart DriveBar.",
+        changes: [
+            "Full-Width Path Editor: Activating the path bar expands to fill the entire header for focused, distraction-free editing.",
+            "Smart Autocomplete: Suggests completions from history and favorites, and reads subfolders in real-time as you type.",
+            "Ghost-Text Suggestions: Inline ghost text shows the best match; Tab to accept, Escape to dismiss, Enter to navigate.",
+            "Drive Menu Button: The left DriveBar button transforms into a Drive Menu trigger when at scroll start.",
+            "Pinnable Locations: Pin Desktop, Documents, Downloads, FTP, or LAN directly to the Drive Bar from the Drive Menu.",
+            "Drive Bar Pinning: Drives can be unpinned to keep the bar tidy. All configuration persists across sessions.",
+            "Native Context Menu on Drives: Right-clicking a drive in the Drive Bar opens the Windows Explorer context menu."
+        ]
+    },
+    {
+        version: "0.8.0",
+        date: "Apr 05, 2026",
+        description: "TitleBar UI Refinement & Granular Controls.",
+        changes: [
+            "Granular UI Control: Independently show or hide the Theme, Settings, and Profile buttons in the TitleBar.",
+            "Modern Profile Aesthetic: Profile Selector transformed into a sleek pill with CamelCase labeling.",
+            "Native Header Feel: Removed custom borders and accent-tinted hover states from TitleBar actions.",
+            "Localized Settings: Full translation support for new visibility toggles across all supported languages."
+        ]
+    },
+    {
+        version: "0.7.9",
+        date: "Apr 04, 2026",
+        description: "Instant Startup Optimization & Viewer Refinements.",
+        changes: [
+            "Lightning Fast Startup: Eliminated the initial window flash. Max Commander boots in ~150 milliseconds.",
+            "Text Selection Enabled: Fixed restriction that prevented text selection in Quick View and Modal View.",
+            "Inline Rename Fixes: Optimistic UI updates for instant, flicker-free feedback across all view modes.",
+            "Lightning Fast Thumbnails: Fast-path engine for folder previews with JPEG encoding for large directories.",
+            "Unified Drive Navigation: Consolidated drive icons and access points into a single shared system."
+        ]
+    },
+    {
         version: "0.7.8",
         date: "Mar 24, 2026",
         description: "Sample Plugins and Critical Stability Hotfix.",

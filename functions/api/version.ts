@@ -4,9 +4,9 @@ export interface Env {
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   return new Response(JSON.stringify({
-    version: "0.7.0",
+    version: "0.8.1",
     url: "https://sterling.ltd/download/mc-latest.exe",
-    notes: "Pro Release with Paddle Integration, R2 Distribution, and Sterling Blitz v2."
+    notes: "PathBar Editor & Smart DriveBar — ghost-text autocomplete, pinnable Drive Bar locations, Drive Menu button, and native context menu on drives."
   }), {
     headers: {
       'Content-Type': 'application/json',

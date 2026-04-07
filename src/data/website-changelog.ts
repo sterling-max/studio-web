@@ -6,6 +6,14 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.9",
+    date: "2026-04-07",
+    changes: [
+      "Synced Max Commander product changelog and version to 0.8.1",
+      "Updated Cloudflare version endpoint to reflect latest release notes"
+    ]
+  },
+  {
     version: "1.0.8",
     date: "2026-03-24",
     changes: [
