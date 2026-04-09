@@ -7,6 +7,20 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.8.5",
+        date: "Apr 09, 2026",
+        description: "FTP Stability, Persistence & UX Polish.",
+        changes: [
+            "Async Remote Backend: Rebuilt the FTP/SFTP core to be fully asynchronous, ensuring the UI stays fluid even on slow networks.",
+            "Session Auto-Recovery: Intelligent session management that automatically re-authorizes connections if the backend state is lost.",
+            "Visual Connecting States: Added a pulsing 'Connecting' animation to remote drives in the DriveBar for clear background feedback.",
+            "Disconnect Improvements: Quick-disconnect 'X' button on drive pills and automatic panel pivoting back to local drives on disconnect.",
+            "Clean Remote Naming: Integrated high-fidelity MLSD listing parser to fix garbled filenames and provide accurate metadata.",
+            "High-Integrity Transfers: Enforced Binary transfer mode for all remote operations to ensure byte-perfect accuracy for media and archives.",
+            "Persistent Sessions: Remote configurations now persist across app restarts and appear as first-class mounted drives."
+        ]
+    },
+    {
         version: "0.8.1",
         date: "Apr 07, 2026",
         description: "PathBar Editor & Smart DriveBar.",
