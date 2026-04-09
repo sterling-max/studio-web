@@ -57,5 +57,24 @@ DEV-KEY-$T3RL1NG-PRO
 * [x] **Licensing Backend:** Complete Cloudflare DNS and D1 binding for `/api/activate`, `/api/manage`, and `/api/send-magic-link`.
 * [x] **Licensing UI:** Finalize the `/manage` portal with machine deactivation logic and computer name display.
 * [ ] **Paddle Webhook Verification:** Implement signature verification for Paddle webhooks in the Cloudflare function.
-* [ ] **Email Delivery:** Integrate an email provider (e.g., Resend) for real magic link delivery.
+- **Email Delivery:** Integrate an email provider (e.g., Resend) for real magic link delivery.
+* [x] **Tester Key Generator:** Implemented `/api/generate-key` for manual license creation.
+
+## Manual Key Generation (Admin)
+To generate a spare key for a tester, send a POST request to:
+`https://sterling.ltd/api/generate-key`
+
+**Headers:**
+- `Authorization: Bearer DEV-KEY-$T3RL1NG-PRO`
+- `Content-Type: application/json`
+
+**Body:**
+```json
+{
+  "email": "tester@example.com",
+  "product_id": "mc_pro",
+  "founder_status": true
+}
+```
+The response will contain a key starting with `MC-FREE-`.
 
