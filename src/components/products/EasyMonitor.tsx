@@ -12,29 +12,25 @@ export const EasyMonitor = ({ onBack }: EasyMonitorProps) => {
       id: 1,
       title: "Tactile Input",
       description: "OMRON-style scroll wheels for entering readings. Designed for elderly users with large touch targets.",
-      icon: Activity,
-      image: "/assets/easy-monitor.png"
+      icon: Activity
     },
     {
       id: 2,
       title: "Health Trends",
       description: "Interactive SVG charts that visualize blood pressure and heart rate over time.",
-      icon: Heart,
-      image: "/assets/easy-monitor.png"
+      icon: Heart
     },
     {
       id: 3,
       title: "Doctor Reports",
       description: "Generate professional PDF reports with statistics and classification (AHA/WHO Guidelines).",
-      icon: FileText,
-      image: "/assets/easy-monitor.png"
+      icon: FileText
     },
     {
       id: 4,
       title: "Family Connect",
       description: "Securely share health data with family members or caregivers via the cloud sync.",
-      icon: Users,
-      image: "/assets/easy-monitor.png"
+      icon: Users
     }
   ];
 

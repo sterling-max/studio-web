@@ -3,6 +3,8 @@ import { PRODUCTS } from '../constants/products';
 import { ProductCard } from './ProductCard';
 
 export const ProductGrid = () => {
+  const visibleProducts = PRODUCTS.filter((product) => product.isVisible !== false);
+
   useEffect(() => {
     if (window.location.hash === '#products') {
       const element = document.getElementById('products');
@@ -28,7 +30,7 @@ export const ProductGrid = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PRODUCTS.map((product, index) => (
+          {visibleProducts.map((product, index) => (
             <ProductCard
               key={product.id}
               product={product}

@@ -9,7 +9,7 @@ export interface TimelineStep {
   title: string;
   description: string;
   icon: LucideIcon;
-  image: string;
+  image?: string;
 }
 
 interface ProductLayoutProps {
@@ -217,7 +217,7 @@ export const ProductLayout = ({
 
                 {/* Content Card */}
                 <div className={cn(
-                  "flex-1 w-full md:w-auto pl-20 md:pl-0",
+                  step.image ? "flex-1 w-full md:w-auto pl-20 md:pl-0" : "w-full pl-20 md:pl-0",
                   isEven ? "md:text-right" : "md:text-left"
                 )}>
                   <div className="bg-sterling-deep border border-sterling-mist/5 p-8 rounded-[2rem] hover:border-sterling-blue/30 transition-all hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] group">
@@ -237,7 +237,10 @@ export const ProductLayout = ({
                 </div>
 
                 {/* Image 3D Effect */}
-                <div className="flex-1 hidden md:block w-full perspective-[1040px] group/image">
+                <div className={cn(
+                  "hidden md:block w-full perspective-[1040px] group/image",
+                  step.image ? "flex-1" : "hidden"
+                )}>
                   <motion.div
                     className={cn(
                       "relative rounded-2xl overflow-hidden border-2 border-sterling-blue/20 p-1 bg-sterling-surface shadow-2xl cursor-none", // cursor-none because we use the overlay
@@ -254,7 +257,7 @@ export const ProductLayout = ({
                       zIndex: 50
                     }}
                     transition={{ duration: 0.5 }}
-                    onClick={() => setSelectedImage(step.image)}
+                    onClick={() => step.image && setSelectedImage(step.image)}
                   >
                     <div className="absolute inset-0 bg-gradient-to-tr from-sterling-blue/10 to-transparent pointer-events-none z-10" />
 
@@ -265,11 +268,13 @@ export const ProductLayout = ({
                       </div>
                     </div>
 
-                    <img
-                      src={step.image}
-                      alt={step.title}
-                      className="w-full h-auto rounded-xl"
-                    />
+                    {step.image && (
+                      <img
+                        src={step.image}
+                        alt={step.title}
+                        className="w-full h-auto rounded-xl"
+                      />
+                    )}
                   </motion.div>
                 </div>
               </motion.div>

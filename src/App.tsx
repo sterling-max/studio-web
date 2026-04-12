@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -6,12 +6,10 @@ import { ProductGrid } from './components/ProductGrid';
 import { VisualStyleGuide } from './components/VisualStyleGuide';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
-import { ZapStudio } from './components/products/ZapStudio';
 import { MaxCommander } from './components/products/MaxCommander';
 import { MaxCommanderPrivacyPolicy } from './components/products/MaxCommanderPrivacyPolicy';
 import { Dash } from './components/products/Dash';
 import { EasyMonitor } from './components/products/EasyMonitor';
-import { TalesUniverse } from './components/products/TalesUniverse';
 import { ManageLicense } from './components/ManageLicense';
 import { PricingPage } from './components/products/PricingPage';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -94,9 +92,9 @@ function App() {
             <Route path="/products/max-commander" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
             <Route path="/products/max-commander/privacy" element={<Page><MaxCommanderPrivacyPolicy onBack={() => navigate('/products/max-commander')} /></Page>} />
             <Route path="/products/dash" element={<Page><Dash onBack={() => navigate('/')} /></Page>} />
-            <Route path="/products/zap-studio" element={<Page><ZapStudio onBack={() => navigate('/')} /></Page>} />
+            <Route path="/products/zap-studio" element={<Navigate to="/" replace />} />
             <Route path="/products/easy-monitor" element={<Page><EasyMonitor onBack={() => navigate('/')} /></Page>} />
-            <Route path="/products/tales-universe" element={<Page><TalesUniverse onBack={() => navigate('/')} /></Page>} />
+            <Route path="/products/tales-universe" element={<Navigate to="/" replace />} />
 
             {/* Legal Routes */}
             <Route path="/privacy" element={<Page><PrivacyPolicy onBack={() => navigate('/')} /></Page>} />
@@ -139,7 +137,7 @@ function App() {
               <ul className="text-sterling-mist/50 text-sm space-y-2">
                 <li><a href="/products/max-commander" className="hover:text-sterling-cyan transition-colors">Max Commander</a></li>
                 <li><a href="/products/dash" className="hover:text-sterling-cyan transition-colors">Dash</a></li>
-                <li><a href="/products/zap-studio" className="hover:text-sterling-cyan transition-colors">Zap Studio</a></li>
+                <li><a href="/products/easy-monitor" className="hover:text-sterling-cyan transition-colors">EasyMonitor</a></li>
               </ul>
             </div>
             <div>

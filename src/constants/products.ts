@@ -7,6 +7,7 @@ export interface Product {
   techStack: string[];
   category: 'productivity' | 'multimedia' | 'health' | 'creative';
   status: 'available' | 'soon';
+  isVisible?: boolean;
 }
 
 export const PRODUCTS: Product[] = [
@@ -18,7 +19,8 @@ export const PRODUCTS: Product[] = [
     features: ['Dual-pane navigation', 'Native Windows 11 Acrylic effects', 'Hyper-fast drive loading', 'Recursive branch view', 'Integrated Terminal & FTP'],
     techStack: ['Rust (Tauri)', 'React', 'TypeScript', 'Zustand'],
     category: 'productivity',
-    status: 'available'
+    status: 'available',
+    isVisible: true
   },
   {
     id: 'dash',
@@ -28,7 +30,8 @@ export const PRODUCTS: Product[] = [
     features: ['Infinite Glide Lyrics', 'Glassmorphic UI', 'Theme-aware backdrops', '60fps scrolling engine'],
     techStack: ['Tauri', 'React', 'TypeScript', 'Zustand', 'Framer Motion'],
     category: 'multimedia',
-    status: 'soon'
+    status: 'soon',
+    isVisible: true
   },
   {
     id: 'zap-studio',
@@ -38,7 +41,8 @@ export const PRODUCTS: Product[] = [
     features: ['AI Story Generation', 'Voice Narration (ElevenLabs)', 'AI Illustrations (DALL-E 3)', 'Automated Video Assembly'],
     techStack: ['Next.js', 'Claude AI', 'FFmpeg', 'SQLite'],
     category: 'creative',
-    status: 'soon'
+    status: 'soon',
+    isVisible: false
   },
   {
     id: 'easy-monitor',
@@ -48,7 +52,8 @@ export const PRODUCTS: Product[] = [
     features: ['OMRON-style reading input', 'Interactive trend charts', 'Professional PDF reports', 'Trilingual support'],
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Supabase'],
     category: 'health',
-    status: 'soon'
+    status: 'soon',
+    isVisible: true
   },
   {
     id: 'tales-universe',
@@ -58,6 +63,7 @@ export const PRODUCTS: Product[] = [
     features: ['AI Alternative Endings', 'Curated story library', 'Interactive virtual coin system', 'Safe, engaging design'],
     techStack: ['Flutter', 'AI Integration', 'Local Storage'],
     category: 'creative',
-    status: 'soon'
+    status: 'soon',
+    isVisible: false
   }
 ];
