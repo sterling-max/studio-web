@@ -11,6 +11,8 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product, index, className }: ProductCardProps) => {
   const navigate = useNavigate();
+  const previewImage = product.id === 'max-commander' ? '/assets/max-commander/1.png' : null;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -36,6 +38,18 @@ export const ProductCard = ({ product, index, className }: ProductCardProps) => 
           {product.category}
         </span>
       </div>
+
+      {previewImage && (
+        <div className="relative z-10 -mx-3 mb-7 overflow-hidden rounded-2xl border border-sterling-blue/15 bg-sterling-midnight/70 shadow-[0_24px_70px_rgba(0,0,0,0.35)]">
+          <div className="absolute inset-0 bg-gradient-to-tr from-sterling-blue/20 via-transparent to-sterling-cyan/10 opacity-70 pointer-events-none" />
+          <img
+            src={previewImage}
+            alt={`${product.name} preview`}
+            className="aspect-[16/10] w-full object-cover object-left-top transition-transform duration-700 group-hover:scale-[1.04]"
+            loading="lazy"
+          />
+        </div>
+      )}
 
       <div className="relative z-10 mb-auto">
         <div className="flex items-center gap-3 mb-2">

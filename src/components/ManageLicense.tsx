@@ -103,10 +103,20 @@ export const ManageLicense = () => {
                     <code className="text-xs text-sterling-blue">{license.key}</code>
                   </div>
                 </div>
-                <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/20">
-                  ACTIVE
+                <span className={`px-3 py-1 text-xs font-bold rounded-full border ${
+                  !license.status || license.status === 'active'
+                    ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                    : 'bg-red-500/10 text-red-400 border-red-500/20'
+                }`}>
+                  {(license.status || 'active').toUpperCase()}
                 </span>
               </div>
+
+              {license.revocation_reason && (
+                <div className="mb-6 rounded-2xl border border-red-500/15 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                  {license.revocation_reason}
+                </div>
+              )}
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <button 
@@ -114,7 +124,8 @@ export const ManageLicense = () => {
                     const cacheBuster = Date.now();
                     window.location.href = `/download/mc-setup.exe?t=${cacheBuster}`;
                   }}
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-sterling-blue text-white rounded-xl font-bold hover:shadow-[0_0_20px_rgba(0,122,255,0.3)] transition-all"
+                  disabled={license.status && license.status !== 'active'}
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-sterling-blue text-white rounded-xl font-bold hover:shadow-[0_0_20px_rgba(0,122,255,0.3)] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <Download size={18} /> Download Max Commander
                 </button>

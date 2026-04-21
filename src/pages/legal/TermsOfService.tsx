@@ -25,7 +25,7 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
           <section className="p-6 bg-sterling-blue/5 border border-sterling-blue/20 rounded-2xl">
             <h2 className="text-xl font-bold text-sterling-mist mb-4">Merchant of Record</h2>
             <p className="text-sterling-mist italic">
-              Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
+              Our order process is conducted by Lemon Squeezy, our authorized reseller and Merchant of Record. Lemon Squeezy handles payment processing, applicable VAT and sales tax, refunds, disputes, and billing support for purchases.
             </p>
           </section>
 
@@ -65,6 +65,9 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
             <h2 className="text-xl font-bold text-sterling-mist mb-4">2. Software Usage</h2>
             <p>
               Our software (such as Max Commander) is provided under specific licenses. Pro features require a valid license key. Unauthorized redistribution or modification of our software is prohibited.
+            </p>
+            <p className="mt-4">
+              Refunded, disputed, reversed, or otherwise invalid purchases may result in deactivation of the associated license key and Pro features. The software may periodically contact Sterling Lab licensing servers to validate license status and refresh a local machine-bound entitlement.
             </p>
           </section>
 

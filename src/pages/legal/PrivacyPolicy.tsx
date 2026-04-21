@@ -51,7 +51,7 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
               To provide our services, we use the following third-party processors:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Paddle:</strong> Our merchant of record for processing payments and managing tax compliance. As the Merchant of Record, Paddle acts as the legal seller of the software and handles the processing of your payment data in accordance with their own privacy policy.</li>
+              <li><strong>Lemon Squeezy:</strong> Our merchant of record for processing payments and managing tax compliance. As the Merchant of Record, Lemon Squeezy acts as the legal seller of the software and handles the processing of your payment data in accordance with their own privacy policy.</li>
               <li><strong>Resend:</strong> Used for sending transactional emails and license keys.</li>
               <li><strong>Cloudflare:</strong> Provides our global hosting, DNS, and secure Worker infrastructure.</li>
             </ul>
@@ -60,14 +60,14 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
           <section>
             <h2 className="text-xl font-bold text-sterling-mist mb-4">4. Third-Country Transfers</h2>
             <p>
-              Some of our processors (Paddle, Resend) are based in the United States. We ensure that your data is protected through Standard Contractual Clauses (SCCs) as approved by the European Commission, ensuring a level of data protection comparable to that of the GDPR.
+              Some of our processors (Lemon Squeezy, Resend) are based in the United States. We ensure that your data is protected through Standard Contractual Clauses (SCCs) as approved by the European Commission, ensuring a level of data protection comparable to that of the GDPR.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold text-sterling-mist mb-4">5. Licensing System</h2>
             <p>
-              When you purchase or activate a license for our software, we collect your email address and a unique hardware identifier (Machine ID) to manage your license and prevent unauthorized use. This data is handled via our secure Cloudflare-based infrastructure.
+              When you purchase, activate, or validate a license for our software, we collect your email address, license key, machine name, a unique hardware identifier (Machine ID), activation timestamps, and entitlement refresh timestamps to manage your license, enforce activation limits, and prevent unauthorized use. This data is handled via our secure Cloudflare-based infrastructure.
             </p>
           </section>
 

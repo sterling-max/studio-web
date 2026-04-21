@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { HelpCircle, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { Pricing, type PricingPlan } from './Pricing';
+import { maxCommanderCheckoutUrls } from '../../constants/checkout';
 
 const plans: PricingPlan[] = [
   {
@@ -23,7 +24,7 @@ const plans: PricingPlan[] = [
     isFree: true
   },
   {
-    price: "$15",
+    price: "€15",
     type: "Founder's Edition",
     features: [
       "Everything in Free",
@@ -37,10 +38,10 @@ const plans: PricingPlan[] = [
     ],
     badge: "Limited Time",
     highlight: true,
-    priceId: 'pri_01kkwsmfah4angn53cs289xe24'
+    checkoutUrl: maxCommanderCheckoutUrls.founder
   },
   {
-    price: "$25",
+    price: "€25",
     type: "Standard License",
     features: [
       "Everything in Free",
@@ -53,7 +54,7 @@ const plans: PricingPlan[] = [
     ],
     badge: "Standard Price",
     highlight: false,
-    priceId: 'pri_01kkwsp14hg0vxgckn12v53m7x'
+    checkoutUrl: maxCommanderCheckoutUrls.standard
   }
 ];
 
@@ -80,7 +81,7 @@ const faqs = [
   },
   {
     q: "Who handles payments and taxes?",
-    a: "All payments are processed by Paddle.com, our Merchant of Record. Paddle handles VAT and sales tax calculation based on your location. Prices shown exclude tax."
+    a: "All payments are processed by Lemon Squeezy, our Merchant of Record. Lemon Squeezy handles VAT and sales tax calculation based on your location. Prices shown exclude tax."
   },
 ];
 
@@ -141,9 +142,9 @@ export const PricingPage = () => {
         className="max-w-3xl mx-auto px-6 mt-4 mb-12 p-6 rounded-2xl bg-sterling-blue/5 border border-sterling-blue/15"
       >
         <p className="text-sterling-mist/50 text-xs leading-relaxed text-center">
-          Our order process is conducted by our online reseller{' '}
-          <a href="https://paddle.com" target="_blank" rel="noopener noreferrer" className="text-sterling-blue hover:underline">Paddle.com</a>.
-          Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.{' '}
+          Our order process is conducted by{' '}
+          <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="text-sterling-blue hover:underline">Lemon Squeezy</a>,
+          our authorized reseller and Merchant of Record. Lemon Squeezy handles payment processing, applicable VAT and sales tax, refunds, disputes, and billing support for purchases.{' '}
           Prices shown exclude tax. VAT and applicable sales tax are calculated at checkout based on your location.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xs">

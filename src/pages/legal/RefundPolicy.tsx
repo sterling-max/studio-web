@@ -52,7 +52,7 @@ export const RefundPolicy = ({ onBack }: RefundPolicyProps) => {
               To request a refund, please contact us at <span className="text-sterling-mist font-medium">support@sterling.ltd</span> with the following information:
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-4">
-              <li>Your order number (provided by Paddle)</li>
+              <li>Your order number (provided by Lemon Squeezy)</li>
               <li>The email address used for the purchase</li>
               <li>The license key provided</li>
             </ul>
@@ -63,13 +63,16 @@ export const RefundPolicy = ({ onBack }: RefundPolicyProps) => {
             <p>
               Refunds requested after the 14-day window will be evaluated on a case-by-case basis (e.g., technical issues that prevent the software from functioning as advertised).
             </p>
+            <p className="mt-4">
+              When a refund is approved, the related license key and activated Pro features may be deactivated. Max Commander may periodically validate license status online to refresh the local entitlement for the activated device.
+            </p>
           </section>
 
           <div className="grid md:grid-cols-2 gap-6 pt-12">
             <div className="bg-sterling-surface/50 p-6 rounded-2xl border border-sterling-mist/5">
               <ShieldCheck className="text-sterling-blue mb-4" size={24} />
               <h3 className="font-bold text-sterling-mist mb-2">Secure Payments</h3>
-              <p className="text-sm">Processed via Paddle, our merchant of record, ensuring global compliance and safety.</p>
+              <p className="text-sm">Processed via Lemon Squeezy, our merchant of record, ensuring global compliance and safety.</p>
             </div>
             <div className="bg-sterling-surface/50 p-6 rounded-2xl border border-sterling-mist/5">
               <Mail className="text-sterling-blue mb-4" size={24} />

@@ -24,12 +24,12 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
   // 2. Fetch licenses and their activations
   const licenses = await env.DB.prepare(
-    'SELECT key, product_id, created_at FROM licenses WHERE email = ?'
+    'SELECT key, product_id, created_at, status, refunded_at, disputed_at, revoked_at, revocation_reason FROM licenses WHERE email = ?'
   ).bind(email).all();
 
   const results = await Promise.all(licenses.results.map(async (l: any) => {
     const activations = await env.DB.prepare(
-      'SELECT id, machine_id, machine_name, activated_at FROM activations WHERE license_key = ?'
+      "SELECT id, machine_id, machine_name, activated_at, last_validated_at, entitlement_expires_at FROM activations WHERE license_key = ? AND COALESCE(status, 'active') = 'active'"
     ).bind(l.key).all();
     return { ...l, activations: activations.results };
   }));
@@ -71,8 +71,10 @@ export const onRequestDelete: PagesFunction<Env> = async (context) => {
     return new Response('Activation not found or unauthorized', { status: 403 });
   }
 
-  // 3. Delete the activation
-  await env.DB.prepare('DELETE FROM activations WHERE id = ?').bind(activationId).run();
+  // 3. Deactivate the activation while preserving audit history
+  await env.DB.prepare(
+    "UPDATE activations SET status = 'deactivated', deactivated_at = ? WHERE id = ?"
+  ).bind(Date.now(), activationId).run();
 
   return new Response(JSON.stringify({ success: true }));
 };

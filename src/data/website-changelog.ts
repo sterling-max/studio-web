@@ -85,7 +85,7 @@ export const websiteChangelog: WebsiteVersion[] = [
     changes: [
       "Initial launch of the Sterling Lab website",
       "Product showcase for Max Commander, Dash, Zap Studio",
-      "Paddle billing integration",
+      "Merchant of Record billing integration",
       "License management system"
     ]
   }

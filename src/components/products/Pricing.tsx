@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Download } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import { withLemonSqueezyEmbed } from '../../constants/checkout';
 
 export interface PricingPlan {
   price: string;
@@ -9,8 +10,9 @@ export interface PricingPlan {
   features: string[];
   badge: string;
   highlight: boolean;
-  priceId?: string; // Paddle Price ID
+  checkoutUrl?: string;
   isFree?: boolean;
+  buttonLabel?: string;
 }
 
 interface PricingProps {
@@ -19,17 +21,10 @@ interface PricingProps {
   showFooterNote?: boolean;
 }
 
-// Replace with your actual Paddle Client Token from Dashboard
-const PADDLE_CLIENT_TOKEN = 'plt_01kkwtgs11cy5p532ngg8x8wtd'; 
-
 export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: PricingProps) => {
   useEffect(() => {
-    // Initialize Paddle
-    if ((window as any).Paddle) {
-      (window as any).Paddle.Initialize({ 
-        token: PADDLE_CLIENT_TOKEN
-      });
-    }
+    (window as any).createLemonSqueezy?.();
+    (window as any).LemonSqueezy?.Refresh?.();
   }, []);
 
   const handleCheckout = (plan: PricingPlan) => {
@@ -44,22 +39,15 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
         return;
     }
 
-    if (plan.priceId && (window as any).Paddle) {
-      (window as any).Paddle.Checkout.open({
-        items: [
-          {
-            priceId: plan.priceId,
-            quantity: 1
-          }
-        ],
-        settings: {
-          displayMode: 'overlay',
-          theme: 'dark',
-          locale: 'en'
-        }
-      });
+    if (plan.checkoutUrl) {
+      const lemonSqueezy = (window as any).LemonSqueezy;
+      if (lemonSqueezy?.Url?.Open) {
+        lemonSqueezy.Url.Open(withLemonSqueezyEmbed(plan.checkoutUrl));
+      } else {
+        window.location.href = plan.checkoutUrl;
+      }
     } else {
-      console.warn('Paddle Price ID missing or Paddle not initialized');
+      console.warn('Lemon Squeezy checkout URL missing');
     }
   };
 
@@ -126,7 +114,9 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
                   : "bg-sterling-mist/5 text-sterling-mist hover:bg-sterling-mist/10"
               )}
             >
-              {plan.isFree ? (
+              {plan.buttonLabel ? (
+                plan.buttonLabel
+              ) : plan.isFree ? (
                 <>
                   <Download size={18} />
                   Download Free
@@ -142,7 +132,7 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
         <div className="mt-16 text-center">
           <p className="text-sterling-mist/30 text-xs max-w-2xl mx-auto leading-relaxed">
             By completing a purchase, you agree to Sterling Lab's <button onClick={() => window.location.href='/terms'} className="text-sterling-blue hover:underline">Terms of Service</button> and <button onClick={() => window.location.href='/refund'} className="text-sterling-blue hover:underline">Refund Policy</button>.<br />
-            Payments are securely processed by <strong>Paddle</strong>, our Merchant of Record.
+            Payments are securely processed by <strong>Lemon Squeezy</strong>, our Merchant of Record.
           </p>
         </div>
       )}

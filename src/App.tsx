@@ -8,8 +8,6 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { MaxCommander } from './components/products/MaxCommander';
 import { MaxCommanderPrivacyPolicy } from './components/products/MaxCommanderPrivacyPolicy';
-import { Dash } from './components/products/Dash';
-import { EasyMonitor } from './components/products/EasyMonitor';
 import { ManageLicense } from './components/ManageLicense';
 import { PricingPage } from './components/products/PricingPage';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -91,9 +89,9 @@ function App() {
             {/* Product Routes */}
             <Route path="/products/max-commander" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
             <Route path="/products/max-commander/privacy" element={<Page><MaxCommanderPrivacyPolicy onBack={() => navigate('/products/max-commander')} /></Page>} />
-            <Route path="/products/dash" element={<Page><Dash onBack={() => navigate('/')} /></Page>} />
+            <Route path="/products/dash" element={<Navigate to="/products/max-commander" replace />} />
             <Route path="/products/zap-studio" element={<Navigate to="/" replace />} />
-            <Route path="/products/easy-monitor" element={<Page><EasyMonitor onBack={() => navigate('/')} /></Page>} />
+            <Route path="/products/easy-monitor" element={<Navigate to="/products/max-commander" replace />} />
             <Route path="/products/tales-universe" element={<Navigate to="/" replace />} />
 
             {/* Legal Routes */}
@@ -136,8 +134,6 @@ function App() {
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Products</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
                 <li><a href="/products/max-commander" className="hover:text-sterling-cyan transition-colors">Max Commander</a></li>
-                <li><a href="/products/dash" className="hover:text-sterling-cyan transition-colors">Dash</a></li>
-                <li><a href="/products/easy-monitor" className="hover:text-sterling-cyan transition-colors">EasyMonitor</a></li>
               </ul>
             </div>
             <div>

@@ -24,12 +24,12 @@ export const ProductGrid = () => {
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Crafted <span className="text-sterling-blue">Software</span></h2>
             <p className="text-sterling-mist/60 max-w-lg">
-              Our portfolio spans from hyper-optimized system tools to imaginative creative engines.
+              Max Commander is the current public focus of Sterling Lab.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className={`grid grid-cols-1 gap-8 ${visibleProducts.length === 1 ? 'max-w-md mx-auto' : 'md:grid-cols-2 lg:grid-cols-3'}`}>
           {visibleProducts.map((product, index) => (
             <ProductCard
               key={product.id}

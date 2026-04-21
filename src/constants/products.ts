@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
     techStack: ['Tauri', 'React', 'TypeScript', 'Zustand', 'Framer Motion'],
     category: 'multimedia',
     status: 'soon',
-    isVisible: true
+    isVisible: false
   },
   {
     id: 'zap-studio',
@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Supabase'],
     category: 'health',
     status: 'soon',
-    isVisible: true
+    isVisible: false
   },
   {
     id: 'tales-universe',

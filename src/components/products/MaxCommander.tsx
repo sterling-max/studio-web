@@ -5,6 +5,7 @@ import { type PricingPlan } from './Pricing';
 import { ChangelogModal } from './ChangelogModal';
 import { SmartScreenGuide } from './SmartScreenGuide';
 import { changelogData } from '../../data/max-commander-changelog';
+import { maxCommanderCheckoutUrls } from '../../constants/checkout';
 
 interface MaxCommanderProps {
   onBack: () => void;
@@ -98,7 +99,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       isFree: true
     },
     {
-      price: "$15",
+      price: "€15",
       type: "Founder's Edition",
       features: [
         "Everything in Free",
@@ -112,10 +113,10 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       ],
       badge: "Limited Time",
       highlight: true,
-      priceId: 'pri_01kkwsmfah4angn53cs289xe24'
+      checkoutUrl: maxCommanderCheckoutUrls.founder
     },
     {
-      price: "$25",
+      price: "€25",
       type: "Standard License",
       features: [
         "Everything in Free",
@@ -128,7 +129,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       ],
       badge: "Standard Price",
       highlight: false,
-      priceId: 'pri_01kkwsp14hg0vxgckn12v53m7x'
+      checkoutUrl: maxCommanderCheckoutUrls.standard
     }
   ];
 
