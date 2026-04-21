@@ -21,9 +21,9 @@
 
 - Storefront checkout URL: `https://sterling.lemonsqueezy.com/checkout/buy/86608fca-fab5-4b6d-a6cb-f74c2487e6c4`
 - Checkout ID: `86608fca-fab5-4b6d-a6cb-f74c2487e6c4`
-- Standard license checkout: `https://sterling.lemonsqueezy.com/checkout/buy/86608fca-fab5-4b6d-a6cb-f74c2487e6c4`
+- Standard license checkout: `https://sterling.lemonsqueezy.com/checkout/buy/86608fca-fab5-4b6d-a6cb-f74c2487e6c4?checkout[custom][product_id]=mc_pro`
 - Founder discount code: `FOUNDER26`
-- Founder checkout: `https://sterling.lemonsqueezy.com/checkout/buy/86608fca-fab5-4b6d-a6cb-f74c2487e6c4?discount=FOUNDER26`
+- Founder checkout: `https://sterling.lemonsqueezy.com/checkout/buy/86608fca-fab5-4b6d-a6cb-f74c2487e6c4?checkout[discount_code]=FOUNDER26&checkout[custom][product_id]=mc_pro&checkout[custom][founder_status]=true`
 - Embedded popup checkout uses the same URLs with `embed=1` added at runtime.
 
 Next steps:
