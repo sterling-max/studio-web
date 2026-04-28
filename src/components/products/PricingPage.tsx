@@ -91,7 +91,7 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
     <div className="border-b border-sterling-mist/10 last:border-0">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left text-sterling-mist/80 hover:text-sterling-mist transition-colors"
+        className="w-full flex items-center justify-between gap-4 py-5 text-left text-sterling-mist/80 hover:text-sterling-mist transition-colors cursor-pointer"
       >
         <span className="font-semibold">{q}</span>
         <ChevronDown
@@ -143,18 +143,18 @@ export const PricingPage = () => {
       >
         <p className="text-sterling-mist/50 text-xs leading-relaxed text-center">
           Our order process is conducted by{' '}
-          <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="text-sterling-blue hover:underline">Lemon Squeezy</a>,
+          <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="text-sterling-blue hover:underline cursor-pointer">Lemon Squeezy</a>,
           our authorized reseller and Merchant of Record. Lemon Squeezy handles payment processing, applicable VAT and sales tax, refunds, disputes, and billing support for purchases.{' '}
           Prices shown exclude tax. VAT and applicable sales tax are calculated at checkout based on your location.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xs">
-          <a href="/terms" className="text-sterling-blue hover:underline">Terms of Service</a>
+          <a href="/terms" className="text-sterling-blue hover:underline cursor-pointer">Terms of Service</a>
           <span className="text-sterling-mist/20">·</span>
-          <a href="/refund" className="text-sterling-blue hover:underline">Refund Policy</a>
+          <a href="/refund" className="text-sterling-blue hover:underline cursor-pointer">Refund Policy</a>
           <span className="text-sterling-mist/20">·</span>
-          <a href="/privacy" className="text-sterling-blue hover:underline">Privacy Policy</a>
+          <a href="/privacy" className="text-sterling-blue hover:underline cursor-pointer">Privacy Policy</a>
           <span className="text-sterling-mist/20">·</span>
-          <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline">Licensing Questions</a>
+          <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline cursor-pointer">Licensing Questions</a>
         </div>
       </motion.section>
 
@@ -176,7 +176,7 @@ export const PricingPage = () => {
         </div>
         <p className="text-center text-sterling-mist/40 text-sm mt-8">
           Still have questions?{' '}
-          <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline">
+          <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline cursor-pointer">
             Email support@sterling.ltd
           </a>{' '}
           and we'll help you choose the right license.
@@ -187,7 +187,7 @@ export const PricingPage = () => {
       <div className="text-center">
         <button
           onClick={() => navigate('/products/max-commander')}
-          className="text-sterling-mist/40 hover:text-sterling-blue text-sm transition-colors"
+          className="text-sterling-mist/40 hover:text-sterling-blue text-sm transition-colors cursor-pointer"
         >
           ← View full Max Commander product page
         </button>

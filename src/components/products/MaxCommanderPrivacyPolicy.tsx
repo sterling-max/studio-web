@@ -16,7 +16,7 @@ export const MaxCommanderPrivacyPolicy = ({ onBack }: Props) => {
             >
                 <button
                     onClick={onBack}
-                    className="flex items-center gap-2 text-sterling-mist/50 hover:text-white transition-colors mb-8 group"
+                    className="flex items-center gap-2 text-sterling-mist/50 hover:text-white transition-colors mb-8 group cursor-pointer"
                 >
                     <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                     Back to Max Commander

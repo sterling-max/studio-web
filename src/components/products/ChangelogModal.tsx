@@ -42,7 +42,7 @@ export const ChangelogModal = ({ isOpen, onClose, data }: ChangelogModalProps) =
                         </div>
                         <button
                             onClick={onClose}
-                            className="p-2 hover:bg-white/5 rounded-full text-sterling-mist hover:text-sterling-blue transition-colors"
+                            className="p-2 hover:bg-white/5 rounded-full text-sterling-mist hover:text-sterling-blue transition-colors cursor-pointer"
                         >
                             <X size={24} />
                         </button>

@@ -14,7 +14,7 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
       >
         <button 
           onClick={onBack}
-          className="mb-8 text-sterling-blue hover:text-sterling-cyan transition-colors flex items-center gap-2"
+          className="mb-8 text-sterling-blue hover:text-sterling-cyan transition-colors flex items-center gap-2 cursor-pointer"
         >
           ← Back to Sterling Lab
         </button>

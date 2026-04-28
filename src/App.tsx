@@ -59,7 +59,7 @@ function HomePage() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-sterling-blue text-white rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(0,122,255,0.3)]"
+            className="inline-block px-10 py-4 bg-sterling-blue text-white rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(0,122,255,0.3)] cursor-pointer"
           >
             Let's Talk
           </a>
@@ -133,16 +133,16 @@ function App() {
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Products</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li><a href="/products/max-commander" className="hover:text-sterling-cyan transition-colors">Max Commander</a></li>
+                <li><a href="/products/max-commander" className="hover:text-sterling-cyan transition-colors cursor-pointer">Max Commander</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Legal</h4>
               <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li><a href="/legal" className="hover:text-sterling-cyan transition-colors">Legal Notice</a></li>
-                <li><a href="/privacy" className="hover:text-sterling-cyan transition-colors">Privacy Policy</a></li>
-                <li><a href="/terms" className="hover:text-sterling-cyan transition-colors">Terms of Service</a></li>
-                <li><a href="/refund" className="hover:text-sterling-cyan transition-colors">Refund Policy</a></li>
+                <li><a href="/legal" className="hover:text-sterling-cyan transition-colors cursor-pointer">Legal Notice</a></li>
+                <li><a href="/privacy" className="hover:text-sterling-cyan transition-colors cursor-pointer">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-sterling-cyan transition-colors cursor-pointer">Terms of Service</a></li>
+                <li><a href="/refund" className="hover:text-sterling-cyan transition-colors cursor-pointer">Refund Policy</a></li>
               </ul>
             </div>
           </div>

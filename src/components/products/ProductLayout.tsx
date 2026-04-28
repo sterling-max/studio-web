@@ -92,7 +92,7 @@ export const ProductLayout = ({
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 p-3 bg-sterling-midnight/80 hover:bg-sterling-blue rounded-full text-white transition-all z-20 border border-sterling-mist/20"
+                className="absolute top-4 right-4 p-3 bg-sterling-midnight/80 hover:bg-sterling-blue rounded-full text-white transition-all z-20 border border-sterling-mist/20 cursor-pointer"
               >
                 <X size={24} />
               </button>
@@ -115,7 +115,7 @@ export const ProductLayout = ({
       >
         <button
           onClick={onBack}
-          className="group flex items-center gap-2 text-sterling-mist/60 hover:text-sterling-blue transition-colors"
+          className="group flex items-center gap-2 text-sterling-mist/60 hover:text-sterling-blue transition-colors cursor-pointer"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
           <span>Back to Products</span>
@@ -171,7 +171,7 @@ export const ProductLayout = ({
         {pricingPlans && (
           <button
             onClick={scrollToPricing}
-            className="px-8 py-3 bg-sterling-blue text-white rounded-xl font-bold shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:scale-105 transition-transform"
+            className="px-8 py-3 bg-sterling-blue text-white rounded-xl font-bold shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:scale-105 transition-transform cursor-pointer"
           >
             Get {title}
           </button>

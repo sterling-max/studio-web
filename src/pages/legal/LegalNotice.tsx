@@ -14,7 +14,7 @@ export const LegalNotice = ({ onBack }: LegalPageProps) => {
       >
         <button 
           onClick={onBack}
-          className="mb-8 text-sterling-blue hover:text-sterling-cyan transition-colors flex items-center gap-2"
+          className="mb-8 text-sterling-blue hover:text-sterling-cyan transition-colors flex items-center gap-2 cursor-pointer"
         >
           ← Back to Sterling Lab
         </button>
@@ -44,7 +44,7 @@ export const LegalNotice = ({ onBack }: LegalPageProps) => {
             <h2 className="text-xl font-bold text-sterling-mist mb-4">Dispute Resolution</h2>
             <p>
               The European Commission provides a platform for online dispute resolution (OS): 
-              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-sterling-blue hover:underline ml-1">
+              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-sterling-blue hover:underline ml-1 cursor-pointer">
                 https://ec.europa.eu/consumers/odr
               </a>.<br />
               Our e-mail address can be found above in the impressum.

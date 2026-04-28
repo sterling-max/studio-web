@@ -18,7 +18,7 @@ const NavItem = ({ icon, label, isActive, onClick }: NavItemProps) => (
     whileTap={{ scale: 0.98 }}
     onClick={onClick}
     className={cn(
-      "w-full flex items-center justify-between gap-4 px-6 py-4 rounded-xl transition-all duration-300",
+      "w-full flex items-center justify-between gap-4 px-6 py-4 rounded-xl transition-all duration-300 cursor-pointer",
       isActive ? "bg-sterling-blue text-white shadow-[0_0_15px_rgba(0,122,255,0.3)]" : "text-sterling-mist/70 hover:text-sterling-mist hover:bg-sterling-surface"
     )}
   >
@@ -36,7 +36,7 @@ const DesktopNavItem = ({ icon, label, isActive, onClick }: NavItemProps) => (
     whileTap={{ scale: 0.95 }}
     onClick={onClick}
     className={cn(
-      "relative flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300",
+      "relative flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 cursor-pointer",
       isActive ? "bg-sterling-blue text-white shadow-[0_0_15px_rgba(0,122,255,0.4)]" : "text-sterling-mist/60 hover:text-sterling-mist hover:bg-sterling-surface"
     )}
   >
@@ -143,7 +143,7 @@ export const Navbar = () => {
         <div className="flex md:hidden items-center gap-2 ml-auto">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-3 bg-sterling-surface rounded-xl border border-sterling-mist/10 text-sterling-mist hover:border-sterling-blue transition-all"
+            className="p-3 bg-sterling-surface rounded-xl border border-sterling-mist/10 text-sterling-mist hover:border-sterling-blue transition-all cursor-pointer"
             aria-label="Toggle Menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

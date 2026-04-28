@@ -152,14 +152,14 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       <div className="flex items-center gap-4">
         <button
           onClick={() => setShowChangelog(true)}
-          className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2"
+          className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2 cursor-pointer"
         >
           <History size={12} />
           View Changelog
         </button>
         <button
           onClick={onViewPrivacy}
-          className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2"
+          className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2 cursor-pointer"
         >
           <Shield size={12} />
           Privacy Policy

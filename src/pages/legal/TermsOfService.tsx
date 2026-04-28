@@ -14,7 +14,7 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
       >
         <button 
           onClick={onBack}
-          className="mb-8 text-sterling-blue hover:text-sterling-cyan transition-colors flex items-center gap-2"
+          className="mb-8 text-sterling-blue hover:text-sterling-cyan transition-colors flex items-center gap-2 cursor-pointer"
         >
           ← Back to Sterling Lab
         </button>
@@ -35,7 +35,7 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
               These Terms of Service are issued by:<br />
               <strong className="text-sterling-mist">Maximiliano Villarreal</strong>, operating as <strong className="text-sterling-mist">Sterling Lab</strong><br />
               Via XX Settembre 37, 63063 Carassai (AP), Italy<br />
-              Email: <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline">support@sterling.ltd</a><br />
+              Email: <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline cursor-pointer">support@sterling.ltd</a><br />
               Phone: +39 347 539 3181
             </p>
           </section>
@@ -89,7 +89,7 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
             <h2 className="text-xl font-bold text-sterling-mist mb-4">5. Contact &amp; Support</h2>
             <p>
               For any questions regarding these Terms, or to request support, please contact us at:<br />
-              Email: <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline">support@sterling.ltd</a><br />
+              Email: <a href="mailto:support@sterling.ltd" className="text-sterling-blue hover:underline cursor-pointer">support@sterling.ltd</a><br />
               Phone: +39 347 539 3181 (also WhatsApp)
             </p>
           </section>

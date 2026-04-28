@@ -83,7 +83,7 @@ export const ManageLicense = () => {
             <h2 className="text-4xl font-bold mb-2">Manage your Licenses</h2>
             <p className="text-sterling-mist/60 text-lg">Manage your devices and products.</p>
           </div>
-          <button className="flex items-center gap-2 text-sterling-mist/40 hover:text-white transition-colors">
+          <button className="flex items-center gap-2 text-sterling-mist/40 hover:text-white transition-colors cursor-pointer">
             <LogOut size={18} /> Sign Out
           </button>
         </div>
@@ -125,7 +125,7 @@ export const ManageLicense = () => {
                     window.location.href = `/download/mc-setup.exe?t=${cacheBuster}`;
                   }}
                   disabled={license.status && license.status !== 'active'}
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-sterling-blue text-white rounded-xl font-bold hover:shadow-[0_0_20px_rgba(0,122,255,0.3)] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-sterling-blue text-white rounded-xl font-bold hover:shadow-[0_0_20px_rgba(0,122,255,0.3)] transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <Download size={18} /> Download Max Commander
                 </button>
@@ -148,7 +148,7 @@ export const ManageLicense = () => {
                        </div>
                      </div>
                      <button 
-                       className="text-xs font-bold text-sterling-mist/40 hover:text-red-400 transition-colors disabled:opacity-50"
+                       className="text-xs font-bold text-sterling-mist/40 hover:text-red-400 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                        onClick={async () => {
                          const token = new URLSearchParams(window.location.search).get('token');
                          if (!confirm('Deactivate this device?')) return;
@@ -213,7 +213,7 @@ export const ManageLicense = () => {
           <button 
             type="submit"
             disabled={status === 'linking'}
-            className="w-full py-4 bg-sterling-blue hover:bg-sterling-blue/90 disabled:opacity-50 text-white rounded-2xl font-bold transition-all shadow-lg shadow-sterling-blue/20"
+            className="w-full py-4 bg-sterling-blue hover:bg-sterling-blue/90 disabled:opacity-50 text-white rounded-2xl font-bold transition-all shadow-lg shadow-sterling-blue/20 cursor-pointer disabled:cursor-not-allowed"
           >
             {status === 'linking' ? 'Generating Link...' : 'Send Magic Link'}
           </button>
