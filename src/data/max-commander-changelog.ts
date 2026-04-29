@@ -7,6 +7,16 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.8.8",
+        date: "Apr 29, 2026",
+        description: "Updater Feedback & License Activation Polish.",
+        changes: [
+            "Update checks now clearly confirm when Max Commander is already up to date.",
+            "License activation no longer opens unexpected terminal windows while checking this computer.",
+            "License activation feels smoother when revisiting the License settings during the same session."
+        ]
+    },
+    {
         version: "0.8.7",
         date: "Apr 29, 2026",
         description: "Search, Profiles & Toolbar Refinements.",

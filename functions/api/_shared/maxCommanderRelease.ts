@@ -1,9 +1,9 @@
 export const MAX_COMMANDER_RELEASE = {
-  version: '0.8.7',
-  r2Version: 'v0.8.7',
-  pubDate: '2026-04-29T00:00:00Z',
+  version: '0.8.8',
+  r2Version: 'v0.8.8',
+  pubDate: '2026-04-29T11:21:28Z',
   downloadUrl: 'https://sterling.ltd/download/mc-latest.exe',
-  notes: 'Search, Profiles & Toolbar Refinements - easier search review, smoother toolbar menus, cleaner profile controls, smarter folder history, and more resilient drive refreshes.',
+  notes: 'Updater Feedback & License Activation Polish - update checks now clearly confirm when Max Commander is current, and license activation no longer opens unexpected terminal windows.',
 };
 
 export function normalizeVersion(version: string) {
