@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "mc:version:check": "node scripts/release/max-commander-version.mjs check",
+    "mc:version:set": "node scripts/release/max-commander-version.mjs set"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",

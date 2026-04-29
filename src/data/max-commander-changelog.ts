@@ -7,13 +7,14 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
-        version: "0.8.8",
-        date: "Apr 29, 2026",
-        description: "Updater Feedback & License Activation Polish.",
+        version: "0.8.9",
+        date: "Apr 30, 2026",
+        description: "Installed App & Update Flow Polish.",
         changes: [
-            "Update checks now clearly confirm when Max Commander is already up to date.",
-            "License activation no longer opens unexpected terminal windows while checking this computer.",
-            "License activation feels smoother when revisiting the License settings during the same session."
+            "Installed builds now start more cleanly and show the file panels only when the first useful view is ready.",
+            "Audio playback, album art, and lyrics lookup are more reliable in packaged builds.",
+            "The update dialog has a cleaner solid surface, and updates use a quieter installer flow.",
+            "New installs start in the Personal profile with refined defaults and normal Windows app data storage."
         ]
     },
     {

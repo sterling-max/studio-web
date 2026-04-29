@@ -46,9 +46,11 @@ DEV-KEY-$T3RL1NG-PRO
 - **Licensing Logic:** Master private key signing resides 100% in Cloudflare Functions. Do not expose private keys in the frontend repository.
 - **Machine Identification:** Activations now include `machine_name` (Computer Name) for improved UX in the management portal.
 - **Deactivation Flow:** Users can deactivate machines both via the Sterling Portal and locally within the Max Commander app.
-- **Lemon Squeezy Webhook:** Configure Lemon Squeezy to call `https://sterling.ltd/api/lemon-squeezy-webhook`. Store the signing secret only in Lemon Squeezy and Cloudflare Pages as `LEMON_SQUEEZY_WEBHOOK_SECRET`; do not commit the secret value. Registered events: `order_created`, `order_refunded`, `license_key_created`, `license_key_updated`, `dispute_created`, `dispute_resolved`.
-- **Lemon Squeezy Checkout:** Max Commander checkout ID is `86608fca-fab5-4b6d-a6cb-f74c2487e6c4`. Standard checkout URL passes `checkout[custom][product_id]=mc_pro`. Founder checkout uses discount code `FOUNDER26` via `checkout[discount_code]=FOUNDER26` and passes `checkout[custom][founder_status]=true`. The site opens Lemon Squeezy popup checkout by adding `embed=1` at runtime.
-- **Licensing Revocation Model:** Sterling D1 remains the source of truth. Disable native Lemon Squeezy license key generation for Max Commander. The app should use signed 7-day machine-bound entitlements, refresh online every 24 hours, and disable Pro when `/api/validate-license` reports refunded/disputed/revoked status. App-side contract is documented in `docs/max_commander_licensing_integration.md`.
+- **Payments:** Current direction is direct Stripe for Max Commander payments. Do not create new Paddle or Lemon Squeezy implementation tasks unless this decision changes.
+- **Deprecated Lemon Squeezy Webhook Reference:** Configure Lemon Squeezy to call `https://sterling.ltd/api/lemon-squeezy-webhook`. Store the signing secret only in Lemon Squeezy and Cloudflare Pages as `LEMON_SQUEEZY_WEBHOOK_SECRET`; do not commit the secret value. Registered events: `order_created`, `order_refunded`, `license_key_created`, `license_key_updated`, `dispute_created`, `dispute_resolved`.
+- **Deprecated Lemon Squeezy Checkout Reference:** Max Commander checkout ID is `86608fca-fab5-4b6d-a6cb-f74c2487e6c4`. Standard checkout URL passes `checkout[custom][product_id]=mc_pro`. Founder checkout uses discount code `FOUNDER26` via `checkout[discount_code]=FOUNDER26` and passes `checkout[custom][founder_status]=true`. The site opens Lemon Squeezy popup checkout by adding `embed=1` at runtime.
+- **Licensing Revocation Model:** Sterling D1 remains the source of truth. Stripe is only the payment processor; Sterling generates and signs license/entitlement material. The app should use signed 7-day machine-bound entitlements, refresh online every 24 hours, and disable Pro when `/api/validate-license` reports refunded/disputed/revoked status. App-side contract is documented in `docs/max_commander_licensing_integration.md`. Historical Lemon Squeezy note: native Lemon Squeezy license key generation was to be disabled for Max Commander.
+- **Max Commander Release Metadata:** Always use `npm run mc:version:set -- <version>` and `npm run mc:version:check` before publishing the site after an app release.
 
 
 ## Pending Tasks
@@ -59,7 +61,8 @@ DEV-KEY-$T3RL1NG-PRO
 * [ ] **Case Studies:** Implement functional "View Case Study" pages with descriptions and imagery for each product.
 * [x] **Licensing Backend:** Complete Cloudflare DNS and D1 binding for `/api/activate`, `/api/manage`, and `/api/send-magic-link`.
 * [x] **Licensing UI:** Finalize the `/manage` portal with machine deactivation logic and computer name display.
-* [ ] **Lemon Squeezy Webhook Verification:** Implement signature verification for Lemon Squeezy webhooks in the Cloudflare function.
+* [ ] **Stripe Checkout/Webhook:** Implement direct Stripe checkout and webhook handling for Max Commander purchases.
+* [ ] **Deprecated Lemon Squeezy Webhook Verification:** Keep this only as a historical/reference item; do not implement unless Lemon Squeezy becomes active again.
 - **Email Delivery:** Integrate an email provider (e.g., Resend) for real magic link delivery.
 * [x] **Tester Key Generator:** Implemented `/api/generate-key` for manual license creation.
 

@@ -1,5 +1,7 @@
 # Max Commander - Main Site Features
 
+> Deprecated payment reference: Max Commander is moving to direct Stripe payments. Keep the Lemon Squeezy details below for historical/reference purposes only; do not implement new Lemon Squeezy work unless the payment decision changes.
+
 ## Lemon Squeezy Webhook
 
 - Webhook URL: `https://sterling.ltd/api/lemon-squeezy-webhook`
@@ -29,4 +31,4 @@
 Next steps:
 - [ ] Implement License Management Portal
 - [ ] Implement Activation API (Cloudflare Worker)
-- [ ] Implement Lemon Squeezy webhook
+- [ ] Deprecated reference only: implement Lemon Squeezy webhook only if Lemon Squeezy becomes active again

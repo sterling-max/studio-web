@@ -1,5 +1,7 @@
 # Max Commander Licensing Integration
 
+> Deprecated payment reference: this document describes the Lemon Squeezy-era payment integration. Max Commander is moving to direct Stripe payments. Keep the technical details here for possible future reference, but do not treat Lemon Squeezy as the active implementation path.
+
 ## Authority Model
 
 Sterling Lab remains the license authority. Lemon Squeezy is the Merchant of Record and sends payment lifecycle webhooks.
