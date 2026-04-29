@@ -7,17 +7,41 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
-        version: "0.8.5",
-        date: "Apr 09, 2026",
-        description: "FTP Stability, Persistence & UX Polish.",
+        version: "0.8.7",
+        date: "Apr 29, 2026",
+        description: "Search, Profiles & Toolbar Refinements.",
         changes: [
-            "Async Remote Backend: Rebuilt the FTP/SFTP core to be fully asynchronous, ensuring the UI stays fluid even on slow networks.",
-            "Session Auto-Recovery: Intelligent session management that automatically re-authorizes connections if the backend state is lost.",
-            "Visual Connecting States: Added a pulsing 'Connecting' animation to remote drives in the DriveBar for clear background feedback.",
-            "Disconnect Improvements: Quick-disconnect 'X' button on drive pills and automatic panel pivoting back to local drives on disconnect.",
-            "Clean Remote Naming: Integrated high-fidelity MLSD listing parser to fix garbled filenames and provide accurate metadata.",
-            "High-Integrity Transfers: Enforced Binary transfer mode for all remote operations to ensure byte-perfect accuracy for media and archives.",
-            "Persistent Sessions: Remote configurations now persist across app restarts and appear as first-class mounted drives."
+            "Search results are easier to review and keep their previews stable, even with unusual file content.",
+            "Toolbar menus now feel more predictable, with better keyboard navigation and cleaner behavior near long paths.",
+            "Profile controls are cleaner in the title bar, with optional compact placement and theme-aware colors.",
+            "Folder history now focuses on places you actually used instead of every folder you quickly passed through.",
+            "Drive refreshes are more resilient, so a temporary device hiccup no longer clears the whole DriveBar."
+        ]
+    },
+    {
+        version: "0.8.6",
+        date: "Apr 28, 2026",
+        description: "Steam Library Plugin & Viewer Polish.",
+        changes: [
+            "Added a packaged Steam Library plugin for browsing installed games, tools, soundtracks, workshop content, and library drives.",
+            "Steam games can be launched directly from Max Commander, with quick actions for Steam, install folders, and workshop pages.",
+            "Game libraries now use richer poster-style artwork where available.",
+            "Music and media viewers received cleaner layouts, better controls, and preserved state while moving between files.",
+            "Plugin drives and action menus now behave more consistently across the interface."
+        ]
+    },
+    {
+        version: "0.8.5",
+        date: "Apr 22, 2026",
+        description: "Remote Access, Media View & Space Analyzer Polish.",
+        changes: [
+            "Remote FTP and SFTP connections are more reliable on slow networks and recover more gracefully after interruptions.",
+            "Remote drives now persist across restarts and feel more like first-class locations in the DriveBar.",
+            "Added Media View for artwork-heavy folders, with better movie and music artwork discovery.",
+            "Focused movie and album folders can now show useful local metadata directly in the panel status area.",
+            "Folder Quick View now opens to a clearer information view, while Space Analyzer adds Treemap and Sunburst options.",
+            "Space Analyzer labels, colors, and hover details were refined for cleaner disk cleanup sessions.",
+            "License and Security settings are clearer, with more predictable Pro status when reconnecting or working offline."
         ]
     },
     {
