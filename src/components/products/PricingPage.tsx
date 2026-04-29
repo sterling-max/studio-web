@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { HelpCircle, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { Pricing, type PricingPlan } from './Pricing';
-import { maxCommanderCheckoutUrls } from '../../constants/checkout';
 
 const plans: PricingPlan[] = [
   {
@@ -38,7 +37,7 @@ const plans: PricingPlan[] = [
     ],
     badge: "Limited Time",
     highlight: true,
-    checkoutUrl: maxCommanderCheckoutUrls.founder
+    comingSoon: true
   },
   {
     price: "€25",
@@ -54,14 +53,14 @@ const plans: PricingPlan[] = [
     ],
     badge: "Standard Price",
     highlight: false,
-    checkoutUrl: maxCommanderCheckoutUrls.standard
+    comingSoon: true
   }
 ];
 
 const faqs = [
   {
     q: "Is this a subscription?",
-    a: "No. All paid licenses are one-time purchases. There are no recurring fees, no annual renewals, and no surprise charges. You buy once and keep using Max Commander forever."
+    a: "No. Paid licenses will be one-time purchases when checkout opens. There will be no recurring fees, annual renewals, or surprise charges."
   },
   {
     q: "Do I need a license for commercial use even if I only use Free features?",
@@ -77,11 +76,11 @@ const faqs = [
   },
   {
     q: "Where can I buy a license?",
-    a: "Only buy from official Sterling Lab channels (this page). Purchases from unauthorized resellers are not valid and will be voided."
+    a: "Paid checkout opens in the coming weeks. When it is available, only buy from official Sterling Lab channels. Purchases from unauthorized resellers are not valid and will be voided."
   },
   {
     q: "Who handles payments and taxes?",
-    a: "All payments are processed by Lemon Squeezy, our Merchant of Record. Lemon Squeezy handles VAT and sales tax calculation based on your location. Prices shown exclude tax."
+    a: "Paid checkout is currently disabled. When licenses open, payments will be handled through Sterling Lab's direct Stripe checkout, with applicable tax calculated at checkout based on your location. Prices shown exclude tax."
   },
 ];
 
@@ -124,7 +123,7 @@ export const PricingPage = () => {
           Simple <span className="text-sterling-blue">Pricing</span>
         </h1>
         <p className="text-sterling-mist/60 text-base max-w-xl mx-auto mb-1">
-          One-time payment. No subscriptions. No renewal fees.
+          Free download now. Paid licenses open in the coming weeks.
         </p>
         <p className="text-sterling-mist/40 text-sm">
           Windows 10 &amp; Windows 11 only. Prices shown exclude tax.
@@ -142,10 +141,8 @@ export const PricingPage = () => {
         className="max-w-3xl mx-auto px-6 mt-4 mb-12 p-6 rounded-2xl bg-sterling-blue/5 border border-sterling-blue/15"
       >
         <p className="text-sterling-mist/50 text-xs leading-relaxed text-center">
-          Our order process is conducted by{' '}
-          <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" className="text-sterling-blue hover:underline cursor-pointer">Lemon Squeezy</a>,
-          our authorized reseller and Merchant of Record. Lemon Squeezy handles payment processing, applicable VAT and sales tax, refunds, disputes, and billing support for purchases.{' '}
-          Prices shown exclude tax. VAT and applicable sales tax are calculated at checkout based on your location.
+          Paid checkout is not open yet. The free Windows build is available today, and paid Max Commander licenses will become available in the coming weeks through Sterling Lab's direct Stripe checkout.{' '}
+          Prices shown exclude tax. VAT and applicable sales tax will be calculated at checkout based on your location.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xs">
           <a href="/terms" className="text-sterling-blue hover:underline cursor-pointer">Terms of Service</a>

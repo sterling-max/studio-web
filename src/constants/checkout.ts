@@ -1,3 +1,5 @@
+// Deprecated Lemon Squeezy checkout references.
+// Keep these values for historical/reference use only; active Max Commander paid checkout is paused.
 export const MAX_COMMANDER_CHECKOUT_ID = '86608fca-fab5-4b6d-a6cb-f74c2487e6c4';
 export const MAX_COMMANDER_CHECKOUT_URL = `https://sterling.lemonsqueezy.com/checkout/buy/${MAX_COMMANDER_CHECKOUT_ID}`;
 export const MAX_COMMANDER_FOUNDER_DISCOUNT_CODE = 'FOUNDER26';

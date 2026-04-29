@@ -6,6 +6,14 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.13",
+    date: "2026-04-30",
+    changes: [
+      "Paused Max Commander paid checkout while direct Stripe payments are prepared",
+      "Kept the free Windows download available and added paid-license coming-soon messaging"
+    ]
+  },
+  {
     version: "1.0.12",
     date: "2026-04-30",
     changes: [

@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Download } from 'lucide-react';
+import { Check, Download, Clock3 } from 'lucide-react';
 import { cn } from '../../utils/cn';
-import { withLemonSqueezyEmbed } from '../../constants/checkout';
 
 export interface PricingPlan {
   price: string;
@@ -13,6 +11,7 @@ export interface PricingPlan {
   checkoutUrl?: string;
   isFree?: boolean;
   buttonLabel?: string;
+  comingSoon?: boolean;
 }
 
 interface PricingProps {
@@ -22,11 +21,6 @@ interface PricingProps {
 }
 
 export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: PricingProps) => {
-  useEffect(() => {
-    (window as any).createLemonSqueezy?.();
-    (window as any).LemonSqueezy?.Refresh?.();
-  }, []);
-
   const handleCheckout = (plan: PricingPlan) => {
     if (plan.isFree) {
         // Trigger download via worker alias
@@ -38,17 +32,6 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
         document.getElementById('smartscreen-guide')?.scrollIntoView({ behavior: 'smooth' });
         return;
     }
-
-    if (plan.checkoutUrl) {
-      const lemonSqueezy = (window as any).LemonSqueezy;
-      if (lemonSqueezy?.Url?.Open) {
-        lemonSqueezy.Url.Open(withLemonSqueezyEmbed(plan.checkoutUrl));
-      } else {
-        window.location.href = plan.checkoutUrl;
-      }
-    } else {
-      console.warn('Lemon Squeezy checkout URL missing');
-    }
   };
 
   return (
@@ -56,9 +39,23 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
       {showHeader && (
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3">Simple <span className="text-sterling-blue">Pricing</span></h2>
-          <p className="text-sterling-mist/60 text-base">One-time payment. No subscriptions. Complete ownership.</p>
+          <p className="text-sterling-mist/60 text-base">Free download now. Paid licenses open in the coming weeks.</p>
         </div>
       )}
+
+      <div className="max-w-4xl mx-auto mb-8 rounded-2xl border border-sterling-blue/20 bg-sterling-blue/5 px-5 py-4 shadow-[0_0_30px_rgba(0,122,255,0.08)]">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-center sm:text-left">
+          <div className="mx-auto sm:mx-0 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sterling-blue/15 text-sterling-cyan">
+            <Clock3 size={18} />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-sterling-mist">Paid licenses are opening soon.</p>
+            <p className="text-xs leading-relaxed text-sterling-mist/55">
+              Buy buttons are paused while the direct Stripe checkout is prepared. The free Windows download remains available today.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {plans.map((plan, i) => (
@@ -107,9 +104,13 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
 
             <button 
               onClick={() => handleCheckout(plan)}
+              disabled={!plan.isFree}
               className={cn(
-                "w-full py-4 rounded-xl font-bold transition-all mt-auto flex items-center justify-center gap-2 cursor-pointer",
-                plan.highlight 
+                "w-full py-4 rounded-xl font-bold transition-all mt-auto flex items-center justify-center gap-2",
+                plan.isFree
+                  ? "cursor-pointer"
+                  : "cursor-not-allowed opacity-70",
+                plan.highlight && plan.isFree
                   ? "bg-sterling-blue text-white hover:shadow-[0_0_30px_rgba(0,122,255,0.4)] hover:scale-[1.02]" 
                   : "bg-sterling-mist/5 text-sterling-mist hover:bg-sterling-mist/10"
               )}
@@ -122,7 +123,7 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
                   Download Free
                 </>
               ) : (
-                'Buy Now'
+                'Available Soon'
               )}
             </button>
           </motion.div>
@@ -131,8 +132,8 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
       {showFooterNote && (
         <div className="mt-16 text-center">
           <p className="text-sterling-mist/30 text-xs max-w-2xl mx-auto leading-relaxed">
-            By completing a purchase, you agree to Sterling Lab's <button onClick={() => window.location.href='/terms'} className="text-sterling-blue hover:underline cursor-pointer">Terms of Service</button> and <button onClick={() => window.location.href='/refund'} className="text-sterling-blue hover:underline cursor-pointer">Refund Policy</button>.<br />
-            Payments are securely processed by <strong>Lemon Squeezy</strong>, our Merchant of Record.
+            Paid checkout is not open yet. When licenses become available, purchases will be covered by Sterling Lab's <button onClick={() => window.location.href='/terms'} className="text-sterling-blue hover:underline cursor-pointer">Terms of Service</button> and <button onClick={() => window.location.href='/refund'} className="text-sterling-blue hover:underline cursor-pointer">Refund Policy</button>.<br />
+            Until then, use the free Max Commander Windows download.
           </p>
         </div>
       )}

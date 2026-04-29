@@ -51,7 +51,7 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
               To provide our services, we use the following third-party processors:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Lemon Squeezy:</strong> Our merchant of record for processing payments and managing tax compliance. As the Merchant of Record, Lemon Squeezy acts as the legal seller of the software and handles the processing of your payment data in accordance with their own privacy policy.</li>
+              <li><strong>Stripe:</strong> Planned processor for direct Sterling Lab paid checkout. Paid checkout is currently disabled, so no payment data is collected on the website today.</li>
               <li><strong>Resend:</strong> Used for sending transactional emails and license keys.</li>
               <li><strong>Cloudflare:</strong> Provides our global hosting, DNS, and secure Worker infrastructure.</li>
             </ul>
@@ -60,7 +60,7 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
           <section>
             <h2 className="text-xl font-bold text-sterling-mist mb-4">4. Third-Country Transfers</h2>
             <p>
-              Some of our processors (Lemon Squeezy, Resend) are based in the United States. We ensure that your data is protected through Standard Contractual Clauses (SCCs) as approved by the European Commission, ensuring a level of data protection comparable to that of the GDPR.
+              Some of our processors (Stripe, Resend) are based in the United States. We ensure that your data is protected through Standard Contractual Clauses (SCCs) as approved by the European Commission, ensuring a level of data protection comparable to that of the GDPR.
             </p>
           </section>
 
@@ -80,7 +80,7 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
 
           <section className="text-sm pt-8 border-t border-sterling-mist/10">
             <p>
-              Last updated: March 2026
+              Last updated: April 2026
             </p>
           </section>
         </div>

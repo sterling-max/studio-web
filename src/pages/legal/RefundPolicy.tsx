@@ -52,7 +52,7 @@ export const RefundPolicy = ({ onBack }: RefundPolicyProps) => {
               To request a refund, please contact us at <span className="text-sterling-mist font-medium">support@sterling.ltd</span> with the following information:
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-4">
-              <li>Your order number (provided by Lemon Squeezy)</li>
+              <li>Your order number</li>
               <li>The email address used for the purchase</li>
               <li>The license key provided</li>
             </ul>
@@ -72,7 +72,7 @@ export const RefundPolicy = ({ onBack }: RefundPolicyProps) => {
             <div className="bg-sterling-surface/50 p-6 rounded-2xl border border-sterling-mist/5">
               <ShieldCheck className="text-sterling-blue mb-4" size={24} />
               <h3 className="font-bold text-sterling-mist mb-2">Secure Payments</h3>
-              <p className="text-sm">Processed via Lemon Squeezy, our merchant of record, ensuring global compliance and safety.</p>
+              <p className="text-sm">Paid checkout is currently disabled while direct Stripe payments are prepared.</p>
             </div>
             <div className="bg-sterling-surface/50 p-6 rounded-2xl border border-sterling-mist/5">
               <Mail className="text-sterling-blue mb-4" size={24} />
@@ -83,7 +83,7 @@ export const RefundPolicy = ({ onBack }: RefundPolicyProps) => {
 
           <section className="text-sm pt-8 border-t border-sterling-mist/10 opacity-40">
             <p>
-              Last updated: March 2026<br />
+              Last updated: April 2026<br />
               Sterling Lab by Maximiliano Villarreal
             </p>
           </section>

@@ -5,7 +5,6 @@ import { type PricingPlan } from './Pricing';
 import { ChangelogModal } from './ChangelogModal';
 import { SmartScreenGuide } from './SmartScreenGuide';
 import { changelogData } from '../../data/max-commander-changelog';
-import { maxCommanderCheckoutUrls } from '../../constants/checkout';
 
 interface MaxCommanderProps {
   onBack: () => void;
@@ -113,7 +112,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       ],
       badge: "Limited Time",
       highlight: true,
-      checkoutUrl: maxCommanderCheckoutUrls.founder
+      comingSoon: true
     },
     {
       price: "€25",
@@ -129,7 +128,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       ],
       badge: "Standard Price",
       highlight: false,
-      checkoutUrl: maxCommanderCheckoutUrls.standard
+      comingSoon: true
     }
   ];
 

@@ -23,9 +23,9 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
         
         <div className="prose max-w-none space-y-8 text-sterling-mist/70">
           <section className="p-6 bg-sterling-blue/5 border border-sterling-blue/20 rounded-2xl">
-            <h2 className="text-xl font-bold text-sterling-mist mb-4">Merchant of Record</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">Paid Checkout</h2>
             <p className="text-sterling-mist italic">
-              Our order process is conducted by Lemon Squeezy, our authorized reseller and Merchant of Record. Lemon Squeezy handles payment processing, applicable VAT and sales tax, refunds, disputes, and billing support for purchases.
+              Paid checkout is currently disabled while Sterling Lab prepares direct Stripe payments. The free Max Commander download remains available. When paid licenses open, checkout will calculate applicable VAT and sales tax based on your location.
             </p>
           </section>
 
@@ -96,7 +96,7 @@ export const TermsOfService = ({ onBack }: LegalPageProps) => {
 
           <section className="text-sm pt-8 border-t border-sterling-mist/10">
             <p>
-              Last updated: March 2026
+              Last updated: April 2026
             </p>
           </section>
         </div>
