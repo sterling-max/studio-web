@@ -7,6 +7,19 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.8.10",
+        date: "May 1, 2026",
+        description: "Navigation, Filtering & Tooltip Polish.",
+        changes: [
+            "Tooltips now render consistently across navigation controls, profile controls, and truncated file names without being clipped.",
+            "Drive buttons now stay in place when you are already browsing that drive, avoiding accidental jumps back to the drive root.",
+            "The pane filter now searches the whole visible row, including names, extensions, dates, sizes, attributes, paths, and related details.",
+            "The file list filter control now lives in the leading header slot and clears the filter row with a single close action.",
+            "Focused rows now use a cleaner top-and-bottom cursor marker.",
+            "Free-mode Pro messaging now highlights Steam Library and Jellyfin Media Server plugin value more clearly."
+        ]
+    },
+    {
         version: "0.8.9",
         date: "Apr 30, 2026",
         description: "Installed App & Update Flow Polish.",

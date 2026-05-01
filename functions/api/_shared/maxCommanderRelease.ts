@@ -1,9 +1,9 @@
 export const MAX_COMMANDER_RELEASE = {
-  version: '0.8.9',
-  r2Version: 'v0.8.9',
-  pubDate: '2026-04-30T00:00:00Z',
+  version: '0.8.10',
+  r2Version: 'v0.8.10',
+  pubDate: '2026-05-01T00:00:00Z',
   downloadUrl: 'https://sterling.ltd/download/mc-latest.exe',
-  notes: 'Installed App & Update Flow Polish - cleaner installed startup, more reliable packaged media playback and lyrics lookup, quieter updates, refined first-run defaults, and normal Windows app data storage.',
+  notes: 'Navigation, Filtering & Tooltip Polish - cleaner global tooltips, safer drive button behavior, full-row file filtering, refined filter controls, and clearer Pro plugin messaging.',
 };
 
 export function normalizeVersion(version: string) {
