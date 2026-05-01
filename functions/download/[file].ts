@@ -1,5 +1,9 @@
+import { recordDownloadEvent, type DownloadAnalyticsEnv } from '../api/_shared/downloadAnalytics';
+
 interface Env {
   BUCKET: R2Bucket;
+  DB?: D1Database;
+  DOWNLOAD_ANALYTICS_SALT?: string;
 }
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
@@ -46,10 +50,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
             return new Response(`Error: Could not parse versions from objects in mc/releases/. Keys: ${objects.slice(0, 3).map(o => o.key).join(', ')}`, { status: 404 });
          }
          fallbackVersions.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
-         return serveVersion(fallbackVersions[0], env, fileName);
+         return serveVersion(fallbackVersions[0], env, fileName, request, context);
       }
 
-      return serveVersion(latestVersion, env, fileName);
+      return serveVersion(latestVersion, env, fileName, request, context);
     } catch (e: any) {
       return new Response(`Internal Worker Error: ${e.message} at ${e.stack}`, { status: 500 });
     }
@@ -58,7 +62,13 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   return new Response('Not Found', { status: 404 });
 };
 
-async function serveVersion(version: string, env: Env, fileName: string) {
+async function serveVersion(
+  version: string,
+  env: Env,
+  fileName: string,
+  request: Request,
+  context: EventContext<Env, string, unknown>
+) {
   const versionDir = `mc/releases/${version}/`;
   const versionFiles = await env.BUCKET.list({ prefix: versionDir });
   const objects = versionFiles.objects || [];
@@ -92,6 +102,20 @@ async function serveVersion(version: string, env: Env, fileName: string) {
   
   const finalName = fileName.includes('free') ? 'MaxCommander_Free.exe' : 'MaxCommanderSetup.exe';
   headers.set('Content-Disposition', `attachment; filename="${finalName}"`);
+
+  context.waitUntil(recordDownloadEvent(request, env as DownloadAnalyticsEnv, {
+    productId: 'max_commander',
+    version,
+    channel: fileName.includes('free') ? 'free' : 'public',
+    platform: 'windows',
+    arch: 'x64',
+    fileAlias: fileName,
+    artifactKey: installer.key,
+    artifactName: installer.key.split('/').pop() || finalName,
+    artifactSize: installer.size
+  }).catch((error) => {
+    console.error('download analytics failed', error);
+  }));
 
   return new Response(object.body, { headers });
 }

@@ -9,6 +9,7 @@ import { Contact } from './components/Contact';
 import { MaxCommander } from './components/products/MaxCommander';
 import { MaxCommanderPrivacyPolicy } from './components/products/MaxCommanderPrivacyPolicy';
 import { ManageLicense } from './components/ManageLicense';
+import { DownloadReport } from './components/admin/DownloadReport';
 import { PricingPage } from './components/products/PricingPage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from './components/Logo';
@@ -85,6 +86,7 @@ function App() {
             <Route path="/contact" element={<Page><div className="pt-20"><Contact /></div></Page>} />
             <Route path="/design" element={<Page><VisualStyleGuide /></Page>} />
             <Route path="/manage" element={<Page><ManageLicense /></Page>} />
+            <Route path="/admin/downloads" element={<Page><DownloadReport /></Page>} />
 
             {/* Product Routes */}
             <Route path="/products/max-commander" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />

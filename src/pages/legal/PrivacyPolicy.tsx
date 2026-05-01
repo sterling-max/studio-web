@@ -72,7 +72,14 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-sterling-mist mb-4">6. Your Rights</h2>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">6. Download Analytics</h2>
+            <p>
+              When you download software from Sterling Lab, we record product, version, platform, download time, country, edge data center, referrer, and hashed technical identifiers derived from IP address and browser user agent. We use this to measure product downloads, diagnose distribution issues, and plan releases. We do not store raw IP addresses in download analytics.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-sterling-mist mb-4">7. Your Rights</h2>
             <p>
               Under the GDPR, you have the right to access, rectify, or delete your personal data. You can contact the controller directly at support@sterling.ltd for any privacy-related inquiries.
             </p>
@@ -80,7 +87,7 @@ export const PrivacyPolicy = ({ onBack }: LegalPageProps) => {
 
           <section className="text-sm pt-8 border-t border-sterling-mist/10">
             <p>
-              Last updated: April 2026
+              Last updated: May 2026
             </p>
           </section>
         </div>
