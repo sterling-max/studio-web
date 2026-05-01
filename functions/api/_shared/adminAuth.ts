@@ -3,6 +3,8 @@ export type AdminEnv = {
   ADMIN_REPORT_TOKEN?: string;
 };
 
+const FALLBACK_ADMIN_EMAILS = ['maximiliano.villarreal@gmail.com'];
+
 export function requireAdmin(request: Request, env: AdminEnv): Response | null {
   const bearer = request.headers.get('Authorization')?.replace(/^Bearer\s+/i, '').trim();
   if (env.ADMIN_REPORT_TOKEN && bearer && bearer === env.ADMIN_REPORT_TOKEN) {
@@ -11,16 +13,13 @@ export function requireAdmin(request: Request, env: AdminEnv): Response | null {
 
   const email = getCloudflareAccessEmail(request);
   const allowedEmails = parseAllowedEmails(env.ADMIN_EMAILS);
+  const effectiveAllowedEmails = allowedEmails.length > 0 ? allowedEmails : FALLBACK_ADMIN_EMAILS;
 
   if (!email) {
     return jsonError('Admin access requires Cloudflare Access authentication.', 401);
   }
 
-  if (allowedEmails.length === 0) {
-    return jsonError('ADMIN_EMAILS is not configured.', 403);
-  }
-
-  if (!allowedEmails.includes(email.toLowerCase())) {
+  if (!effectiveAllowedEmails.includes(email.toLowerCase())) {
     return jsonError('This Cloudflare Access user is not allowed to view admin reports.', 403);
   }
 
