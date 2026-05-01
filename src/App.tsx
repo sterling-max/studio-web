@@ -86,6 +86,7 @@ function App() {
             <Route path="/contact" element={<Page><div className="pt-20"><Contact /></div></Page>} />
             <Route path="/design" element={<Page><VisualStyleGuide /></Page>} />
             <Route path="/manage" element={<Page><ManageLicense /></Page>} />
+            <Route path="/admin" element={<Page><DownloadReport /></Page>} />
             <Route path="/admin/downloads" element={<Page><DownloadReport /></Page>} />
 
             {/* Product Routes */}

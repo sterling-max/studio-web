@@ -8,6 +8,7 @@ Sterling Lab tracks software downloads at the website download gateway, not insi
 2. `functions/download/[file].ts` resolves the latest Max Commander installer in R2.
 3. The function streams the installer and records a non-blocking row in `download_events`.
 4. `/api/admin/downloads` returns grouped report data for the admin UI at `/admin/downloads`.
+5. `/api/admin/licenses` lists granted licenses, generates manual Max Commander Pro licenses, and supports revoke/restore actions from the same admin UI.
 
 ## Database
 
@@ -24,6 +25,7 @@ The analytics table is separate from `licenses` and `activations`. It stores pro
 Protect these routes with Cloudflare Access:
 
 - `/admin/*`
+- `/admin`
 - `/api/admin/*`
 
 Set `ADMIN_EMAILS` to a comma-separated allowlist of operator emails. The API checks the Cloudflare Access authenticated email header and rejects users that are not in the allowlist.
@@ -46,3 +48,11 @@ The admin report is grouped by:
 - country
 
 The report also shows recent events for distribution debugging.
+
+## Manual Licenses
+
+The admin page includes a manual license generator. It creates active `mc_pro` keys in the existing `licenses` table, tagged with `order_id = MANUAL_ADMIN` and a `MANUAL-*` transaction id.
+
+The generated key is shown in the browser for copying. It is not emailed automatically.
+
+The license report shows the latest granted keys, active activation count, source order/transaction ids, and status. Revoking a license sets `licenses.status = revoked`, records a reason, and revokes active activations for that key. Restoring sets the license back to `active`; the customer can reactivate normally.
