@@ -105,15 +105,15 @@ export const DownloadReport = () => {
   }, [days]);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-32">
-      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
+    <div className="max-w-[1500px] mx-auto px-5 py-24">
+      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-6">
         <div>
-          <div className="flex items-center gap-3 text-sterling-blue mb-4">
-            <BarChart3 size={22} />
-            <span className="text-xs font-bold uppercase tracking-[0.25em]">Admin Report</span>
+          <div className="flex items-center gap-2 text-sterling-blue mb-2">
+            <BarChart3 size={18} />
+            <span className="text-[10px] font-bold uppercase tracking-[0.22em]">Admin Report</span>
           </div>
-          <h1 className="text-5xl font-bold tracking-tight mb-4">Download Analytics</h1>
-          <p className="text-sterling-mist/60 max-w-2xl">
+          <h1 className="text-3xl font-bold tracking-tight mb-2">Download Analytics</h1>
+          <p className="text-sm text-sterling-mist/60 max-w-2xl">
             Server-side download counts grouped by product, version, channel, day, and region.
           </p>
         </div>
@@ -122,7 +122,7 @@ export const DownloadReport = () => {
           <select
             value={days}
             onChange={(event) => setDays(Number(event.target.value))}
-            className="bg-sterling-surface border border-sterling-mist/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sterling-blue/60"
+            className="bg-sterling-surface border border-sterling-mist/10 rounded-lg px-3 py-2 text-sm text-sterling-mist focus:outline-none focus:border-sterling-blue/60"
           >
             <option value={7}>Last 7 days</option>
             <option value={30}>Last 30 days</option>
@@ -132,7 +132,7 @@ export const DownloadReport = () => {
           <button
             onClick={load}
             disabled={loading}
-            className="inline-flex items-center gap-2 rounded-xl bg-sterling-blue px-4 py-3 text-sm font-bold text-white transition-all hover:bg-sterling-blue/90 disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-lg bg-sterling-blue px-3 py-2 text-sm font-bold text-white transition-all hover:bg-sterling-blue/90 disabled:opacity-50"
           >
             <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
             Refresh
@@ -141,21 +141,21 @@ export const DownloadReport = () => {
       </div>
 
       {error && (
-        <div className="mb-10 flex items-start gap-3 rounded-2xl border border-amber-400/20 bg-amber-400/10 p-5 text-amber-100">
+        <div className="mb-6 flex items-start gap-3 rounded-xl border border-amber-400/25 bg-amber-400/10 p-4 text-amber-500">
           <AlertTriangle size={20} className="mt-0.5 shrink-0" />
           <div>
             <div className="font-bold">Report unavailable</div>
-            <p className="text-sm text-amber-100/75">{error}</p>
+            <p className="text-sm text-amber-500/80">{error}</p>
           </div>
         </div>
       )}
 
       <LicenseReport />
 
-      <div className="grid gap-4 md:grid-cols-3 mb-10">
-        <Metric label="Downloads" value={totalDownloads.toLocaleString()} icon={<Download size={20} />} />
-        <Metric label="Unique Networks" value={uniqueNetworks.toLocaleString()} icon={<Globe2 size={20} />} />
-        <Metric label="Products" value={(data?.totals.length || 0).toLocaleString()} icon={<BarChart3 size={20} />} />
+      <div className="grid gap-3 md:grid-cols-3 mb-6">
+        <Metric label="Downloads" value={totalDownloads.toLocaleString()} icon={<Download size={16} />} />
+        <Metric label="Unique Networks" value={uniqueNetworks.toLocaleString()} icon={<Globe2 size={16} />} />
+        <Metric label="Products" value={(data?.totals.length || 0).toLocaleString()} icon={<BarChart3 size={16} />} />
       </div>
 
       <ReportTable
@@ -285,17 +285,17 @@ const LicenseReport = () => {
   };
 
   return (
-    <section className="mb-10">
-      <div className="flex flex-col gap-8">
+    <section className="mb-6">
+      <div className="flex flex-col gap-5">
         <ManualLicenseGenerator onGenerated={load} />
 
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>
-            <div className="flex items-center gap-3 text-sterling-blue mb-3">
-              <KeyRound size={20} />
-              <h2 className="text-xl font-bold text-white">License Report</h2>
+            <div className="flex items-center gap-2 text-sterling-blue mb-2">
+              <KeyRound size={17} />
+              <h2 className="text-lg font-bold text-sterling-mist">License Report</h2>
             </div>
-            <p className="text-sm text-sterling-mist/55">
+            <p className="text-xs text-sterling-mist/55">
               Review granted licenses, active devices, source order ids, and revocation state.
             </p>
           </div>
@@ -313,13 +313,13 @@ const LicenseReport = () => {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Email, key, product, status"
-                className="min-w-[280px] rounded-xl border border-sterling-mist/10 bg-sterling-midnight/70 py-3 pl-11 pr-4 text-sm text-white placeholder:text-sterling-mist/25 focus:outline-none focus:border-sterling-blue/60"
+                className="min-w-[260px] rounded-lg border border-sterling-mist/10 bg-sterling-deep/75 py-2 pl-10 pr-3 text-sm text-sterling-mist placeholder:text-sterling-mist/40 focus:outline-none focus:border-sterling-blue/60"
               />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-sterling-blue px-4 py-3 text-sm font-bold text-white transition-all hover:bg-sterling-blue/90 disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-sterling-blue px-3 py-2 text-sm font-bold text-white transition-all hover:bg-sterling-blue/90 disabled:opacity-50"
             >
               <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
               Load
@@ -328,23 +328,23 @@ const LicenseReport = () => {
         </div>
 
         {error && (
-          <div className="rounded-xl border border-amber-400/20 bg-amber-400/10 px-4 py-3 text-sm text-amber-100">
+          <div className="rounded-lg border border-amber-400/25 bg-amber-400/10 px-3 py-2 text-sm text-amber-500">
             {error}
           </div>
         )}
 
-        <div className="overflow-x-auto rounded-2xl border border-sterling-mist/10">
+        <div className="overflow-x-auto rounded-xl border border-sterling-mist/10">
           <table className="w-full min-w-[1080px] text-left text-sm">
-            <thead className="bg-sterling-midnight/60 text-xs uppercase tracking-[0.16em] text-sterling-mist/35">
+            <thead className="bg-sterling-surface/60 text-xs uppercase tracking-[0.16em] text-sterling-mist/55">
               <tr>
-                <th className="px-5 py-3">Email</th>
-                <th className="px-5 py-3">Key</th>
-                <th className="px-5 py-3">Product</th>
-                <th className="px-5 py-3">Status</th>
-                <th className="px-5 py-3">Devices</th>
-                <th className="px-5 py-3">Source</th>
-                <th className="px-5 py-3">Created</th>
-                <th className="px-5 py-3">Action</th>
+                <th className="px-3 py-2">Email</th>
+                <th className="px-3 py-2">Key</th>
+                <th className="px-3 py-2">Product</th>
+                <th className="px-3 py-2">Status</th>
+                <th className="px-3 py-2">Devices</th>
+                <th className="px-3 py-2">Source</th>
+                <th className="px-3 py-2">Created</th>
+                <th className="px-3 py-2">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -353,39 +353,39 @@ const LicenseReport = () => {
                 const isActive = status === 'active';
 
                 return (
-                  <tr key={license.key} className="border-t border-sterling-mist/5 odd:bg-white/[0.015]">
-                    <td className="px-5 py-4 text-sterling-mist/85">{license.email}</td>
-                    <td className="px-5 py-4">
+                  <tr key={license.key} className="border-t border-sterling-mist/8 odd:bg-sterling-mist/[0.025]">
+                    <td className="px-3 py-2 text-sterling-mist/85">{license.email}</td>
+                    <td className="px-3 py-2">
                       <code className="text-xs font-bold text-sterling-blue">{license.key}</code>
                       {license.founder_status ? (
                         <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] text-amber-300">Founder</div>
                       ) : null}
                     </td>
-                    <td className="px-5 py-4 text-sterling-mist/65">{license.product_id}</td>
-                    <td className="px-5 py-4">
-                      <span className={`rounded-full border px-3 py-1 text-xs font-bold uppercase ${
+                    <td className="px-3 py-2 text-sterling-mist/65">{license.product_id}</td>
+                    <td className="px-3 py-2">
+                      <span className={`rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase ${
                         isActive
-                          ? 'border-emerald-400/20 bg-emerald-400/10 text-emerald-200'
-                          : 'border-red-400/20 bg-red-400/10 text-red-200'
+                          ? 'border-emerald-400/25 bg-emerald-400/10 text-emerald-500'
+                          : 'border-red-400/25 bg-red-400/10 text-red-500'
                       }`}>
                         {status}
                       </span>
                       {license.revocation_reason ? (
-                        <div className="mt-2 max-w-[220px] text-xs text-sterling-mist/35">{license.revocation_reason}</div>
+                        <div className="mt-2 max-w-[220px] text-xs text-sterling-mist/55">{license.revocation_reason}</div>
                       ) : null}
                     </td>
-                    <td className="px-5 py-4 text-sterling-mist/65">{Number(license.active_activations || 0)}/3</td>
-                    <td className="px-5 py-4 text-xs text-sterling-mist/45">
+                    <td className="px-3 py-2 text-sterling-mist/65">{Number(license.active_activations || 0)}/3</td>
+                    <td className="px-3 py-2 text-xs text-sterling-mist/60">
                       <div>{license.order_id || '-'}</div>
                       <div>{license.transaction_id || '-'}</div>
                     </td>
-                    <td className="px-5 py-4 text-sterling-mist/65">{new Date(license.created_at).toLocaleDateString()}</td>
-                    <td className="px-5 py-4">
+                    <td className="px-3 py-2 text-sterling-mist/65">{new Date(license.created_at).toLocaleDateString()}</td>
+                    <td className="px-3 py-2">
                       {isActive ? (
                         <button
                           onClick={() => updateLicense(license, 'revoke')}
                           disabled={actionKey === license.key}
-                          className="inline-flex items-center gap-2 rounded-xl border border-red-400/20 px-3 py-2 text-xs font-bold text-red-200 transition-colors hover:bg-red-400/10 disabled:opacity-50"
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-red-400/25 px-2 py-1 text-xs font-bold text-red-500 transition-colors hover:bg-red-400/10 disabled:opacity-50"
                         >
                           <ShieldOff size={14} />
                           Revoke
@@ -394,7 +394,7 @@ const LicenseReport = () => {
                         <button
                           onClick={() => updateLicense(license, 'restore')}
                           disabled={actionKey === license.key}
-                          className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/20 px-3 py-2 text-xs font-bold text-emerald-200 transition-colors hover:bg-emerald-400/10 disabled:opacity-50"
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-400/25 px-2 py-1 text-xs font-bold text-emerald-500 transition-colors hover:bg-emerald-400/10 disabled:opacity-50"
                         >
                           <RotateCcw size={14} />
                           Restore
@@ -405,7 +405,7 @@ const LicenseReport = () => {
                 );
               }) : (
                 <tr>
-                  <td colSpan={8} className="px-5 py-10 text-center text-sterling-mist/35">
+                  <td colSpan={8} className="px-3 py-6 text-center text-sterling-mist/55">
                     No licenses found.
                   </td>
                 </tr>
@@ -470,14 +470,14 @@ const ManualLicenseGenerator = ({ onGenerated }: { onGenerated?: () => void | Pr
   };
 
   return (
-    <div className="rounded-2xl border border-sterling-blue/15 bg-sterling-blue/5 p-6">
-      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+    <div className="rounded-xl border border-sterling-blue/15 bg-sterling-blue/5 p-4">
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
         <div className="max-w-xl">
-          <div className="flex items-center gap-3 text-sterling-blue mb-3">
-            <KeyRound size={20} />
-            <h2 className="text-xl font-bold text-white">Manual License</h2>
+          <div className="flex items-center gap-2 text-sterling-blue mb-2">
+            <KeyRound size={17} />
+            <h2 className="text-lg font-bold text-sterling-mist">Manual License</h2>
           </div>
-          <p className="text-sm text-sterling-mist/55">
+          <p className="text-xs text-sterling-mist/55">
             Generate an active Max Commander Pro license for a customer or tester email.
           </p>
         </div>
@@ -490,18 +490,18 @@ const ManualLicenseGenerator = ({ onGenerated }: { onGenerated?: () => void | Pr
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="customer@email.com"
-              className="min-w-0 rounded-xl border border-sterling-mist/10 bg-sterling-midnight/70 px-4 py-3 text-sm text-white placeholder:text-sterling-mist/25 focus:outline-none focus:border-sterling-blue/60"
+              className="min-w-0 rounded-lg border border-sterling-mist/10 bg-sterling-deep/75 px-3 py-2 text-sm text-sterling-mist placeholder:text-sterling-mist/40 focus:outline-none focus:border-sterling-blue/60"
             />
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-sterling-blue px-5 py-3 text-sm font-bold text-white transition-all hover:bg-sterling-blue/90 disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-sterling-blue px-4 py-2 text-sm font-bold text-white transition-all hover:bg-sterling-blue/90 disabled:opacity-50"
             >
               <KeyRound size={16} />
               {loading ? 'Generating...' : 'Generate'}
             </button>
           </div>
-          <label className="mt-3 flex items-center gap-3 text-sm text-sterling-mist/60">
+          <label className="mt-2 flex items-center gap-2 text-xs text-sterling-mist/60">
             <input
               type="checkbox"
               checked={founder}
@@ -514,20 +514,20 @@ const ManualLicenseGenerator = ({ onGenerated }: { onGenerated?: () => void | Pr
       </div>
 
       {error && (
-        <div className="mt-5 rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200">
+        <div className="mt-4 rounded-lg border border-red-400/25 bg-red-400/10 px-3 py-2 text-sm text-red-500">
           {error}
         </div>
       )}
 
       {result && (
-        <div className="mt-5 flex flex-col gap-3 rounded-xl border border-emerald-400/20 bg-emerald-400/10 p-4 md:flex-row md:items-center md:justify-between">
+        <div className="mt-4 flex flex-col gap-2 rounded-lg border border-emerald-400/20 bg-emerald-400/10 p-3 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-emerald-200/60">Generated for {result.email}</div>
-            <code className="mt-1 block text-lg font-bold text-emerald-100">{result.key}</code>
+            <div className="text-xs uppercase tracking-[0.2em] text-emerald-500/70">Generated for {result.email}</div>
+            <code className="mt-1 block text-base font-bold text-emerald-500">{result.key}</code>
           </div>
           <button
             onClick={copyKey}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-300/20 px-4 py-2 text-sm font-bold text-emerald-100 transition-colors hover:bg-emerald-300/10"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-400/25 px-3 py-1.5 text-sm font-bold text-emerald-500 transition-colors hover:bg-emerald-400/10"
           >
             <Copy size={16} />
             Copy
@@ -539,42 +539,42 @@ const ManualLicenseGenerator = ({ onGenerated }: { onGenerated?: () => void | Pr
 };
 
 const Metric = ({ label, value, icon }: { label: string; value: string; icon: ReactNode }) => (
-  <div className="rounded-2xl border border-sterling-mist/10 bg-sterling-surface/40 p-6">
-    <div className="flex items-center justify-between text-sterling-mist/40 mb-5">
-      <span className="text-xs font-bold uppercase tracking-[0.22em]">{label}</span>
+  <div className="rounded-xl border border-sterling-mist/10 bg-sterling-surface/40 p-4">
+    <div className="flex items-center justify-between text-sterling-mist/40 mb-2">
+      <span className="text-[10px] font-bold uppercase tracking-[0.18em]">{label}</span>
       {icon}
     </div>
-    <div className="text-4xl font-bold text-white">{value}</div>
+    <div className="text-2xl font-bold text-sterling-mist">{value}</div>
   </div>
 );
 
 const ReportTable = ({ title, columns, rows }: { title: string; columns: string[]; rows: string[][] }) => (
-  <section className="mb-10 overflow-hidden rounded-2xl border border-sterling-mist/10 bg-sterling-surface/30">
-    <div className="flex items-center justify-between border-b border-sterling-mist/10 px-5 py-4">
-      <h2 className="text-lg font-bold text-white">{title}</h2>
+  <section className="mb-6 overflow-hidden rounded-xl border border-sterling-mist/10 bg-sterling-surface/30">
+    <div className="flex items-center justify-between border-b border-sterling-mist/10 px-3 py-2">
+      <h2 className="text-base font-bold text-sterling-mist">{title}</h2>
       <span className="text-xs text-sterling-mist/40">{rows.length.toLocaleString()} rows</span>
     </div>
     <div className="overflow-x-auto">
       <table className="w-full min-w-[760px] text-left text-sm">
-        <thead className="bg-sterling-midnight/60 text-xs uppercase tracking-[0.16em] text-sterling-mist/35">
+        <thead className="bg-sterling-surface/60 text-xs uppercase tracking-[0.16em] text-sterling-mist/55">
           <tr>
             {columns.map((column) => (
-              <th key={column} className="px-5 py-3 font-bold">{column}</th>
+              <th key={column} className="px-3 py-2 font-bold">{column}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.length > 0 ? rows.map((row, index) => (
-            <tr key={`${title}-${index}`} className="border-t border-sterling-mist/5 odd:bg-white/[0.015]">
+            <tr key={`${title}-${index}`} className="border-t border-sterling-mist/8 odd:bg-sterling-mist/[0.025]">
               {row.map((cell, cellIndex) => (
-                <td key={`${title}-${index}-${cellIndex}`} className="px-5 py-3 text-sterling-mist/75">
+                <td key={`${title}-${index}-${cellIndex}`} className="px-3 py-2 text-sterling-mist/75">
                   {cell}
                 </td>
               ))}
             </tr>
           )) : (
             <tr>
-              <td colSpan={columns.length} className="px-5 py-10 text-center text-sterling-mist/35">
+              <td colSpan={columns.length} className="px-3 py-6 text-center text-sterling-mist/55">
                 No download data for this range.
               </td>
             </tr>

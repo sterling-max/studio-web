@@ -28,11 +28,19 @@ export function requireAdmin(request: Request, env: AdminEnv): Response | null {
 }
 
 function getCloudflareAccessEmail(request: Request): string | null {
-  return (
+  const headerEmail =
     request.headers.get('Cf-Access-Authenticated-User-Email') ||
     request.headers.get('CF-Access-Authenticated-User-Email') ||
-    request.headers.get('cf-access-authenticated-user-email')
-  );
+    request.headers.get('cf-access-authenticated-user-email') ||
+    request.headers.get('Cf-Access-Jwt-Assertion-Email');
+
+  if (headerEmail) return headerEmail;
+
+  const jwt =
+    request.headers.get('Cf-Access-Jwt-Assertion') ||
+    getCookie(request.headers.get('Cookie'), 'CF_Authorization');
+
+  return jwt ? getEmailFromJwt(jwt) : null;
 }
 
 function parseAllowedEmails(value?: string): string[] {
@@ -50,4 +58,29 @@ function jsonError(message: string, status: number): Response {
       'Cache-Control': 'no-store'
     }
   });
+}
+
+function getCookie(cookieHeader: string | null, name: string): string | null {
+  if (!cookieHeader) return null;
+  const prefix = `${name}=`;
+  const match = cookieHeader
+    .split(';')
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(prefix));
+
+  return match ? decodeURIComponent(match.slice(prefix.length)) : null;
+}
+
+function getEmailFromJwt(jwt: string): string | null {
+  const [, payload] = jwt.split('.');
+  if (!payload) return null;
+
+  try {
+    const normalized = payload.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, '=');
+    const claims = JSON.parse(atob(padded)) as { email?: string; sub?: string };
+    return claims.email || null;
+  } catch {
+    return null;
+  }
 }
