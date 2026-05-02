@@ -147,7 +147,7 @@ export const PricingPage = () => {
             <span>Payments Powered by</span>
             <StripeLogo className="h-4 w-auto text-sterling-mist/40" />
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+          <div className="flex flex-wrap justify-center items-center gap-6 hover:opacity-100 transition-all duration-700">
             <VisaLogo className="h-3 w-auto" />
             <MastercardLogo className="h-5 w-auto" />
             <ApplePayLogo className="h-4 w-auto" />
