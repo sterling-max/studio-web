@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { HelpCircle, ChevronDown, ShieldCheck, CreditCard } from 'lucide-react';
+import { HelpCircle, ChevronDown, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 import { Pricing, type PricingPlan } from './Pricing';
 import { STRIPE_PRICE_FOUNDER, STRIPE_PRICE_STANDARD } from '../../constants/checkout';
