@@ -22,9 +22,9 @@ export const ProductGrid = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Crafted <span className="text-sterling-blue">Software</span></h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our <span className="text-sterling-blue">Ecosystem</span></h2>
             <p className="text-sterling-mist/60 max-w-lg">
-              Max Commander is the current public focus of Sterling Lab.
+              Explore our collection of precision-engineered tools, from productivity powerhouses to immersive creative studios.
             </p>
           </div>
         </div>

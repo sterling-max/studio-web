@@ -4,8 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ProductGrid } from './components/ProductGrid';
 import { VisualStyleGuide } from './components/VisualStyleGuide';
-import { About } from './components/About';
-import { Contact } from './components/Contact';
+import { Collaborate } from './components/Collaborate';
 import { MaxCommander } from './components/products/MaxCommander';
 import { MaxCommanderPrivacyPolicy } from './components/products/MaxCommanderPrivacyPolicy';
 import { ManageLicense } from './components/ManageLicense';
@@ -49,24 +48,7 @@ function HomePage() {
     <Page>
       <Hero />
       <ProductGrid />
-      <About />
-      <section className="pt-8 pb-32 px-6 text-center">
-        <div className="max-w-3xl mx-auto p-12 rounded-[3rem] bg-gradient-to-b from-sterling-deep to-sterling-midnight border border-sterling-blue/20 relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-sterling-blue/20 blur-[80px] rounded-full" />
-          <h2 className="text-4xl font-bold mb-6">Have a project in mind?</h2>
-          <p className="text-sterling-mist/60 mb-10 text-lg">
-            Whether it's a productivity powerhouse or a creative experiment, we'd love to help you build it.
-          </p>
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-sterling-blue text-white rounded-2xl font-bold hover:scale-105 transition-transform shadow-[0_0_30px_rgba(0,122,255,0.3)] cursor-pointer"
-          >
-            Let's Talk
-          </a>
-        </div>
-      </section>
+      <Collaborate />
     </Page>
   );
 }
@@ -84,7 +66,7 @@ function App() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/contact" element={<Page><div className="pt-20"><Contact /></div></Page>} />
+            <Route path="/contact" element={<Page><div className="pt-20"><Collaborate showHeader={false} showCards={false} /></div></Page>} />
             <Route path="/design" element={<Page><VisualStyleGuide /></Page>} />
             <Route path="/manage" element={<Page><ManageLicense /></Page>} />
             <Route path="/admin" element={<Page><DownloadReport /></Page>} />

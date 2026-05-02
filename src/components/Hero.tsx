@@ -11,6 +11,13 @@ export const Hero = () => {
     }
   };
 
+  const scrollToLab = () => {
+    const element = document.getElementById('lab');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative min-h-[90vh] lg:min-h-screen flex flex-col items-center justify-start lg:pt-20 pt-16 overflow-hidden bg-gradient-sterling">
       {/* Background Animated Orbs */}
@@ -63,7 +70,7 @@ export const Hero = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => navigate('/about')}
+            onClick={scrollToLab}
             className="px-8 py-4 bg-sterling-surface text-sterling-mist rounded-2xl font-semibold border border-sterling-mist/10 hover:bg-sterling-surface/80 transition-all cursor-pointer"
           >
             The Lab

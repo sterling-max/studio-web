@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
     techStack: ['Tauri', 'React', 'TypeScript', 'Zustand', 'Framer Motion'],
     category: 'multimedia',
     status: 'soon',
-    isVisible: false
+    isVisible: true
   },
   {
     id: 'zap-studio',
@@ -42,7 +42,7 @@ export const PRODUCTS: Product[] = [
     techStack: ['Next.js', 'Claude AI', 'FFmpeg', 'SQLite'],
     category: 'creative',
     status: 'soon',
-    isVisible: false
+    isVisible: true
   },
   {
     id: 'easy-monitor',
@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Supabase'],
     category: 'health',
     status: 'soon',
-    isVisible: false
+    isVisible: true
   },
   {
     id: 'tales-universe',
@@ -64,6 +64,6 @@ export const PRODUCTS: Product[] = [
     techStack: ['Flutter', 'AI Integration', 'Local Storage'],
     category: 'creative',
     status: 'soon',
-    isVisible: false
+    isVisible: true
   }
 ];
