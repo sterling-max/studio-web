@@ -8,22 +8,13 @@ export const VisualStyleGuide = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-1.5 mb-6 text-xs font-medium tracking-[0.2em] uppercase border border-sterling-cyan/30 rounded-full bg-sterling-cyan/5 text-sterling-cyan"
-          >
-            Sterling Web Studio
-          </motion.span>
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 pb-3 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sterling-mist to-sterling-mist/50">
-            Elevate Your <br /> Digital Presence
+        <div className="text-center max-w-5xl mx-auto mb-24">
+          <h1 className="text-6xl md:text-8xl font-bold mb-10 tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-sterling-mist to-sterling-mist/50">
+            Elevate Your <span className="text-sterling-blue">Digital Presence</span>
           </h1>
-          <p className="text-sterling-mist/60 text-xl leading-relaxed">
+          <p className="text-sterling-mist/60 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
             We don't just build websites; we craft immersive digital environments. 
-            Whether you are launching a new brand, upgrading a legacy interface, or releasing a SaaS product, 
-            our design engineering transforms your vision into a pixel-perfect reality.
+            High-performance design engineering for the next generation of software.
           </p>
         </div>
 

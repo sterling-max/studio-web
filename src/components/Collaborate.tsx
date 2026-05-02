@@ -67,7 +67,9 @@ export const Collaborate = ({
           showContainer && "rounded-[3rem] bg-gradient-to-br from-sterling-deep to-sterling-midnight border border-sterling-blue/20"
         )}
       >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-sterling-blue/20 blur-[100px] rounded-full pointer-events-none" />
+        {showContainer && (
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-sterling-blue/20 blur-[100px] rounded-full pointer-events-none" />
+        )}
         
         <h3 className="text-4xl md:text-6xl font-bold mb-8 relative z-10 tracking-tight">
           Have a <span className="text-sterling-blue">Project</span> in mind?
