@@ -66,7 +66,7 @@ function App() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/contact" element={<Page><div className="pt-20"><Collaborate showHeader={false} showCards={false} /></div></Page>} />
+            <Route path="/contact" element={<Page><div className="pt-20"><Collaborate showHeader={false} showCards={false} showContainer={false} /></div></Page>} />
             <Route path="/design" element={<Page><VisualStyleGuide /></Page>} />
             <Route path="/manage" element={<Page><ManageLicense /></Page>} />
             <Route path="/admin" element={<Page><DownloadReport /></Page>} />

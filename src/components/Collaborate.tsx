@@ -1,18 +1,22 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, CreditCard, MessageCircle, Mail, Award, Code, Users } from 'lucide-react';
+import { ShieldCheck, MessageCircle, Mail, Award, Code, Users } from 'lucide-react';
+import { cn } from '../utils/cn';
+import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo } from './PaymentLogos';
 
 export const Collaborate = ({ 
   showHeader = true, 
-  showCards = true 
+  showCards = true,
+  showContainer = true
 }: { 
   showHeader?: boolean;
   showCards?: boolean;
+  showContainer?: boolean;
 }) => {
   const whatsappNumber = "393475393181";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
 
   return (
-    <section id="lab" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="lab" className={cn("py-24 px-6 md:px-12 max-w-7xl mx-auto", !showContainer && "py-0")}>
       {showHeader && (
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +62,10 @@ export const Collaborate = ({
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="relative overflow-hidden p-12 md:p-20 rounded-[3rem] bg-gradient-to-br from-sterling-deep to-sterling-midnight border border-sterling-blue/20 text-center"
+        className={cn(
+          "relative overflow-hidden p-12 md:p-20 text-center",
+          showContainer && "rounded-[3rem] bg-gradient-to-br from-sterling-deep to-sterling-midnight border border-sterling-blue/20"
+        )}
       >
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-sterling-blue/20 blur-[100px] rounded-full pointer-events-none" />
         
@@ -92,20 +99,20 @@ export const Collaborate = ({
         </div>
 
         {/* Payment & Trust Info */}
-        <div className="relative z-10 pt-10 border-t border-sterling-mist/5 flex flex-col items-center gap-4">
-          <div className="flex items-center gap-2 text-sterling-mist/30 text-[10px] font-bold uppercase tracking-[0.2em]">
+        <div className="relative z-10 pt-10 border-t border-sterling-mist/5 flex flex-col items-center gap-6">
+          <div className="flex items-center gap-3 text-sterling-mist/30 text-[10px] font-bold uppercase tracking-[0.2em]">
             <ShieldCheck size={14} className="text-emerald-500/50" />
-            Secured by Stripe
+            <span>Payments Powered by</span>
+            <StripeLogo className="h-4 w-auto text-sterling-mist/40" />
           </div>
-          <div className="flex items-center gap-4 text-sterling-mist/20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            <CreditCard size={32} />
-            <div className="h-6 w-px bg-sterling-mist/10 mx-2" />
-            <div className="flex gap-4 items-center">
-              <span className="text-xs font-medium tracking-wide">Visa</span>
-              <span className="text-xs font-medium tracking-wide">Mastercard</span>
-              <span className="text-xs font-medium tracking-wide">Amex</span>
-              <span className="text-xs font-medium tracking-wide">Apple Pay</span>
-              <span className="text-xs font-medium tracking-wide">Google Pay</span>
+          <div className="flex flex-wrap justify-center items-center gap-8 grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+            <VisaLogo className="h-4 w-auto" />
+            <MastercardLogo className="h-6 w-auto" />
+            <ApplePayLogo className="h-5 w-auto" />
+            <GooglePayLogo className="h-5 w-auto" />
+            <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest text-sterling-mist/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-sterling-blue" />
+              AMEX
             </div>
           </div>
         </div>
