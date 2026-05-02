@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Check, Download, ShieldCheck, CreditCard } from 'lucide-react';
 import { cn } from '../../utils/cn';
-import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo, AmexLogo } from '../PaymentLogos';
+import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo, AmexLogo, AmazonLogo } from '../PaymentLogos';
 
 export interface PricingPlan {
   price: string;

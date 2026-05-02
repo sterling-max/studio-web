@@ -4,7 +4,7 @@ import { HelpCircle, ChevronDown, ShieldCheck, CreditCard } from 'lucide-react';
 import { useState } from 'react';
 import { Pricing, type PricingPlan } from './Pricing';
 import { STRIPE_PRICE_FOUNDER, STRIPE_PRICE_STANDARD } from '../../constants/checkout';
-import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo, AmexLogo } from '../PaymentLogos';
+import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo, AmexLogo, AmazonLogo } from '../PaymentLogos';
 
 const plans: PricingPlan[] = [
   {
