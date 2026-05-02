@@ -128,7 +128,7 @@ export const ProductLayout = ({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-24 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16"
+        className="mb-16 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16"
       >
         <div className={cn("flex-1", heroImage ? "lg:text-left text-center" : "text-center")}>
           <div className={cn(
@@ -136,16 +136,16 @@ export const ProductLayout = ({
             typeof HeroIcon !== 'string' && "p-4 bg-sterling-blue/10 rounded-3xl"
           )}>
             {typeof HeroIcon === 'string' ? (
-              <img src={HeroIcon} alt={title} className="w-16 h-16 md:w-20 md:h-20 object-contain" />
+              <img src={HeroIcon} alt={title} className="w-14 h-14 md:w-16 md:h-16 object-contain" />
             ) : (
-              <HeroIcon size={40} className="text-sterling-blue" />
+              <HeroIcon size={32} className="text-sterling-blue" />
             )}
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             {title} {titleSuffix && <span className="text-sterling-blue">{titleSuffix}</span>}
           </h1>
 
-          <div className={cn("max-w-2xl mb-8 min-h-[3.5rem]", heroImage ? "lg:mx-0 mx-auto" : "mx-auto")}>
+          <div className={cn("max-w-2xl mb-6 min-h-[3.5rem]", heroImage ? "lg:mx-0 mx-auto" : "mx-auto")}>
             {rotatingPhrases ? (
               <AnimatePresence mode="wait">
                 <motion.p
@@ -168,7 +168,7 @@ export const ProductLayout = ({
 
           {/* Extra Hero Content (e.g., Version Info) */}
           {extraHeroContent && (
-            <div className="mb-8">{extraHeroContent}</div>
+            <div className="mb-6">{extraHeroContent}</div>
           )}
 
           {pricingPlans && (

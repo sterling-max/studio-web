@@ -136,8 +136,8 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
   const latestVersion = changelogData[0];
 
   const PromoSection = (
-    <div className="flex flex-col items-center lg:items-start gap-4 animate-fade-in-up">
-      <div className="flex items-center gap-3 bg-sterling-surface/50 border border-sterling-mist/10 rounded-full px-5 py-2 hover:bg-sterling-surface transition-colors cursor-default group">
+    <div className="flex flex-col items-center lg:items-start gap-3 animate-fade-in-up">
+      <div className="flex items-center gap-3 bg-sterling-surface/50 border border-sterling-mist/10 rounded-full px-5 py-1.5 hover:bg-sterling-surface transition-colors cursor-default group">
         <span className="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse" />
         <span className="text-sm font-semibold text-sterling-mist group-hover:text-white transition-colors">
           <span className="text-sterling-blue">v{latestVersion.version}</span> Available Now
@@ -151,17 +151,17 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       <div className="flex items-center gap-4">
         <button
           onClick={() => setShowChangelog(true)}
-          className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2 cursor-pointer"
+          className="text-[10px] font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-1.5 cursor-pointer"
         >
-          <History size={12} />
-          View Changelog
+          <History size={10} />
+          Changelog
         </button>
         <button
           onClick={onViewPrivacy}
-          className="text-xs font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-2 cursor-pointer"
+          className="text-[10px] font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-1.5 cursor-pointer"
         >
-          <Shield size={12} />
-          Privacy Policy
+          <Shield size={10} />
+          Privacy
         </button>
       </div>
     </div>
