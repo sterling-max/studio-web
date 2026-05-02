@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Check, Download, ShieldCheck, CreditCard } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo } from '../PaymentLogos';
 
 export interface PricingPlan {
   price: string;
@@ -135,15 +136,18 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
       
       {showFooterNote && (
         <div className="mt-12 text-center">
-          <div className="flex flex-col items-center justify-center gap-3 mb-6">
-            <div className="flex items-center gap-1.5 text-sterling-mist/40 text-xs font-semibold uppercase tracking-widest">
+          <div className="flex flex-col items-center justify-center gap-4 mb-6">
+            <div className="flex items-center gap-2 text-sterling-mist/30 text-[10px] font-bold uppercase tracking-[0.2em]">
               <ShieldCheck size={14} className="text-emerald-500/70" />
-              Secured by Stripe
+              <span>Payments Powered by</span>
+              <StripeLogo className="h-4 w-auto text-sterling-mist/40" />
             </div>
-            <div className="flex items-center gap-2 text-sterling-mist/30">
-              <CreditCard size={24} />
-              <div className="h-4 w-px bg-sterling-mist/10 mx-1"></div>
-              <span className="text-xs font-medium">Visa · Mastercard · Amex · Apple Pay</span>
+            <div className="flex flex-wrap justify-center items-center gap-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+              <VisaLogo className="h-3 w-auto" />
+              <MastercardLogo className="h-5 w-auto" />
+              <ApplePayLogo className="h-4 w-auto" />
+              <GooglePayLogo className="h-4 w-auto" />
+              <div className="text-[10px] font-bold tracking-widest text-sterling-mist/40">AMEX</div>
             </div>
           </div>
           

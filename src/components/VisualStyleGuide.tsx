@@ -9,7 +9,7 @@ export const VisualStyleGuide = () => {
         animate={{ opacity: 1, y: 0 }}
       >
         <div className="text-center max-w-5xl mx-auto mb-24">
-          <h1 className="text-6xl md:text-8xl font-bold mb-10 tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-sterling-mist to-sterling-mist/50">
+          <h1 className="text-4xl md:text-6xl font-bold mb-10 tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-sterling-mist to-sterling-mist/50">
             Elevate Your <span className="text-sterling-blue">Digital Presence</span>
           </h1>
           <p className="text-sterling-mist/60 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
