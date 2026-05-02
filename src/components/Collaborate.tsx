@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { ShieldCheck, CreditCard, MessageCircle, Mail, Award, Code, Users } from 'lucide-react';
 
 export const Collaborate = ({ 
