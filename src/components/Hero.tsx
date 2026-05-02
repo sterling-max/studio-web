@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
 
 export const Hero = () => {
-  const navigate = useNavigate();
   const scrollToProducts = () => {
     const element = document.getElementById('products');
     if (element) {

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { type Product } from '../constants/products';
-import { ArrowUpRight, Folder, Play, Video, Activity, Book } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { cn } from '../utils/cn';
 
 interface ProductCardProps {
@@ -10,7 +10,7 @@ interface ProductCardProps {
   className?: string;
 }
 
-export const ProductCard = ({ product, index, className }: ProductCardProps) => {
+export const ProductCard = ({ product, index }: ProductCardProps) => {
   const navigate = useNavigate();
   const previewImage = product.id === 'max-commander' ? '/assets/max-commander/1.png' : null;
 

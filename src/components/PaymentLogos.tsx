@@ -1,4 +1,3 @@
-import React from 'react';
 
 // Payment Logos - Using PNG assets for all logos as requested.
 // Assets should be placed in: public/assets/payments/

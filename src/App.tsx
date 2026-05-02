@@ -20,7 +20,6 @@ import { LATEST_WEBSITE_VERSION } from './data/website-changelog';
 import { ThanksPage } from './pages/ThanksPage';
 
 const whatsappNumber = "393475393181";
-const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
 
 // Scroll to top on every route change
 function ScrollToTop() {

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, MessageCircle, Mail, Award, Code, Users } from 'lucide-react';
+import { MessageCircle, Mail, Award, Code, Users } from 'lucide-react';
 import { cn } from '../utils/cn';
-import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo } from './PaymentLogos';
+
 
 export const Collaborate = ({ 
   showHeader = true, 
