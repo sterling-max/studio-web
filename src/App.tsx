@@ -18,6 +18,7 @@ import { TermsOfService } from './pages/legal/TermsOfService';
 import { LegalNotice } from './pages/legal/LegalNotice';
 import { RefundPolicy } from './pages/legal/RefundPolicy';
 import { LATEST_WEBSITE_VERSION } from './data/website-changelog';
+import { ThanksPage } from './pages/ThanksPage';
 
 const whatsappNumber = "393475393181";
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20Sterling%20Lab,%20I'd%20like%20to%20discuss%20a%20project.`;
@@ -106,6 +107,9 @@ function App() {
             {/* Dedicated Pricing Page */}
             <Route path="/pricing" element={<Page><PricingPage /></Page>} />
             <Route path="/download" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
+            
+            {/* Post-Purchase */}
+            <Route path="/thanks" element={<Page><ThanksPage /></Page>} />
           </Routes>
         </AnimatePresence>
       </main>

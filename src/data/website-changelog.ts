@@ -6,6 +6,14 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.16",
+    date: "2026-05-02",
+    changes: [
+      "Added dedicated /thanks page for post-checkout redirection",
+      "Fixed Stripe checkout status passing to prevent Cloudflare Edge HTML overrides"
+    ]
+  },
+  {
     version: "1.0.15",
     date: "2026-05-02",
     changes: [

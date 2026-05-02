@@ -50,7 +50,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       'mode': 'payment',
       'line_items[0][price]': priceId,
       'line_items[0][quantity]': '1',
-      'success_url': 'https://sterling.ltd/?purchase=success',
+      'success_url': 'https://sterling.ltd/thanks',
       'cancel_url': 'https://sterling.ltd/products/max-commander',
       'automatic_tax[enabled]': 'true',
       'tax_id_collection[enabled]': 'true',
