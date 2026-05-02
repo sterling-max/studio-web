@@ -12,6 +12,9 @@ dist
 dist-ssr
 .wrangler/
 *.local
+.dev.vars
+.stripe_live_key
+.stripe_*_key
 
 # Editor directories and files
 .vscode/*

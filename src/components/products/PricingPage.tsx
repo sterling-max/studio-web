@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { HelpCircle, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { Pricing, type PricingPlan } from './Pricing';
+import { STRIPE_PRICE_FOUNDER, STRIPE_PRICE_STANDARD } from '../../constants/checkout';
 
 const plans: PricingPlan[] = [
   {
@@ -37,7 +38,7 @@ const plans: PricingPlan[] = [
     ],
     badge: "Limited Time",
     highlight: true,
-    comingSoon: true
+    priceId: STRIPE_PRICE_FOUNDER
   },
   {
     price: "€25",
@@ -53,7 +54,7 @@ const plans: PricingPlan[] = [
     ],
     badge: "Standard Price",
     highlight: false,
-    comingSoon: true
+    priceId: STRIPE_PRICE_STANDARD
   }
 ];
 
@@ -76,11 +77,11 @@ const faqs = [
   },
   {
     q: "Where can I buy a license?",
-    a: "Paid checkout opens in the coming weeks. When it is available, only buy from official Sterling Lab channels. Purchases from unauthorized resellers are not valid and will be voided."
+    a: "Licenses are available directly from Sterling Lab. Purchases from unauthorized resellers are not valid and will be voided."
   },
   {
     q: "Who handles payments and taxes?",
-    a: "Paid checkout is currently disabled. When licenses open, payments will be handled through Sterling Lab's direct Stripe checkout, with applicable tax calculated at checkout based on your location. Prices shown exclude tax."
+    a: "Payments are processed securely through Stripe. Prices shown exclude tax. VAT and applicable sales tax will be calculated at checkout based on your location."
   },
 ];
 
@@ -123,7 +124,7 @@ export const PricingPage = () => {
           Simple <span className="text-sterling-blue">Pricing</span>
         </h1>
         <p className="text-sterling-mist/60 text-base max-w-xl mx-auto mb-1">
-          Free download now. Paid licenses open in the coming weeks.
+          Free download now. Pro features available via license key.
         </p>
         <p className="text-sterling-mist/40 text-sm">
           Windows 10 &amp; Windows 11 only. Prices shown exclude tax.
@@ -141,7 +142,7 @@ export const PricingPage = () => {
         className="max-w-3xl mx-auto px-6 mt-4 mb-12 p-6 rounded-2xl bg-sterling-blue/5 border border-sterling-blue/15"
       >
         <p className="text-sterling-mist/50 text-xs leading-relaxed text-center">
-          Paid checkout is not open yet. The free Windows build is available today, and paid Max Commander licenses will become available in the coming weeks through Sterling Lab's direct Stripe checkout.{' '}
+          The free Windows build is available today, and Pro features are unlocked via paid licenses. 
           Prices shown exclude tax. VAT and applicable sales tax will be calculated at checkout based on your location.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xs">

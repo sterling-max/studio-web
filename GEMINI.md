@@ -61,9 +61,8 @@ DEV-KEY-$T3RL1NG-PRO
 * [ ] **Case Studies:** Implement functional "View Case Study" pages with descriptions and imagery for each product.
 * [x] **Licensing Backend:** Complete Cloudflare DNS and D1 binding for `/api/activate`, `/api/manage`, and `/api/send-magic-link`.
 * [x] **Licensing UI:** Finalize the `/manage` portal with machine deactivation logic and computer name display.
-* [ ] **Stripe Checkout/Webhook:** Implement direct Stripe checkout and webhook handling for Max Commander purchases.
+* [x] **Stripe Checkout/Webhook:** Implement direct Stripe checkout and webhook handling for Max Commander purchases.
 * [ ] **Deprecated Lemon Squeezy Webhook Verification:** Keep this only as a historical/reference item; do not implement unless Lemon Squeezy becomes active again.
-- **Email Delivery:** Integrate an email provider (e.g., Resend) for real magic link delivery.
 * [x] **Tester Key Generator:** Implemented `/api/generate-key` for manual license creation.
 
 ## Manual Key Generation (Admin)

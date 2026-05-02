@@ -8,11 +8,14 @@ export interface PricingPlan {
   features: string[];
   badge: string;
   highlight: boolean;
-  checkoutUrl?: string;
   isFree?: boolean;
+  priceId?: string;
   buttonLabel?: string;
   comingSoon?: boolean;
 }
+
+import { useState } from 'react';
+import { startStripeCheckout } from '../../constants/checkout';
 
 interface PricingProps {
   plans: PricingPlan[];
@@ -21,7 +24,9 @@ interface PricingProps {
 }
 
 export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: PricingProps) => {
-  const handleCheckout = (plan: PricingPlan) => {
+  const [loadingPriceId, setLoadingPriceId] = useState<string | null>(null);
+
+  const handleCheckout = async (plan: PricingPlan) => {
     if (plan.isFree) {
         // Trigger download via worker alias
         // Add a cache buster (timestamp) to ensure the Worker is always triggered
@@ -32,6 +37,14 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
         document.getElementById('smartscreen-guide')?.scrollIntoView({ behavior: 'smooth' });
         return;
     }
+
+    if (plan.priceId && !plan.comingSoon) {
+      setLoadingPriceId(plan.priceId);
+      await startStripeCheckout(plan.priceId, (err) => {
+        alert(err);
+        setLoadingPriceId(null);
+      });
+    }
   };
 
   return (
@@ -39,23 +52,9 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
       {showHeader && (
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3">Simple <span className="text-sterling-blue">Pricing</span></h2>
-          <p className="text-sterling-mist/60 text-base">Free download now. Paid licenses open in the coming weeks.</p>
+          <p className="text-sterling-mist/60 text-base">Free download now. Pro features available via license key.</p>
         </div>
       )}
-
-      <div className="max-w-4xl mx-auto mb-8 rounded-2xl border border-sterling-blue/20 bg-sterling-blue/5 px-5 py-4 shadow-[0_0_30px_rgba(0,122,255,0.08)]">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-center sm:text-left">
-          <div className="mx-auto sm:mx-0 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sterling-blue/15 text-sterling-cyan">
-            <Clock3 size={18} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-sterling-mist">Paid licenses are opening soon.</p>
-            <p className="text-xs leading-relaxed text-sterling-mist/55">
-              Buy buttons are paused while the direct Stripe checkout is prepared. The free Windows download remains available today.
-            </p>
-          </div>
-        </div>
-      </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {plans.map((plan, i) => (
@@ -104,26 +103,30 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
 
             <button 
               onClick={() => handleCheckout(plan)}
-              disabled={!plan.isFree}
+              disabled={(!plan.isFree && !plan.priceId) || plan.comingSoon || loadingPriceId === plan.priceId}
               className={cn(
                 "w-full py-4 rounded-xl font-bold transition-all mt-auto flex items-center justify-center gap-2",
-                plan.isFree
+                plan.isFree || (plan.priceId && !plan.comingSoon)
                   ? "cursor-pointer"
                   : "cursor-not-allowed opacity-70",
-                plan.highlight && plan.isFree
+                plan.highlight && (plan.isFree || (plan.priceId && !plan.comingSoon))
                   ? "bg-sterling-blue text-white hover:shadow-[0_0_30px_rgba(0,122,255,0.4)] hover:scale-[1.02]" 
                   : "bg-sterling-mist/5 text-sterling-mist hover:bg-sterling-mist/10"
               )}
             >
-              {plan.buttonLabel ? (
+              {loadingPriceId === plan.priceId ? (
+                <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
+              ) : plan.buttonLabel ? (
                 plan.buttonLabel
               ) : plan.isFree ? (
                 <>
                   <Download size={18} />
                   Download Free
                 </>
-              ) : (
+              ) : plan.comingSoon ? (
                 'Available Soon'
+              ) : (
+                'Get License'
               )}
             </button>
           </motion.div>
@@ -132,8 +135,7 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
       {showFooterNote && (
         <div className="mt-16 text-center">
           <p className="text-sterling-mist/30 text-xs max-w-2xl mx-auto leading-relaxed">
-            Paid checkout is not open yet. When licenses become available, purchases will be covered by Sterling Lab's <button onClick={() => window.location.href='/terms'} className="text-sterling-blue hover:underline cursor-pointer">Terms of Service</button> and <button onClick={() => window.location.href='/refund'} className="text-sterling-blue hover:underline cursor-pointer">Refund Policy</button>.<br />
-            Until then, use the free Max Commander Windows download.
+            Licenses are sold as a one-time purchase. Purchases are covered by Sterling Lab's <button onClick={() => window.location.href='/terms'} className="text-sterling-blue hover:underline cursor-pointer">Terms of Service</button> and <button onClick={() => window.location.href='/refund'} className="text-sterling-blue hover:underline cursor-pointer">Refund Policy</button>.
           </p>
         </div>
       )}

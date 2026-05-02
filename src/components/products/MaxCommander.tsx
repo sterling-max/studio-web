@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Search, Shield, Layout, Eye, GitBranch, Archive, Cloud, Puzzle, Clapperboard, History } from 'lucide-react';
 import { ProductLayout } from './ProductLayout';
 import { type PricingPlan } from './Pricing';
+import { STRIPE_PRICE_FOUNDER, STRIPE_PRICE_STANDARD } from '../../constants/checkout';
 import { ChangelogModal } from './ChangelogModal';
 import { SmartScreenGuide } from './SmartScreenGuide';
 import { changelogData } from '../../data/max-commander-changelog';
@@ -112,7 +113,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       ],
       badge: "Limited Time",
       highlight: true,
-      comingSoon: true
+      priceId: STRIPE_PRICE_FOUNDER
     },
     {
       price: "€25",
@@ -128,7 +129,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
       ],
       badge: "Standard Price",
       highlight: false,
-      comingSoon: true
+      priceId: STRIPE_PRICE_STANDARD
     }
   ];
 
