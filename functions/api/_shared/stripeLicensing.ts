@@ -107,9 +107,12 @@ export async function sendLicenseEmail(
   email: string,
   isFounder: boolean
 ): Promise<void> {
-  if (!resendApiKey) return;
+  if (!resendApiKey) {
+    console.error('sendLicenseEmail aborted: RESEND_API_KEY is missing');
+    return;
+  }
 
-  await fetch('https://api.resend.com/emails', {
+  const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${resendApiKey}`,
@@ -122,6 +125,13 @@ export async function sendLicenseEmail(
       html: renderLicenseEmail(key, email, isFounder)
     })
   });
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    console.error(`Resend API failed: ${res.status} - ${errorText}`);
+  } else {
+    console.log(`License email sent successfully to ${email}`);
+  }
 }
 
 function renderLicenseEmail(key: string, email: string, isFounder: boolean): string {
