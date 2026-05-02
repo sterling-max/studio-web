@@ -142,12 +142,13 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
               <span>Payments Powered by</span>
               <StripeLogo className="h-5 w-auto text-[#635BFF]" />
             </div>
-            <div className="flex flex-wrap justify-center items-center gap-6 hover:opacity-100 transition-all duration-700">
-              <VisaLogo className="h-3 w-auto" />
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-40 hover:opacity-100 transition-all duration-700">
+              <VisaLogo className="h-5 w-auto" />
               <MastercardLogo className="h-5 w-auto" />
-              <ApplePayLogo className="h-4 w-auto" />
-              <GooglePayLogo className="h-4 w-auto" />
-              <AmexLogo className="h-4 w-auto" />
+              <ApplePayLogo className="h-5 w-auto" />
+              <GooglePayLogo className="h-5 w-auto" />
+              <AmexLogo className="h-5 w-auto" />
+              <AmazonLogo className="h-5 w-auto" />
             </div>
           </div>
           
