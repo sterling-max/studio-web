@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Download, Clock3 } from 'lucide-react';
+import { Check, Download } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export interface PricingPlan {
