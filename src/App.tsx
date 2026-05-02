@@ -97,60 +97,60 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="py-20 px-6 border-t border-sterling-mist/5 bg-sterling-deep">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+      <footer className="py-12 px-6 border-t border-sterling-mist/5 bg-sterling-deep">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-3">
               <Logo className="w-8 h-8" />
-              <div className="text-2xl font-bold">Sterling <span className="text-sterling-blue">Lab</span></div>
+              <div className="text-xl font-bold">Sterling <span className="text-sterling-blue">Lab</span></div>
             </div>
-            <p className="text-sterling-mist/40 text-sm max-w-xs leading-relaxed">
+            <p className="text-sterling-mist/60 text-sm max-w-xs leading-relaxed">
               A dedicated Lab for Tool Development with a focus on precision, performance, and atmospheric design.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
             <div>
-              <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Connect</h4>
-              <ul className="text-sterling-mist/50 text-sm space-y-2">
+              <h4 className="font-bold mb-3 text-[10px] uppercase tracking-[0.2em] text-sterling-blue">Connect</h4>
+              <ul className="text-sterling-mist/80 text-sm space-y-1.5">
                 <li>
-                  <a href="/contact" className="hover:text-sterling-cyan cursor-pointer transition-colors flex items-center gap-2">
+                  <a href="/contact" className="hover:text-sterling-cyan cursor-pointer transition-colors">
                     Contact
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Products</h4>
-              <ul className="text-sterling-mist/50 text-sm space-y-2">
+              <h4 className="font-bold mb-3 text-[10px] uppercase tracking-[0.2em] text-sterling-blue">Products</h4>
+              <ul className="text-sterling-mist/80 text-sm space-y-1.5">
                 <li><a href="/products/max-commander" className="hover:text-sterling-cyan transition-colors cursor-pointer">Max Commander</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-xs uppercase tracking-widest text-sterling-blue">Legal</h4>
-              <ul className="text-sterling-mist/50 text-sm space-y-2">
-                <li><a href="/legal" className="hover:text-sterling-cyan transition-colors cursor-pointer">Legal Notice</a></li>
-                <li><a href="/privacy" className="hover:text-sterling-cyan transition-colors cursor-pointer">Privacy Policy</a></li>
-                <li><a href="/terms" className="hover:text-sterling-cyan transition-colors cursor-pointer">Terms of Service</a></li>
-                <li><a href="/refund" className="hover:text-sterling-cyan transition-colors cursor-pointer">Refund Policy</a></li>
+              <h4 className="font-bold mb-3 text-[10px] uppercase tracking-[0.2em] text-sterling-blue">Legal</h4>
+              <ul className="text-sterling-mist/80 text-sm space-y-1.5">
+                <li><a href="/legal" className="hover:text-sterling-cyan transition-colors cursor-pointer text-xs">Legal Notice</a></li>
+                <li><a href="/privacy" className="hover:text-sterling-cyan transition-colors cursor-pointer text-xs">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-sterling-cyan transition-colors cursor-pointer text-xs">Terms of Service</a></li>
+                <li><a href="/refund" className="hover:text-sterling-cyan transition-colors cursor-pointer text-xs">Refund Policy</a></li>
               </ul>
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-sterling-mist/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-col gap-1 items-start md:items-start">
+        <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-sterling-mist/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-3">
-              <span className="text-[10px] text-sterling-mist/20 uppercase tracking-[0.2em]">© 2026 Sterling Lab. All rights reserved.</span>
-              <span className="px-2 py-0.5 bg-sterling-blue/5 border border-sterling-blue/10 rounded-md text-[9px] font-mono text-sterling-blue/50 tracking-tighter">
+              <span className="text-[10px] text-sterling-mist/40 uppercase tracking-[0.1em] font-medium">© 2026 Sterling Lab. All rights reserved.</span>
+              <span className="px-2 py-0.5 bg-sterling-blue/10 border border-sterling-blue/20 rounded-md text-[9px] font-mono text-sterling-blue font-bold tracking-tighter">
                 v{LATEST_WEBSITE_VERSION}
               </span>
             </div>
-            <span className="text-[10px] text-sterling-mist/30 font-medium italic">Crafted with precision in the heart of Europe.</span>
+            <span className="text-[10px] text-sterling-mist/50 font-medium italic">Crafted with precision in the heart of Europe.</span>
           </div>
-          <div className="flex gap-4">
-            <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/30">
+          <div className="flex gap-3">
+            <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/50 font-bold bg-sterling-mist/5">
               EU Data Protection
             </div>
-            <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/30">
+            <div className="px-3 py-1 border border-sterling-mist/10 rounded-full text-[9px] uppercase tracking-widest text-sterling-mist/50 font-bold bg-sterling-mist/5">
               Secure Licensing
             </div>
           </div>

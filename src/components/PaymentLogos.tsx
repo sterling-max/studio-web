@@ -4,18 +4,18 @@ interface LogoProps {
   className?: string;
 }
 
-// Using official SVG assets via CDN to ensure 100% brand accuracy and no deformation
+// Full color brand logos with high visibility
 const LogoImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => (
   <img 
     src={src} 
     alt={alt} 
     className={className}
-    style={{ filter: 'grayscale(1) brightness(1.5) opacity(0.6)' }}
+    style={{ transition: 'transform 0.3s ease' }}
     onMouseOver={(e) => {
-      e.currentTarget.style.filter = 'grayscale(0) brightness(1) opacity(1)';
+      e.currentTarget.style.transform = 'scale(1.1)';
     }}
     onMouseOut={(e) => {
-      e.currentTarget.style.filter = 'grayscale(1) brightness(1.5) opacity(0.6)';
+      e.currentTarget.style.transform = 'scale(1)';
     }}
   />
 );
@@ -30,7 +30,7 @@ export const StripeLogo = ({ className }: LogoProps) => (
 
 export const VisaLogo = ({ className }: LogoProps) => (
   <LogoImage 
-    src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" 
+    src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg" 
     alt="Visa" 
     className={className} 
   />
