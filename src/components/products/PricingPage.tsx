@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { HelpCircle, ChevronDown } from 'lucide-react';
+import { HelpCircle, ChevronDown, ShieldCheck, CreditCard } from 'lucide-react';
 import { useState } from 'react';
 import { Pricing, type PricingPlan } from './Pricing';
 import { STRIPE_PRICE_FOUNDER, STRIPE_PRICE_STANDARD } from '../../constants/checkout';
@@ -16,8 +16,7 @@ const plans: PricingPlan[] = [
       "Multi-Rename (Shift+F6)",
       "Native Context Menu",
       "LAN Browsing",
-      "Quick Viewer (F3)",
-      "Community Support"
+      "Quick Viewer (F3)"
     ],
     badge: "Free Forever",
     highlight: false,
@@ -139,8 +138,20 @@ export const PricingPage = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="max-w-3xl mx-auto px-6 mt-4 mb-12 p-6 rounded-2xl bg-sterling-blue/5 border border-sterling-blue/15"
+        className="max-w-3xl mx-auto px-6 mt-4 mb-12 p-6 rounded-2xl bg-sterling-blue/5 border border-sterling-blue/15 flex flex-col items-center"
       >
+        <div className="flex flex-col items-center justify-center gap-3 mb-6">
+          <div className="flex items-center gap-1.5 text-sterling-mist/40 text-xs font-semibold uppercase tracking-widest">
+            <ShieldCheck size={14} className="text-emerald-500/70" />
+            Secured by Stripe
+          </div>
+          <div className="flex items-center gap-2 text-sterling-mist/30">
+            <CreditCard size={24} />
+            <div className="h-4 w-px bg-sterling-mist/10 mx-1"></div>
+            <span className="text-xs font-medium">Visa · Mastercard · Amex · Apple Pay</span>
+          </div>
+        </div>
+
         <p className="text-sterling-mist/50 text-xs leading-relaxed text-center">
           The free Windows build is available today, and Pro features are unlocked via paid licenses. 
           Prices shown exclude tax. VAT and applicable sales tax will be calculated at checkout based on your location.

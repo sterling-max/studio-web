@@ -48,7 +48,7 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
   };
 
   return (
-    <section id="pricing" className="py-8 px-6 max-w-7xl mx-auto">
+    <section id="pricing" className="py-8 px-6 max-w-7xl mx-auto scroll-mt-24">
       {showHeader && (
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold mb-2">Simple <span className="text-sterling-blue">Pricing</span></h2>

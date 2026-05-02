@@ -91,8 +91,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
         "Multi-Rename (Shift+F6)",
         "Git Status & Branch Pills",
         "Cloud Hybrid & Sterling Blitz",
-        "Quick Viewer (F3)",
-        "Community Support"
+        "Quick Viewer (F3)"
       ],
       badge: "Free Forever",
       highlight: false,
@@ -137,7 +136,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
   const latestVersion = changelogData[0];
 
   const PromoSection = (
-    <div className="flex flex-col items-center gap-4 animate-fade-in-up">
+    <div className="flex flex-col items-center lg:items-start gap-4 animate-fade-in-up">
       <div className="flex items-center gap-3 bg-sterling-surface/50 border border-sterling-mist/10 rounded-full px-5 py-2 hover:bg-sterling-surface transition-colors cursor-default group">
         <span className="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse" />
         <span className="text-sm font-semibold text-sterling-mist group-hover:text-white transition-colors">
@@ -175,6 +174,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
         titleSuffix="Commander"
         tagline="The productivity powerhouse. A modern, dual-pane file manager designed for speed, precision, and keyboard mastery."
         icon="/assets/mc-logo.png"
+        heroImage="/assets/max-commander/1.png"
         steps={steps}
         pricingPlans={plans}
         onBack={onBack}

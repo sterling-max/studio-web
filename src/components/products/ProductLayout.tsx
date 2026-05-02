@@ -23,6 +23,7 @@ interface ProductLayoutProps {
   onBack: () => void;
   isMobileFrame?: boolean; // For Tales Universe vertical screenshots
   extraHeroContent?: React.ReactNode;
+  heroImage?: string;
 }
 
 export const ProductLayout = ({
@@ -35,7 +36,8 @@ export const ProductLayout = ({
   pricingPlans,
   onBack,
   isMobileFrame = false,
-  extraHeroContent
+  extraHeroContent,
+  heroImage
 }: ProductLayoutProps) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -126,55 +128,76 @@ export const ProductLayout = ({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-24"
+        className="mb-24 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16"
       >
-        <div className={cn(
-          "inline-flex items-center justify-center mb-6",
-          typeof HeroIcon !== 'string' && "p-4 bg-sterling-blue/10 rounded-3xl"
-        )}>
-          {typeof HeroIcon === 'string' ? (
-            <img src={HeroIcon} alt={title} className="w-24 h-24 md:w-32 md:h-32 object-contain" />
-          ) : (
-            <HeroIcon size={48} className="text-sterling-blue" />
+        <div className={cn("flex-1", heroImage ? "lg:text-left text-center" : "text-center")}>
+          <div className={cn(
+            "inline-flex items-center justify-center mb-6",
+            typeof HeroIcon !== 'string' && "p-4 bg-sterling-blue/10 rounded-3xl"
+          )}>
+            {typeof HeroIcon === 'string' ? (
+              <img src={HeroIcon} alt={title} className="w-16 h-16 md:w-20 md:h-20 object-contain" />
+            ) : (
+              <HeroIcon size={40} className="text-sterling-blue" />
+            )}
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            {title} {titleSuffix && <span className="text-sterling-blue">{titleSuffix}</span>}
+          </h1>
+
+          <div className={cn("max-w-2xl mb-8 min-h-[3.5rem]", heroImage ? "lg:mx-0 mx-auto" : "mx-auto")}>
+            {rotatingPhrases ? (
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={phraseIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-lg md:text-xl text-sterling-mist/60 leading-relaxed font-medium"
+                >
+                  {rotatingPhrases[phraseIndex]}
+                </motion.p>
+              </AnimatePresence>
+            ) : (
+              <p className="text-lg md:text-xl text-sterling-mist/60 leading-relaxed">
+                {tagline}
+              </p>
+            )}
+          </div>
+
+          {/* Extra Hero Content (e.g., Version Info) */}
+          {extraHeroContent && (
+            <div className="mb-8">{extraHeroContent}</div>
+          )}
+
+          {pricingPlans && (
+            <button
+              onClick={scrollToPricing}
+              className="px-8 py-3 bg-sterling-blue text-white rounded-xl font-bold shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:scale-105 transition-transform cursor-pointer"
+            >
+              Get {title}
+            </button>
           )}
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold mb-6">
-          {title} {titleSuffix && <span className="text-sterling-blue">{titleSuffix}</span>}
-        </h1>
 
-        <div className="max-w-2xl mx-auto mb-8 min-h-[3.5rem]">
-          {rotatingPhrases ? (
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={phraseIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="text-xl text-sterling-mist/60 leading-relaxed font-medium"
-              >
-                {rotatingPhrases[phraseIndex]}
-              </motion.p>
-            </AnimatePresence>
-          ) : (
-            <p className="text-xl text-sterling-mist/60 leading-relaxed">
-              {tagline}
-            </p>
-          )}
-        </div>
-
-        {/* Extra Hero Content (e.g., Version Info) */}
-        {extraHeroContent && (
-          <div className="mb-8">{extraHeroContent}</div>
-        )}
-
-        {pricingPlans && (
-          <button
-            onClick={scrollToPricing}
-            className="px-8 py-3 bg-sterling-blue text-white rounded-xl font-bold shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:scale-105 transition-transform cursor-pointer"
-          >
-            Get {title}
-          </button>
+        {heroImage && (
+          <div className="flex-1 w-full max-w-xl hidden lg:block perspective-[1040px]">
+            <motion.div
+              initial={{ opacity: 0, rotateY: -20, rotateX: 10 }}
+              animate={{ opacity: 1, rotateY: -12, rotateX: 4 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden border border-sterling-blue/20 bg-sterling-surface shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-tr from-sterling-blue/10 to-transparent pointer-events-none z-10" />
+              <img
+                src={heroImage}
+                alt={`${title} Preview`}
+                className="w-full h-auto rounded-xl object-cover"
+              />
+            </motion.div>
+          </div>
         )}
       </motion.div>
 
