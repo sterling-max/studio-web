@@ -100,24 +100,6 @@ export const Collaborate = ({
           </a>
         </div>
 
-        {/* Payment & Trust Info */}
-        <div className="relative z-10 pt-10 border-t border-sterling-mist/5 flex flex-col items-center gap-6">
-          <div className="flex items-center gap-3 text-sterling-mist/30 text-[10px] font-bold uppercase tracking-[0.2em]">
-            <ShieldCheck size={14} className="text-emerald-500/50" />
-            <span>Payments Powered by</span>
-            <StripeLogo className="h-4 w-auto text-sterling-mist/40" />
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-            <VisaLogo className="h-4 w-auto" />
-            <MastercardLogo className="h-6 w-auto" />
-            <ApplePayLogo className="h-5 w-auto" />
-            <GooglePayLogo className="h-5 w-auto" />
-            <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest text-sterling-mist/60">
-              <span className="w-1.5 h-1.5 rounded-full bg-sterling-blue" />
-              AMEX
-            </div>
-          </div>
-        </div>
       </motion.div>
     </section>
   );

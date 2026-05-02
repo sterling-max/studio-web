@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Using precise, high-quality SVG paths for payment logos
 export const StripeLogo = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 63 26" className={className} xmlns="http://www.w3.org/2000/svg">
     <path d="M62.9 19.3c0-4.4-2.3-6.1-6.1-6.1-3.1 0-5.3 1.2-5.3 3.9 0 4.8 6.7 3.4 6.7 5.8 0 .9-.9 1.4-2.1 1.4-1.6 0-3-.6-3.8-1.1l-.2 3.1c.9.5 2.5 1 4.3 1 4.5 0 6.6-2.1 6.6-5.8s-0.1-2.2-0.1-2.2zm-15.1-4.1c-1.3 0-2.2.6-2.8 1.4V11H41v14.4h3.9v-6.5c0-1.8 1.1-2.9 2.6-2.9.3 0 .6 0 .9.1V15.2h-0.6zm-5.4-8.7c0-1.2-.9-2.2-2.1-2.2s-2.1 1-2.1 2.2c0 1.2.9 2.2 2.1 2.2s2.1-1 2.1-2.2zm-0.2 6.5h-3.9v11.4h3.9V13h0zm-6.6 2.3c-1.2-1.3-3.1-2.3-5.5-2.3-4.5 0-8.1 3.7-8.1 8.2s3.6 8.2 8.1 8.2c2.4 0 4.3-1 5.5-2.3v2h3.9V11h-3.9v2.3h0zm-5.3 10.6c-2.4 0-4.3-1.9-4.3-4.4s1.9-4.4 4.3-4.4c2.4 0 4.3 1.9 4.3 4.4s-1.9 4.4-4.3 4.4zM11.6 6.5C11.6 5.3 10.7 4.3 9.5 4.3S7.4 5.3 7.4 6.5c0 1.2.9 2.2 2.1 2.2s2.1-1 2.1-2.2zm-0.2 6.5H7.5v11.4h3.9V13h0zM5.5 13.1c-1.2-1.3-3.1-2.3-5.5-2.3v3.3c1.4 0 2.6.7 3.3 1.6V24.4H7.2V11H3.3v2.1h2.2z" fill="currentColor"/>
@@ -14,8 +15,15 @@ export const VisaLogo = ({ className }: { className?: string }) => (
 
 export const MastercardLogo = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 32 20" className={className} xmlns="http://www.w3.org/2000/svg">
-    <circle cx="10" cy="10" r="10" fill="currentColor" fillOpacity="0.8"/>
-    <circle cx="22" cy="10" r="10" fill="currentColor" fillOpacity="0.8"/>
+    <path d="M20.1 10c0-3-1.2-5.8-3.2-7.8-2-2-4.8-3.2-7.8-3.2C4.1-1 0 3.1 0 8.1c0 3 1.2 5.8 3.2 7.8 2 2 4.8 3.2 7.8 3.2 5 0 9.1-4.1 9.1-9.1z" fill="#EB001B" fillOpacity="0.8"/>
+    <path d="M32 10c0-5-4.1-9.1-9.1-9.1-3 0-5.8 1.2-7.8 3.2 2 2 3.2 4.8 3.2 7.8 0 3-1.2 5.8-3.2 7.8 2 2 4.8 3.2 7.8 3.2 5 .1 9.1-4 9.1-9z" fill="#F79E1B" fillOpacity="0.8"/>
+  </svg>
+);
+
+export const AmexLogo = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 40 16" className={className} xmlns="http://www.w3.org/2000/svg">
+    <rect width="40" height="16" rx="2" fill="currentColor"/>
+    <text x="5" y="12" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="10" fill="white">AMEX</text>
   </svg>
 );
 

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Check, Download, ShieldCheck, CreditCard } from 'lucide-react';
 import { cn } from '../../utils/cn';
-import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo } from '../PaymentLogos';
+import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo, AmexLogo } from '../PaymentLogos';
 
 export interface PricingPlan {
   price: string;
@@ -142,12 +142,12 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
               <span>Payments Powered by</span>
               <StripeLogo className="h-4 w-auto text-sterling-mist/40" />
             </div>
-            <div className="flex flex-wrap justify-center items-center gap-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+            <div className="flex flex-wrap justify-center items-center gap-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
               <VisaLogo className="h-3 w-auto" />
               <MastercardLogo className="h-5 w-auto" />
               <ApplePayLogo className="h-4 w-auto" />
               <GooglePayLogo className="h-4 w-auto" />
-              <div className="text-[10px] font-bold tracking-widest text-sterling-mist/40">AMEX</div>
+              <AmexLogo className="h-4 w-auto" />
             </div>
           </div>
           
