@@ -19,7 +19,7 @@ import { RefundPolicy } from './pages/legal/RefundPolicy';
 import { LATEST_WEBSITE_VERSION } from './data/website-changelog';
 import { ThanksPage } from './pages/ThanksPage';
 
-const whatsappNumber = "393475393181";
+
 
 // Scroll to top on every route change
 function ScrollToTop() {
