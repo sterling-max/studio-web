@@ -78,7 +78,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       console.error('Stripe session creation failed:', session.error?.message);
       return new Response(
         JSON.stringify({ error: session.error?.message || 'Failed to create checkout session' }),
-        { status: 502, headers: corsHeaders }
+        { status: 400, headers: corsHeaders }
       );
     }
 
