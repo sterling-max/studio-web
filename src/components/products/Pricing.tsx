@@ -140,7 +140,7 @@ export const Pricing = ({ plans, showHeader = true, showFooterNote = true }: Pri
             <div className="flex items-center gap-2 text-sterling-mist/30 text-[10px] font-bold uppercase tracking-[0.2em]">
               <ShieldCheck size={14} className="text-emerald-500/70" />
               <span>Payments Powered by</span>
-              <StripeLogo className="h-4 w-auto text-sterling-mist/40" />
+              <StripeLogo className="h-5 w-auto text-[#635BFF]" />
             </div>
             <div className="flex flex-wrap justify-center items-center gap-6 hover:opacity-100 transition-all duration-700">
               <VisaLogo className="h-3 w-auto" />
