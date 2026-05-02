@@ -6,6 +6,15 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.17",
+    date: "2026-05-02",
+    changes: [
+      "Added 'Secured by Stripe' badge to pricing sections",
+      "Compacted pricing cards and Thanks page layouts to improve visibility",
+      "Disabled Standard license purchase temporarily to focus on Founder edition"
+    ]
+  },
+  {
     version: "1.0.16",
     date: "2026-05-02",
     changes: [

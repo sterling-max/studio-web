@@ -33,8 +33,7 @@ const plans: PricingPlan[] = [
       "Profiles & Workspaces",
       "Plugin System (Jellyfin & more)",
       "Lifetime Updates",
-      "Priority Feature Requests",
-      "Special 'Founder' Badge"
+      "Priority Feature Requests"
     ],
     badge: "Limited Time",
     highlight: true,
@@ -52,9 +51,10 @@ const plans: PricingPlan[] = [
       "Lifetime Updates",
       "Standard Support"
     ],
-    badge: "Standard Price",
+    badge: "Available Later",
     highlight: false,
-    priceId: STRIPE_PRICE_STANDARD
+    priceId: STRIPE_PRICE_STANDARD,
+    comingSoon: true
   }
 ];
 

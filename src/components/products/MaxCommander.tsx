@@ -108,8 +108,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
         "Plugin System (Jellyfin & more)",
         "Git history & diff details",
         "Lifetime Updates",
-        "Priority Feature Requests",
-        "Special 'Founder' Badge"
+        "Priority Feature Requests"
       ],
       badge: "Limited Time",
       highlight: true,
@@ -127,9 +126,10 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
         "Lifetime Updates",
         "Standard Support"
       ],
-      badge: "Standard Price",
+      badge: "Available Later",
       highlight: false,
-      priceId: STRIPE_PRICE_STANDARD
+      priceId: STRIPE_PRICE_STANDARD,
+      comingSoon: true
     }
   ];
 
