@@ -4,6 +4,7 @@ import { HelpCircle, ChevronDown, ShieldCheck, CreditCard } from 'lucide-react';
 import { useState } from 'react';
 import { Pricing, type PricingPlan } from './Pricing';
 import { STRIPE_PRICE_FOUNDER, STRIPE_PRICE_STANDARD } from '../../constants/checkout';
+import { StripeLogo, VisaLogo, MastercardLogo, ApplePayLogo, GooglePayLogo, AmexLogo } from '../PaymentLogos';
 
 const plans: PricingPlan[] = [
   {
@@ -140,15 +141,18 @@ export const PricingPage = () => {
         viewport={{ once: true }}
         className="max-w-3xl mx-auto px-6 mt-4 mb-12 p-6 rounded-2xl bg-sterling-blue/5 border border-sterling-blue/15 flex flex-col items-center"
       >
-        <div className="flex flex-col items-center justify-center gap-3 mb-6">
-          <div className="flex items-center gap-1.5 text-sterling-mist/40 text-xs font-semibold uppercase tracking-widest">
+        <div className="flex flex-col items-center justify-center gap-4 mb-6">
+          <div className="flex items-center gap-2 text-sterling-mist/30 text-[10px] font-bold uppercase tracking-[0.2em]">
             <ShieldCheck size={14} className="text-emerald-500/70" />
-            Secured by Stripe
+            <span>Payments Powered by</span>
+            <StripeLogo className="h-4 w-auto text-sterling-mist/40" />
           </div>
-          <div className="flex items-center gap-2 text-sterling-mist/30">
-            <CreditCard size={24} />
-            <div className="h-4 w-px bg-sterling-mist/10 mx-1"></div>
-            <span className="text-xs font-medium">Visa · Mastercard · Amex · Apple Pay</span>
+          <div className="flex flex-wrap justify-center items-center gap-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+            <VisaLogo className="h-3 w-auto" />
+            <MastercardLogo className="h-5 w-auto" />
+            <ApplePayLogo className="h-4 w-auto" />
+            <GooglePayLogo className="h-4 w-auto" />
+            <AmexLogo className="h-4 w-auto" />
           </div>
         </div>
 
