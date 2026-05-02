@@ -145,15 +145,15 @@ export const PricingPage = () => {
           <div className="flex items-center gap-2 text-sterling-mist/30 text-[10px] font-bold uppercase tracking-[0.2em]">
             <ShieldCheck size={14} className="text-emerald-500/70" />
             <span>Payments Powered by</span>
-            <StripeLogo className="h-5 w-auto text-[#635BFF]" />
+            <StripeLogo className="h-6 w-auto" />
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60 hover:opacity-100 transition-all duration-700">
-            <VisaLogo className="h-8 w-auto" />
-            <MastercardLogo className="h-8 w-auto" />
-            <ApplePayLogo className="h-8 w-auto text-sterling-mist" />
-            <GooglePayLogo className="h-8 w-auto" />
-            <AmexLogo className="h-8 w-auto" />
-            <AmazonLogo className="h-8 w-auto" />
+          <div className="flex flex-wrap justify-center items-center gap-6">
+            <VisaLogo className="h-6 w-auto" />
+            <MastercardLogo className="h-6 w-auto" />
+            <ApplePayLogo className="h-6 w-auto" />
+            <GooglePayLogo className="h-6 w-auto" />
+            <AmexLogo className="h-6 w-auto" />
+            <AmazonLogo className="h-6 w-auto" />
           </div>
         </div>
 
