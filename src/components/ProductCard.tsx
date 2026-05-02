@@ -20,13 +20,12 @@ export const ProductCard = ({ product, index, className }: ProductCardProps) => 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={product.status === 'available' ? { y: -8, transition: { duration: 0.3 } } : {}}
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
       onClick={() => product.status === 'available' && navigate(`/products/${product.id}`)}
       className={cn(
         "group relative flex flex-col bg-sterling-deep border border-sterling-mist/5 rounded-[2.5rem] p-6 h-full transition-all duration-500 overflow-hidden",
-        product.status === 'available' 
-          ? "hover:border-sterling-blue/40 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] cursor-pointer" 
-          : "opacity-80 grayscale-[0.5]"
+        product.status === 'available' ? "cursor-pointer" : "cursor-default",
+        "hover:border-sterling-blue/40 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
       )}
     >
       {/* Glossy Background Effect */}
@@ -34,12 +33,7 @@ export const ProductCard = ({ product, index, className }: ProductCardProps) => 
       
       {/* Top Section: Icon & Category */}
       <div className="relative z-10 flex items-center justify-between mb-8">
-        <div className={cn(
-          "w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-lg",
-          product.status === 'available' 
-            ? "bg-sterling-blue/15 text-sterling-blue group-hover:bg-sterling-blue group-hover:text-white group-hover:scale-110" 
-            : "bg-sterling-mist/10 text-sterling-mist/40"
-        )}>
+        <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-lg bg-sterling-blue/15 text-sterling-blue group-hover:bg-sterling-blue group-hover:text-white group-hover:scale-110">
           {product.id === 'max-commander' && <Folder size={24} />}
           {product.id === 'dash' && <Play size={24} />}
           {product.id === 'zap-studio' && <Video size={24} />}
@@ -48,7 +42,7 @@ export const ProductCard = ({ product, index, className }: ProductCardProps) => 
         </div>
         
         {product.status === 'soon' ? (
-          <div className="px-4 py-1.5 bg-sterling-cyan text-sterling-midnight text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-[0_0_15px_rgba(0,255,255,0.4)] animate-pulse">
+          <div className="px-4 py-1.5 bg-sterling-blue text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-[0_0_15px_rgba(0,122,255,0.4)] animate-pulse">
             Coming Soon
           </div>
         ) : (
