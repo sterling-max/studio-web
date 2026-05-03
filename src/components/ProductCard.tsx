@@ -60,7 +60,7 @@ export const ProductCard = ({ product, index }: ProductCardProps) => {
               {product.id === 'max-commander' && (
                 <img src="/assets/mc-logo.png" alt="Max Commander" className="w-6 h-6 object-contain" />
               )}
-              <h3 className="text-2xl font-bold text-sterling-mist tracking-tight group-hover:text-white transition-colors">
+              <h3 className="text-2xl font-bold text-sterling-mist tracking-tight group-hover:text-sterling-blue transition-colors">
                 {product.name}
               </h3>
             </div>
