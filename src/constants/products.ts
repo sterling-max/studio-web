@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Supabase'],
     category: 'health',
     status: 'soon',
-    isVisible: true
+    isVisible: false
   },
   {
     id: 'tales-universe',

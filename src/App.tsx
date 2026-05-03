@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -7,6 +7,10 @@ import { VisualStyleGuide } from './components/VisualStyleGuide';
 import { Collaborate } from './components/Collaborate';
 import { MaxCommander } from './components/products/MaxCommander';
 import { MaxCommanderPrivacyPolicy } from './components/products/MaxCommanderPrivacyPolicy';
+import { Dash } from './components/products/Dash';
+import { ZapStudio } from './components/products/ZapStudio';
+import { EasyMonitor } from './components/products/EasyMonitor';
+import { TalesUniverse } from './components/products/TalesUniverse';
 import { ManageLicense } from './components/ManageLicense';
 import { DownloadReport } from './components/admin/DownloadReport';
 import { PricingPage } from './components/products/PricingPage';
@@ -74,10 +78,10 @@ function App() {
             {/* Product Routes */}
             <Route path="/products/max-commander" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
             <Route path="/products/max-commander/privacy" element={<Page><MaxCommanderPrivacyPolicy onBack={() => navigate('/products/max-commander')} /></Page>} />
-            <Route path="/products/dash" element={<Navigate to="/products/max-commander" replace />} />
-            <Route path="/products/zap-studio" element={<Navigate to="/" replace />} />
-            <Route path="/products/easy-monitor" element={<Navigate to="/products/max-commander" replace />} />
-            <Route path="/products/tales-universe" element={<Navigate to="/" replace />} />
+             <Route path="/products/dash" element={<Page><Dash onBack={() => navigate('/')} /></Page>} />
+             <Route path="/products/zap-studio" element={<Page><ZapStudio onBack={() => navigate('/')} /></Page>} />
+             <Route path="/products/easy-monitor" element={<Page><EasyMonitor onBack={() => navigate('/')} /></Page>} />
+             <Route path="/products/tales-universe" element={<Page><TalesUniverse onBack={() => navigate('/')} /></Page>} />
 
             {/* Legal Routes */}
             <Route path="/privacy" element={<Page><PrivacyPolicy onBack={() => navigate('/')} /></Page>} />
