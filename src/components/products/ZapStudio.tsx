@@ -1,4 +1,4 @@
-import { FileText, Bot, UserPlus, Mic, MonitorPlay, Youtube, Zap } from 'lucide-react';
+import { FileText, Bot, UserPlus, Mic, MonitorPlay, Youtube } from 'lucide-react';
 import { ProductLayout } from './ProductLayout';
 import { type PricingPlan } from './Pricing';
 
@@ -69,22 +69,12 @@ export const ZapStudio = ({ onBack }: ZapStudioProps) => {
     }
   ];
 
-  const phrases = [
-    "Create Viral Videos Locally and upload to YouTube",
-    "Create Tutorials Locally and share with your Company",
-    "Create Stories",
-    "Create Thematic Analysis",
-    "Create Video Property Tours",
-    "Your Data only on your device"
-  ];
-
   return (
     <ProductLayout
       title="Zap"
       titleSuffix="Studio"
-      tagline="Complete control over your video production pipeline. Local-first, privacy-focused, and AI-powered."
-      rotatingPhrases={phrases}
-      icon={Zap}
+      tagline="Your personal AI video factory. Generate stories, voiceovers, and visuals locally with total API key control."
+      icon="/assets/zap-logo.svg"
       steps={steps}
       pricingPlans={plans}
       onBack={onBack}

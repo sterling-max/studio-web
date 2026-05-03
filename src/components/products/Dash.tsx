@@ -1,4 +1,4 @@
-import { Play, Music, Tv, Wind } from 'lucide-react';
+import { Music, Tv, Wind } from 'lucide-react';
 import { ProductLayout } from './ProductLayout';
 
 interface DashProps {
@@ -34,7 +34,7 @@ export const Dash = ({ onBack }: DashProps) => {
     <ProductLayout
       title="Dash"
       tagline="Your media, reimagined. A premium, atmospheric client for Jellyfin focused on speed and visual immersion."
-      icon={Play}
+      icon="/assets/dash-logo.png"
       steps={steps}
       onBack={onBack}
     />

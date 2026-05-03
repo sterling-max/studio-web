@@ -60,6 +60,12 @@ export const ProductCard = ({ product, index }: ProductCardProps) => {
               {product.id === 'max-commander' && (
                 <img src="/assets/mc-logo.png" alt="Max Commander" className="w-6 h-6 object-contain" />
               )}
+              {product.id === 'dash' && (
+                <img src="/assets/dash-logo.png" alt="Dash" className="w-6 h-6 object-contain" />
+              )}
+              {product.id === 'zap-studio' && (
+                <img src="/assets/zap-logo.svg" alt="Zap Studio" className="w-6 h-6 object-contain" />
+              )}
               <h3 className="text-2xl font-bold text-sterling-mist tracking-tight group-hover:text-sterling-blue transition-colors">
                 {product.name}
               </h3>
