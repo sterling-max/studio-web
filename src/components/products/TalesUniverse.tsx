@@ -47,14 +47,19 @@ export const TalesUniverse = ({ onBack }: TalesUniverseProps) => {
       onBack={onBack}
       isMobileFrame={true}
       extraHeroContent={
-        <div className="flex flex-col items-center lg:items-start gap-4 animate-fade-in-up">
-          <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="inline-flex items-center gap-3 px-6 py-3 bg-sterling-surface hover:bg-sterling-surface/80 border border-sterling-mist/10 rounded-2xl transition-all hover:scale-105 group"
-          >
-            <img src="/assets/google-play-badge.png" alt="Get it on Google Play" className="h-10 w-auto" />
-          </a>
+        <div className="flex flex-col items-center gap-4 animate-fade-in-up">
+          <div className="relative inline-block">
+            <div className="absolute -top-3 -right-3 px-3 py-1 bg-sterling-blue text-white text-[9px] font-black uppercase tracking-[0.2em] rounded-full shadow-[0_0_15px_rgba(0,122,255,0.4)] animate-pulse z-10">
+              Coming Soon
+            </div>
+            <a
+              href="#"
+              onClick={(e) => e.preventDefault()}
+              className="hover:scale-105 transition-transform block"
+            >
+              <img src="/assets/google-play-badge.png" alt="Get it on Google Play" className="h-10 w-auto" />
+            </a>
+          </div>
           <p className="text-xs text-sterling-mist/40 italic">Available on Google Play Store</p>
         </div>
       }
