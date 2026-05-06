@@ -7,6 +7,18 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
     {
+        version: "0.8.11",
+        date: "May 6, 2026",
+        description: "Support Feedback & Plugin Catalog.",
+        changes: [
+            "Added a solid in-app feedback dialog that submits bug reports, suggestions, feature requests, and support notes to Sterling Lab.",
+            "Feedback submissions now include Max Commander version, build channel, platform, and license tier context.",
+            "Added a browser fallback to the Sterling support page when in-app feedback submission fails.",
+            "Added a direct link from the Plugins settings area to the official Max Commander plugin catalog.",
+            "Plugin usage remains Pro-gated while official plugin downloads are free during the early catalog phase."
+        ]
+    },
+    {
         version: "0.8.10",
         date: "May 1, 2026",
         description: "Navigation, Filtering & Tooltip Polish.",

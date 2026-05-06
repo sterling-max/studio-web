@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Shield, Layout, Eye, GitBranch, Archive, Cloud, Puzzle, Clapperboard, History } from 'lucide-react';
+import { Search, Shield, Layout, Eye, GitBranch, Archive, Cloud, Puzzle, Clapperboard, History, MessageSquare, Plug } from 'lucide-react';
 import { ProductLayout } from './ProductLayout';
 import { type PricingPlan } from './Pricing';
 import { STRIPE_PRICE_FOUNDER, STRIPE_PRICE_STANDARD } from '../../constants/checkout';
@@ -13,6 +13,14 @@ interface MaxCommanderProps {
 }
 
 export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
+  const openSupport = () => {
+    window.location.href = '/support?product=max-commander';
+  };
+
+  const openPlugins = () => {
+    window.location.href = '/products/max-commander/plugins';
+  };
+
   const steps = [
     {
       id: 1,
@@ -157,6 +165,20 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
           Changelog
         </button>
         <button
+          onClick={openPlugins}
+          className="text-[10px] font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-1.5 cursor-pointer"
+        >
+          <Plug size={10} />
+          Plugins
+        </button>
+        <button
+          onClick={openSupport}
+          className="text-[10px] font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-1.5 cursor-pointer"
+        >
+          <MessageSquare size={10} />
+          Support
+        </button>
+        <button
           onClick={onViewPrivacy}
           className="text-[10px] font-mono text-sterling-mist/40 hover:text-sterling-blue underline decoration-transparent hover:decoration-sterling-blue/50 underline-offset-4 transition-all flex items-center gap-1.5 cursor-pointer"
         >
@@ -165,6 +187,15 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
         </button>
       </div>
     </div>
+  );
+
+  const HeroActions = (
+    <button
+      onClick={openPlugins}
+      className="px-8 py-3 rounded-xl font-bold text-sterling-midnight bg-[#03defe] shadow-[0_0_20px_rgba(3,222,254,0.28)] hover:scale-105 transition-transform cursor-pointer"
+    >
+      Get Plugins
+    </button>
   );
 
   return (
@@ -179,6 +210,7 @@ export const MaxCommander = ({ onBack, onViewPrivacy }: MaxCommanderProps) => {
         pricingPlans={plans}
         onBack={onBack}
         extraHeroContent={PromoSection}
+        heroActions={HeroActions}
       />
       <SmartScreenGuide />
       <ChangelogModal

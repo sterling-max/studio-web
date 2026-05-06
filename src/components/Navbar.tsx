@@ -67,7 +67,7 @@ export const Navbar = () => {
     { path: '/#products', icon: <Box size={22} />,       label: 'Products' },
     { path: '/pricing',   icon: <DollarSign size={22} />, label: 'Pricing' },
     { path: '/design',    icon: <Palette size={22} />,     label: 'Design' },
-    { path: '/contact',   icon: <MessageSquare size={22} />, label: 'Contact' },
+    { path: '/support',   icon: <MessageSquare size={22} />, label: 'Support' },
     { path: '/manage',    icon: <Key size={22} />,         label: 'Log In' },
   ];
 

@@ -23,6 +23,7 @@ interface ProductLayoutProps {
   onBack: () => void;
   isMobileFrame?: boolean; // For Tales Universe vertical screenshots
   extraHeroContent?: React.ReactNode;
+  heroActions?: React.ReactNode;
   heroImage?: string;
 }
 
@@ -37,6 +38,7 @@ export const ProductLayout = ({
   onBack,
   isMobileFrame = false,
   extraHeroContent,
+  heroActions,
   heroImage
 }: ProductLayoutProps) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -171,13 +173,18 @@ export const ProductLayout = ({
             <div className="mb-6">{extraHeroContent}</div>
           )}
 
-          {pricingPlans && (
-            <button
-              onClick={scrollToPricing}
-              className="px-8 py-3 bg-sterling-blue text-white rounded-xl font-bold shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:scale-105 transition-transform cursor-pointer"
-            >
-              Get {title}
-            </button>
+          {(pricingPlans || heroActions) && (
+            <div className={cn("flex flex-col sm:flex-row gap-3", heroImage ? "lg:justify-start justify-center" : "justify-center")}>
+              {pricingPlans && (
+                <button
+                  onClick={scrollToPricing}
+                  className="px-8 py-3 bg-sterling-blue text-white rounded-xl font-bold shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:scale-105 transition-transform cursor-pointer"
+                >
+                  Get {title}
+                </button>
+              )}
+              {heroActions}
+            </div>
           )}
         </div>
 

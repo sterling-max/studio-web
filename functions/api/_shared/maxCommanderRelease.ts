@@ -1,9 +1,9 @@
 export const MAX_COMMANDER_RELEASE = {
-  version: '0.8.10',
-  r2Version: 'v0.8.10',
-  pubDate: '2026-05-01T00:00:00Z',
+  version: '0.8.11',
+  r2Version: 'v0.8.11',
+  pubDate: '2026-05-06T00:00:00Z',
   downloadUrl: 'https://sterling.ltd/download/mc-latest.exe',
-  notes: 'Navigation, Filtering & Tooltip Polish - cleaner global tooltips, safer drive button behavior, full-row file filtering, refined filter controls, and clearer Pro plugin messaging.',
+  notes: 'Support Feedback & Plugin Catalog - in-app feedback intake, shared Sterling support API, and official Max Commander plugin catalog links.',
 };
 
 export function normalizeVersion(version: string) {

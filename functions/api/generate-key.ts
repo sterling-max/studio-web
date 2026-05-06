@@ -1,6 +1,6 @@
 export interface Env {
   DB: D1Database;
-  ADMIN_SECRET: string; // Should be set to DEV-KEY-$T3RL1NG-PRO in Cloudflare
+  ADMIN_SECRET: string;
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -8,7 +8,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   
   // 1. Authorization Check
   const authHeader = request.headers.get('Authorization');
-  if (authHeader !== `Bearer DEV-KEY-$T3RL1NG-PRO`) {
+  if (!env.ADMIN_SECRET) {
+    return new Response(JSON.stringify({ success: false, message: 'Admin secret is not configured' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  if (authHeader !== `Bearer ${env.ADMIN_SECRET}`) {
     return new Response(JSON.stringify({ success: false, message: 'Unauthorized' }), { 
       status: 401,
       headers: { 'Content-Type': 'application/json' }

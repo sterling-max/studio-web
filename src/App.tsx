@@ -13,13 +13,16 @@ import { EasyMonitor } from './components/products/EasyMonitor';
 import { TalesUniverse } from './components/products/TalesUniverse';
 import { ManageLicense } from './components/ManageLicense';
 import { DownloadReport } from './components/admin/DownloadReport';
+import { PluginCatalogAdmin } from './components/admin/PluginCatalogAdmin';
 import { PricingPage } from './components/products/PricingPage';
+import { MaxCommanderPlugins } from './components/products/MaxCommanderPlugins';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from './components/Logo';
 import { PrivacyPolicy } from './pages/legal/PrivacyPolicy';
 import { TermsOfService } from './pages/legal/TermsOfService';
 import { LegalNotice } from './pages/legal/LegalNotice';
 import { RefundPolicy } from './pages/legal/RefundPolicy';
+import { SupportPage } from './pages/SupportPage';
 import { LATEST_WEBSITE_VERSION } from './data/website-changelog';
 import { ThanksPage } from './pages/ThanksPage';
 
@@ -70,14 +73,17 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<Page><div className="pt-20"><Collaborate showHeader={false} showCards={false} showContainer={false} /></div></Page>} />
+            <Route path="/support" element={<Page><SupportPage /></Page>} />
             <Route path="/design" element={<Page><VisualStyleGuide /></Page>} />
             <Route path="/manage" element={<Page><ManageLicense /></Page>} />
             <Route path="/admin" element={<Page><DownloadReport /></Page>} />
             <Route path="/admin/downloads" element={<Page><DownloadReport /></Page>} />
+            <Route path="/admin/plugins" element={<Page><PluginCatalogAdmin /></Page>} />
 
             {/* Product Routes */}
             <Route path="/products/max-commander" element={<Page><MaxCommander onBack={() => navigate('/')} onViewPrivacy={() => navigate('/products/max-commander/privacy')} /></Page>} />
             <Route path="/products/max-commander/privacy" element={<Page><MaxCommanderPrivacyPolicy onBack={() => navigate('/products/max-commander')} /></Page>} />
+            <Route path="/products/max-commander/plugins" element={<Page><MaxCommanderPlugins /></Page>} />
              <Route path="/products/dash" element={<Page><Dash onBack={() => navigate('/')} /></Page>} />
              <Route path="/products/zap-studio" element={<Page><ZapStudio onBack={() => navigate('/')} /></Page>} />
              <Route path="/products/easy-monitor" element={<Page><EasyMonitor onBack={() => navigate('/')} /></Page>} />
@@ -120,12 +126,18 @@ function App() {
                     Contact
                   </a>
                 </li>
+                <li>
+                  <a href="/support" className="hover:text-sterling-cyan cursor-pointer transition-colors">
+                    Support
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-3 text-[10px] uppercase tracking-[0.2em] text-sterling-blue">Products</h4>
               <ul className="text-sterling-mist/80 text-sm space-y-1.5">
                 <li><a href="/products/max-commander" className="hover:text-sterling-cyan transition-colors cursor-pointer">Max Commander</a></li>
+                <li><a href="/products/max-commander/plugins" className="hover:text-sterling-cyan transition-colors cursor-pointer">MC Plugins</a></li>
               </ul>
             </div>
             <div>

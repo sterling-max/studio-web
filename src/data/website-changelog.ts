@@ -6,6 +6,16 @@ export interface WebsiteVersion {
 
 export const websiteChangelog: WebsiteVersion[] = [
   {
+    version: "1.0.18",
+    date: "2026-05-06",
+    changes: [
+      "Added product-agnostic Sterling Lab support intake with a shared feedback API",
+      "Added the official Max Commander plugin catalog for Pro plugins with free downloads",
+      "Added admin plugin catalog management for R2-hosted .mcx packages",
+      "Published Max Commander 0.8.11 support and plugin catalog metadata"
+    ]
+  },
+  {
     version: "1.0.17",
     date: "2026-05-02",
     changes: [

@@ -3,9 +3,9 @@
 ## Project Summary
 This project is the "Sterling Lab" main portfolio website (`main-site-max`). It showcases a suite of premium software products including Max Commander, Dash, Zap Studio, EasyMonitor, and Tales Universe. The application is built with standard React 19, Vite, TypeScript, and utilizes Framer Motion for animations and Tailwind CSS v4 for styling.
 
-## Dev Key
+## Admin Secret
 
-DEV-KEY-$T3RL1NG-PRO
+Stored outside project memory as `ADMIN_SECRET`; see `docs/sterling_infrastructure_secrets.md`.
 
 ## Architecture & Tech Stack
 - **Framework:** React 19 + TypeScript + Vite
@@ -19,7 +19,7 @@ DEV-KEY-$T3RL1NG-PRO
     - **Database Name:** `sterling-db`
     - **Binding:** `DB`
     - **Master Public Key:** `1831041f28a8e16d9620d1c89cfce74083d60bd2f790d7ab540d23db1d4599da`
-    - **Master Private Key:** `4395f3369c7578f095d51faa4c349c9cbc23a22ff7737fc507618274b5201df2` (CRITICAL: Upload to Cloudflare as secret)
+    - **Master Private Key:** stored outside project memory as `MASTER_PRIVATE_KEY`; see `docs/sterling_infrastructure_secrets.md`.
 
 ## UI/UX Rules & Aesthetics
 - **Theme:** Dark, premium "Sterling" aesthetic heavily utilizing glassmorphism, subtle gradients, and glow effects.
@@ -70,7 +70,7 @@ To generate a spare key for a tester, send a POST request to:
 `https://sterling.ltd/api/generate-key`
 
 **Headers:**
-- `Authorization: Bearer DEV-KEY-$T3RL1NG-PRO`
+- `Authorization: Bearer <ADMIN_SECRET>`
 - `Content-Type: application/json`
 
 **Body:**
