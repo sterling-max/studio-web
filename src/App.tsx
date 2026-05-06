@@ -123,7 +123,7 @@ function App() {
               <ul className="text-sterling-mist/80 text-sm space-y-1.5">
                 <li>
                   <a href="/contact" className="hover:text-sterling-cyan cursor-pointer transition-colors">
-                    Contact
+                    New Projects
                   </a>
                 </li>
                 <li>

@@ -1,7 +1,7 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Box, Palette, MessageSquare, Sun, Moon, Menu, X, Key, DollarSign } from 'lucide-react';
+import { Home, Box, Palette, MessageSquare, Sun, Moon, Menu, X, Key, DollarSign, ChevronDown, Briefcase } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { Logo } from './Logo';
 
@@ -45,6 +45,55 @@ const DesktopNavItem = ({ icon, label, isActive, onClick }: NavItemProps) => (
   </motion.button>
 );
 
+interface DesktopConnectItemProps {
+  isActive?: boolean;
+  onClick: () => void;
+  onSupportClick: () => void;
+  onNewProjectClick: () => void;
+}
+
+const DesktopConnectItem = ({ isActive, onClick, onSupportClick, onNewProjectClick }: DesktopConnectItemProps) => (
+  <div className="relative group">
+    <motion.button
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={onClick}
+      className={cn(
+        "relative flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 cursor-pointer",
+        isActive ? "bg-sterling-blue text-white shadow-[0_0_15px_rgba(0,122,255,0.4)]" : "text-sterling-mist/60 hover:text-sterling-mist hover:bg-sterling-surface"
+      )}
+      aria-haspopup="menu"
+    >
+      <MessageSquare size={22} />
+      <span className="text-sm font-semibold whitespace-nowrap">Connect</span>
+      <ChevronDown size={15} className="transition-transform duration-300 group-hover:rotate-180" />
+    </motion.button>
+
+    <div className="absolute left-1/2 top-full z-50 hidden w-56 -translate-x-1/2 pt-3 group-hover:block">
+      <div className="rounded-2xl border border-sterling-mist/10 bg-sterling-midnight/95 p-2 shadow-2xl backdrop-blur-2xl">
+        <button
+          type="button"
+          onClick={onSupportClick}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-semibold text-sterling-mist/75 transition-colors hover:bg-sterling-surface hover:text-sterling-mist"
+          role="menuitem"
+        >
+          <MessageSquare size={18} />
+          Support
+        </button>
+        <button
+          type="button"
+          onClick={onNewProjectClick}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-semibold text-sterling-mist/75 transition-colors hover:bg-sterling-surface hover:text-sterling-mist"
+          role="menuitem"
+        >
+          <Briefcase size={18} />
+          New Projects
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
 export const Navbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -67,13 +116,14 @@ export const Navbar = () => {
     { path: '/#products', icon: <Box size={22} />,       label: 'Products' },
     { path: '/pricing',   icon: <DollarSign size={22} />, label: 'Pricing' },
     { path: '/design',    icon: <Palette size={22} />,     label: 'Design' },
-    { path: '/support',   icon: <MessageSquare size={22} />, label: 'Support' },
+    { path: '/contact',   icon: <MessageSquare size={22} />, label: 'Connect' },
     { path: '/manage',    icon: <Key size={22} />,         label: 'Log In' },
   ];
 
   const isActive = (itemPath: string) => {
     if (itemPath === '/') return pathname === '/';
     if (itemPath === '/#products') return pathname.startsWith('/products');
+    if (itemPath === '/contact') return pathname === '/contact' || pathname === '/support';
     return pathname === itemPath;
   };
 
@@ -123,13 +173,23 @@ export const Navbar = () => {
         {/* Center: Desktop Menu */}
         <div className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
           {items.map((item) => (
-            <DesktopNavItem
-              key={item.path}
-              icon={item.icon}
-              label={item.label}
-              isActive={isActive(item.path)}
-              onClick={() => handleNavClick(item.path)}
-            />
+            item.path === '/contact' ? (
+              <DesktopConnectItem
+                key={item.path}
+                isActive={isActive(item.path)}
+                onClick={() => handleNavClick('/contact')}
+                onSupportClick={() => handleNavClick('/support')}
+                onNewProjectClick={() => handleNavClick('/contact')}
+              />
+            ) : (
+              <DesktopNavItem
+                key={item.path}
+                icon={item.icon}
+                label={item.label}
+                isActive={isActive(item.path)}
+                onClick={() => handleNavClick(item.path)}
+              />
+            )
           ))}
           <div className="w-px h-6 bg-sterling-mist/10 mx-2" />
           <DesktopNavItem
@@ -167,10 +227,16 @@ export const Navbar = () => {
                   key={item.path}
                   icon={item.icon}
                   label={item.label}
-                  isActive={isActive(item.path)}
+                  isActive={item.path === '/contact' ? pathname === '/contact' : isActive(item.path)}
                   onClick={() => handleNavClick(item.path)}
                 />
               ))}
+              <NavItem
+                icon={<MessageSquare size={22} />}
+                label="Support"
+                isActive={pathname === '/support'}
+                onClick={() => handleNavClick('/support')}
+              />
 
               <div className="h-px w-full bg-sterling-mist/10 my-2" />
 
